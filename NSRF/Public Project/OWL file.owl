@@ -1,0 +1,1172 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:pc="http://purl.org/procurement/public-contracts#"
+    xmlns:elod="http://linkedeconomy.org/ontology#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rov="http://www.w3.org/ns/regorg#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:gr="http://purl.org/goodrelations/v1#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://linkedeconomy.org/ontology">
+  <owl:Ontology rdf:about="">
+    <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+    <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
+    <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
+    <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
+    <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    <dc:title xml:lang="en">Diavgeia Non-Financial Decisions Ontology</dc:title>
+    <owl:versionInfo xml:lang="en">Latest Update: 2015-10-20</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Datatype rdf:about="http://purl.org/procurement/public-contracts-datatypes#percentage"/>
+  <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+  <owl:Class rdf:ID="RegulatoryAct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="el">Κανονιστική Πράξη</rdfs:label>
+    <rdfs:label xml:lang="en">Regulatory Act</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://linkedeconomy.org/geoOntology#Municipality">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Δήμος</rdfs:label>
+    <rdfs:label xml:lang="en">Municipality</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Law">
+    <rdfs:label xml:lang="el">Νόμος</rdfs:label>
+    <rdfs:label xml:lang="en">Law</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Currency">
+    <rdfs:label xml:lang="el">Νόμισμα</rdfs:label>
+    <rdfs:label xml:lang="en">Currency</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpatialType">
+    <rdfs:label xml:lang="en">Spatial Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BudgetItem">
+    <rdfs:comment xml:lang="en">Budget of a Public Work/Subproject</rdfs:comment>
+    <rdfs:comment xml:lang="el">Προϋπολογισμός ενός Δημοσίου Έργου</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FekType">
+    <rdfs:label xml:lang="el">Τύπος Τεύχους Φύλλου Εφημερίδος Κυβερνήσεως</rdfs:label>
+    <rdfs:label xml:lang="en">Greek Government Gazzette Issue Type </rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OrganizationDomain">
+    <rdfs:label xml:lang="el">Πεδίο Αρμοδιότητας Φορέων</rdfs:label>
+    <rdfs:label xml:lang="en">Organization Domain</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization">
+    <rdfs:label xml:lang="el">Οργανισμός</rdfs:label>
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CollectiveBodyType">
+    <rdfs:label xml:lang="el">Τύπος Συλλογικού</rdfs:label>
+    <rdfs:label xml:lang="en">Collective Body Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AccountType">
+    <rdfs:label xml:lang="el">Τύπος Λογαριασμού</rdfs:label>
+    <rdfs:label xml:lang="en">Account Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OrganizationalUnitCategory">
+    <rdfs:label xml:lang="el">Τύποι Οργανωτικών Μονάδων</rdfs:label>
+    <rdfs:label xml:lang="en">Organizational Unit Category</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization">
+    <rdfs:label xml:lang="el">Καταχωρημένος Οργανισμός</rdfs:label>
+    <rdfs:label xml:lang="en">Registered Organization</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:ID="PublicProject"/>
+      <owl:Class rdf:ID="SubProject"/>
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SpendingItem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FinancialDecision"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="el">Αντικείμενο Δαπάνης</rdfs:label>
+    <rdfs:label xml:lang="en">Spending Item</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity">
+    <rdfs:label xml:lang="el">Επιχειρηματική Οντότητα</rdfs:label>
+    <rdfs:label xml:lang="en">Business Entity</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OrganizationStatus">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Κατάσταση Οργανισμού</rdfs:label>
+    <rdfs:label xml:lang="en">Organization Status</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/goodrelations/v1#UnitPriceSpecification">
+    <rdfs:label xml:lang="el">Προδιαγραφή τιμής ανά μονάδα</rdfs:label>
+    <rdfs:label xml:lang="en">Unit Price Specification</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="KAE">
+    <rdfs:label xml:lang="el">Κωδικός Αριθμού Εσόδων/Εξόδων</rdfs:label>
+    <rdfs:label xml:lang="en">Code Number of Revenues/Expenses</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CollectiveBodyKind">
+    <rdfs:label xml:lang="el">Είδος Συλλογικού</rdfs:label>
+    <rdfs:label xml:lang="en">Collective Body Kind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdministrativeDecision">
+    <rdfs:label xml:lang="el">Διοικητική απόφαση</rdfs:label>
+    <rdfs:label xml:lang="en">Administrative Decision</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#PublicProject">
+    <rdfs:label xml:lang="el">Δημόσιο Έργο</rdfs:label>
+    <rdfs:label xml:lang="en">Public Work</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="VacancyType">
+    <rdfs:label xml:lang="el">Είδος Πλήρωσης Θέσης</rdfs:label>
+    <rdfs:label xml:lang="en">Vacancy Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TimePeriod">
+    <rdfs:label xml:lang="el">Χρονική Περίοδος</rdfs:label>
+    <rdfs:label xml:lang="en">Time Period</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/procurement/public-contracts#Contract">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FinancialDecision"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="el">Δημόσια Σύμβαση</rdfs:label>
+    <rdfs:label xml:lang="en">Public Contract</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CommittedItem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FinancialDecision"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="el">Δεσμευθέν Αντικείμενο</rdfs:label>
+    <rdfs:label xml:lang="en">Commited Item</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="NonFinancialDecision">
+    <rdfs:subClassOf rdf:resource="#AdministrativeDecision"/>
+    <rdfs:label xml:lang="el">Μη Οικονομικού Τύπου</rdfs:label>
+    <rdfs:label xml:lang="en">Non Financial Decision</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SelectionCriterion">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Κριτήριο Επιλογής</rdfs:label>
+    <rdfs:label xml:lang="en">Selection Criterion</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/org#Role">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Ρόλος</rdfs:label>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ThematicCategory">
+    <rdfs:label xml:lang="el">Τύπος Θεματικής Κατηγορίας</rdfs:label>
+    <rdfs:label xml:lang="en">Thematic Category</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2006/vcard/ns#Address">
+    <rdfs:label xml:lang="el">Διεύθυνση</rdfs:label>
+    <rdfs:label xml:lang="en">Address</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdfs:label xml:lang="el">Πράκτορας</rdfs:label>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Decision">
+    <rdfs:label xml:lang="el">Πράξη</rdfs:label>
+    <rdfs:label xml:lang="en">Decision</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#NonFinancialDecision"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FinancialDecision">
+    <rdfs:label xml:lang="el">Οικονομικού Τύπου</rdfs:label>
+    <rdfs:label xml:lang="en">Financial Decision</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#AdministrativeDecision"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OpinionOrgType">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Φορέας Γνωμοδότησης</rdfs:label>
+    <rdfs:label xml:lang="en">Opinion Organization Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BudgetKind">
+    <rdfs:label xml:lang="el">Είδος Προϋπολογισμού</rdfs:label>
+    <rdfs:label xml:lang="en">Budget Kind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://publicspending.net/geoOntology#Country">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Χώρα</rdfs:label>
+    <rdfs:label xml:lang="en">Country</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#SubProject">
+    <rdfs:comment xml:lang="en">Subproject of a Public Work</rdfs:comment>
+    <rdfs:comment xml:lang="el">Υποέργο ενός Δημοσίου Έργου</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Fek">
+    <rdfs:label xml:lang="el">Φύλλο Εφημερίδος Κυβερνήσεως</rdfs:label>
+    <rdfs:label xml:lang="en">Greek Government Gazzette</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:label xml:lang="el">Πρόσωπο</rdfs:label>
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Attachment">
+    <rdfs:label xml:lang="el">Συνημμένα Έγγραφα</rdfs:label>
+    <rdfs:label xml:lang="en">Attachments</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Subsidy">
+    <rdfs:subClassOf rdf:resource="#PublicProject"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PositionType">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Τύπος Θέσης</rdfs:label>
+    <rdfs:label xml:lang="en">Position Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BudgetCategory">
+    <rdfs:label xml:lang="el">Κατηγορία Προϋπολογισμού</rdfs:label>
+    <rdfs:label xml:lang="en">Budget Category</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OrganizationCategory">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Κατηγορίες Φορέων</rdfs:label>
+    <rdfs:label xml:lang="en">Organization Category</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/org#Organization">
+    <rdfs:label xml:lang="el">Οργανισμός</rdfs:label>
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Position">
+    <rdfs:label xml:lang="el">Θέση</rdfs:label>
+    <rdfs:label xml:lang="en">Position</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit">
+    <rdfs:label xml:lang="el">Μονάδα Οργανισμού</rdfs:label>
+    <rdfs:label xml:lang="en">Organizational Unit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DecisionStatus">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Κατάσταση Πράξης</rdfs:label>
+    <rdfs:label xml:lang="en">Decision Status</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="VatType">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="el">Τύπος ΑΦΜ</rdfs:label>
+    <rdfs:label xml:lang="en">Vat Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Procurement">
+    <rdfs:subClassOf rdf:resource="#PublicProject"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExpenditureLine">
+    <rdfs:label xml:lang="el">Τμήμα Δαπάνης</rdfs:label>
+    <rdfs:label xml:lang="en">Expenditure Line</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="OfficialAdministrativeChange">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExpenseApprovalItem">
+    <rdfs:label xml:lang="el">Έγκριση Δαπάνης</rdfs:label>
+    <rdfs:label xml:lang="en">Expense Approval Item</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#FinancialDecision"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+  <owl:ObjectProperty rdf:ID="assetGrantor">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="accountRefersTo">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/regorg#orgCategory">
+    <rdfs:range rdf:resource="#OrganizationCategory"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasBudgetCategory">
+    <rdfs:range rdf:resource="#BudgetCategory"/>
+    <rdfs:domain rdf:resource="#CommittedItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="timePeriod">
+    <rdfs:range rdf:resource="#TimePeriod"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="amount">
+    <rdfs:domain rdf:resource="#ExpenditureLine"/>
+    <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/regorg#orgStatus">
+    <rdfs:range rdf:resource="#OrganizationStatus"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasExpenditureLine">
+    <rdfs:range rdf:resource="#ExpenditureLine"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/vcard/ns#hasAddress">
+    <rdfs:range rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasBudgetKind">
+    <rdfs:range rdf:resource="#BudgetKind"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPositionType">
+    <rdfs:range rdf:resource="#PositionType"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/publisher">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isRegisteredAt">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="competentMinistry">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="employerOrg">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="fekIssue">
+    <rdfs:range rdf:resource="#FekType"/>
+    <rdfs:domain rdf:resource="#Fek"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelatedBudgetItem">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PublicProject"/>
+          <owl:Class rdf:about="#SubProject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#BudgetItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="beneficiary">
+    <rdfs:domain rdf:resource="#PublicProject"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCurrency">
+    <rdfs:range rdf:resource="#Currency"/>
+    <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="budgerRefersTo">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasThematicCategory">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#ThematicCategory"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasKae">
+    <rdfs:domain rdf:resource="#ExpenditureLine"/>
+    <rdfs:range rdf:resource="#KAE"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="decisionStatus">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#DecisionStatus"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="buyer">
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="signer">
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="donationGiver">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="relatedLaw">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#Law"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="donationReceiver">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasVatType">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="#VatType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelatedCommittedItem">
+    <rdfs:range rdf:resource="#CommittedItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="collectiveBodyType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#CollectiveBodyType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOpinionOrgType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#OpinionOrgType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="seller">
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ExpenditureLine"/>
+          <owl:Class rdf:about="#SubProject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="accountType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#AccountType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="relatedFek">
+    <rdfs:range rdf:resource="#Fek"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Decision"/>
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="assetGrente">
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasVacancyType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#VacancyType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSpatialType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#SpatialType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelatedDecision"/>
+  <owl:ObjectProperty rdf:ID="decisionMunicipality">
+    <rdfs:range rdf:resource="http://linkedeconomy.org/geoOntology#Municipality"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOfficialAdministrativeChange">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#OfficialAdministrativeChange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelatedAdministrativeDecision">
+    <rdfs:domain rdf:resource="#PublicProject"/>
+    <rdfs:range rdf:resource="#AdministrativeDecision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="collectiveBodyKind">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="#CollectiveBodyKind"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="regulatoryAct">
+    <rdfs:range rdf:resource="#RegulatoryAct"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPosition">
+    <rdfs:range rdf:resource="#Position"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRelatedProject">
+    <rdfs:range rdf:resource="#SubProject"/>
+    <rdfs:domain rdf:resource="#PublicProject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="competentUnit">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/org#OrganizationalUnit"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="numberOfPeople">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentType">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="lawYear">
+    <rdfs:domain rdf:resource="#Law"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#postal-code">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="passAuthority">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#vatID">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="secondaryOfficer">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="endDate">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PublicProject"/>
+          <owl:Class rdf:about="#SubProject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="regulatoryActNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="currencyId">
+    <rdfs:domain rdf:resource="#Currency"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#valueAddedTaxIncluded">
+    <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="interCountryLaw">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="versionId">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="fekNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Fek"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="decisionNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="documentUrl">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="asset">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="financialYear">
+    <rdfs:domain rdf:resource="#CommittedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/issued">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proceedingNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="instruction">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/subject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Decision"/>
+          <owl:Class rdf:about="#PublicProject"/>
+          <owl:Class rdf:about="#SubProject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="cofinancedProject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="fekTypeId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Fek"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="europeanLaw">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ada">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="budgetApprovalForOrg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="countryId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://publicspending.net/geoOntology#Country"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/lastName">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#street-address">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="privateData">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#locality">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="submissionTimestamp">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="countOfRelatedProjects">
+    <rdfs:domain rdf:resource="#PublicProject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="projectId">
+    <rdfs:domain rdf:resource="#SubProject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#name">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="lawNumber">
+    <rdfs:domain rdf:resource="#Law"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="protocolNumber">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="accountApprovalForOtherOrg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="fekYear">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Fek"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="primaryOfficer">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/firstName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="validVatId">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="completion">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#PublicProject"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#hasCurrencyValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="http://purl.org/goodrelations/v1#UnitPriceSpecification"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="startDate">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PublicProject"/>
+          <owl:Class rdf:about="#SubProject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#country-name">
+    <rdfs:domain rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="duration">
+    <rdfs:domain rdf:resource="#Decision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="decisionTypeId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Decision"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#legalName">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#Organization"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/org#OrganizationalUnit"/>
+          <owl:Class rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/SelectionCriterion/TechnicalQuality">
+    <skos:prefLabel xml:lang="el">Τεχνική ποιότητα</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Technical Quality</skos:prefLabel>
+    <rdf:type rdf:resource="#SelectionCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="VacancyNotaries">
+    <rdf:type rdf:resource="#VacancyType"/>
+    <skos:prefLabel xml:lang="el">Προκήρυξη Εξετάσεων Συμβολαιογράφων</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="IndependentAuthority">
+    <skos:prefLabel xml:lang="el">Ανεξάρτητη Αρχή</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Independent Authority</skos:prefLabel>
+    <rdf:type rdf:resource="#OpinionOrgType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="WorkingGroup">
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+    <skos:prefLabel xml:lang="el">Ομάδα εργασίας</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Working Group</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Formation">
+    <rdf:type rdf:resource="#CollectiveBodyKind"/>
+    <skos:prefLabel xml:lang="el">Συγκρότηση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Formation</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/DecisionStatus/Published">
+    <skos:prefLabel xml:lang="el">Αναρτημένη και σε ισχύ</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Published and Active</skos:prefLabel>
+    <rdf:type rdf:resource="#DecisionStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="MinistrySpecialSecretary">
+    <skos:prefLabel xml:lang="el">Ειδικός Γραμματέας Υπουργείου</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Ministry Special Secretary</skos:prefLabel>
+    <rdf:type rdf:resource="#Position"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#narrower"/>
+  <owl:NamedIndividual rdf:ID="ResignationAcceptance">
+    <skos:prefLabel xml:lang="el">Αποδοχή Παραίτησης</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Resignation Acceptance</skos:prefLabel>
+    <rdf:type rdf:resource="#CollectiveBodyKind"/>
+    <rdf:type rdf:resource="#OfficialAdministrativeChange"/>
+    <rdf:type rdf:resource="#PositionType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Demotion">
+    <skos:prefLabel xml:lang="el">Υποβιβασμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Demotion</skos:prefLabel>
+    <rdf:type rdf:resource="#OfficialAdministrativeChange"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="AcquittalDisciplinaryDecision">
+    <rdf:type rdf:resource="#PositionType"/>
+    <skos:prefLabel xml:lang="el">Αθωωτική Πειθαρχική Απόφαση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Acquittal Disciplinary Decision</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="SingleBody">
+    <skos:prefLabel xml:lang="el">Μονομελές Όργανο</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Single Body</skos:prefLabel>
+    <rdf:type rdf:resource="#Position"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#topConceptOf"/>
+  <owl:NamedIndividual rdf:ID="VacancyLawyers">
+    <skos:prefLabel xml:lang="el">Προκήρυξη Εξετάσεων Υποψήφιων Δικηγόρων</skos:prefLabel>
+    <rdf:type rdf:resource="#VacancyType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/OrganizationStatus/Inactive">
+    <skos:prefLabel xml:lang="el">Εκκρεμεί η ενεργοποίησή του και η ένταξή του στη Δι@ύγεια</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Pending activation and registration in Di@vgeia</skos:prefLabel>
+    <rdf:type rdf:resource="#OrganizationStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+  <owl:NamedIndividual rdf:ID="Suspension">
+    <rdf:type rdf:resource="#PositionType"/>
+    <skos:prefLabel xml:lang="el">Παύση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Suspension</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="BalanceSheetAndAnnualReport">
+    <rdf:type rdf:resource="#AccountType"/>
+    <skos:prefLabel xml:lang="el">Ισολογισμός και Απολογισμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Balance Sheet and Annual Report</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="ManagementAuthority">
+    <skos:prefLabel xml:lang="el">Συλλογικό όργανο Διοίκησης</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Management Authority</skos:prefLabel>
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Governmental">
+    <rdf:type rdf:resource="#BudgetKind"/>
+    <skos:prefLabel xml:lang="el">Κρατικός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Governmental</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:ID="creator"/>
+  <owl:NamedIndividual rdf:ID="Commitee">
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+    <skos:prefLabel xml:lang="el">Επιτροπή</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Commitee</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="AnnualReport">
+    <rdf:type rdf:resource="#AccountType"/>
+    <skos:prefLabel xml:lang="el">Απολογισμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Annual Report</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/ContractType/DesignImplementation">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Έργα - Σχεδιασμός, Εκτέλεση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Design - Implementation</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="HalfYear">
+    <skos:prefLabel xml:lang="el">Εξάμηνο</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Half Year</skos:prefLabel>
+    <rdf:type rdf:resource="#TimePeriod"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/ContractType/Implementation">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Έργα - Εκτέλεση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Implementation</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="OtherJuristiction">
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+    <skos:prefLabel xml:lang="el">Όργανο άλλης αρμοδιότητας</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Other Juristiction</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Transfer">
+    <rdf:type rdf:resource="#OfficialAdministrativeChange"/>
+    <skos:prefLabel xml:lang="el">Μετάταξη</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Transfer</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme"/>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/SelectionCriterion/LowestPrice">
+    <rdf:type rdf:resource="#SelectionCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Χαμηλότερη Τιμή</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Lowest Price</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Quarter">
+    <skos:prefLabel xml:lang="el">Τρίμηνο</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Quarter</skos:prefLabel>
+    <rdf:type rdf:resource="#TimePeriod"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/BudgetCategory/OwnSourceRevenue">
+    <skos:prefLabel xml:lang="el">Ίδια Έσοδα</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Own Source Revenue</skos:prefLabel>
+    <rdf:type rdf:resource="#BudgetCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/DecisionStatus/Submitted">
+    <skos:prefLabel xml:lang="el">Έχει υποβληθεί αλλά δεν έχει αποδοθεί ΑΔΑ</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Submitted but ADA code has not been assigned</skos:prefLabel>
+    <rdf:type rdf:resource="#DecisionStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Availability">
+    <skos:prefLabel xml:lang="el">Διαθεσιμότητα</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Availability</skos:prefLabel>
+    <rdf:type rdf:resource="#OfficialAdministrativeChange"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/OrganizationStatus/Pending">
+    <rdf:type rdf:resource="#OrganizationStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Ενταγμένος στη Δι@ύγεια αλλά δεν είναι πλέον σε ισχύ</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Registered in Di@vgeia but is no longer active</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/SelectionCriterion/MostEconomicalOffer">
+    <rdf:type rdf:resource="#SelectionCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Πλέον οικονομικότερη προσφορά σύμφωνα με τα ακόλουθα στοιχεία (λίστα από στοιχεία)</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Most Economical Offer</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="NSK">
+    <skos:prefLabel xml:lang="el">ΝΣΚ</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">NSK</skos:prefLabel>
+    <rdf:type rdf:resource="#OpinionOrgType"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#broader"/>
+  <owl:NamedIndividual rdf:ID="VacancyLandRegistry">
+    <skos:prefLabel xml:lang="el">Προκήρυξη Εξετάσεων Άμισθων Υποθηκοφυλάκων</skos:prefLabel>
+    <rdf:type rdf:resource="#VacancyType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/ContractType/Combination">
+    <skos:prefLabel xml:lang="el">Προμήθειες - Συνδυασμός αυτών</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Combination</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/OrganizationStatus/Active">
+    <skos:prefLabel xml:lang="el">Ενεργός και ενταγμένος στη Δι@ύγεια</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Active and registered in Di@vgeia</skos:prefLabel>
+    <rdf:type rdf:resource="#OrganizationStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/DecisionStatus/Revoked">
+    <skos:prefLabel xml:lang="el">Ανακληθείσα</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Revoked</skos:prefLabel>
+    <rdf:type rdf:resource="#DecisionStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/DecisionStatus/PendingRevocation">
+    <skos:prefLabel xml:lang="el">Αναρτημένη και σε ισχύ, έχει υποβληθεί αίτημα ανάκλησής της</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Published and Active, revocation request has been submitted</skos:prefLabel>
+    <rdf:type rdf:resource="#DecisionStatus"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Termination">
+    <skos:prefLabel xml:lang="el">Λύση Υπαλληλικής Σχέσης</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Termination</skos:prefLabel>
+    <rdf:type rdf:resource="#OfficialAdministrativeChange"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="MinistryGeneralSecretary">
+    <skos:prefLabel xml:lang="el">Γενικός Γραμματέας Υπουργείου</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Ministry General Secretary</skos:prefLabel>
+    <rdf:type rdf:resource="#Position"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="AdvisoryJurisdiction">
+    <skos:prefLabel xml:lang="el">Όργανο Γνωμοδοτικής Αρμοδιότητας</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Advisory Jurisdiction</skos:prefLabel>
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="ProjectGroup">
+    <rdf:type rdf:resource="#CollectiveBodyType"/>
+    <skos:prefLabel xml:lang="el">Ομάδα έργου</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Project Group</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="GeneralSecretaryDecentralizedAdministration">
+    <rdf:type rdf:resource="#Position"/>
+    <skos:prefLabel xml:lang="el">Γενικός Γραμματέας Αποκεντρωμένης Διοίκησης</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">General Secretary Decentralized Administration</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Agency">
+    <skos:prefLabel xml:lang="el">Φορέα</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Agency</skos:prefLabel>
+    <rdf:type rdf:resource="#BudgetKind"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+  <owl:NamedIndividual rdf:ID="VacancyGeneral">
+    <skos:prefLabel xml:lang="el">Προκήρυξη Πλήρωσης Θέσεων με διαγωνισμό ή επιλογή στις οποίες περιλαμβάνονται  και οι προκηρύξεις για επιλογή και πλήρωση θέσεων διευθυντικών στελεχών των ΝΠΔΔ, φορέων του ευρύτερου δημόσιου τομέα, και των επιχειρήσεων και φορέων των ΟΤΑ Α’ &amp; Β’ βαθμού</skos:prefLabel>
+    <rdf:type rdf:resource="#VacancyType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="VacancyEp">
+    <rdf:type rdf:resource="#VacancyType"/>
+    <skos:prefLabel xml:lang="el">Προκήρυξη Πλήρωσης Θέσεων Εκπαιδευτικού Προσωπικού (ΕΠ) Τεχνολογικού τομέα της Ανώτατης Εκπαίδευσης</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Annual">
+    <skos:prefLabel xml:lang="el">Έτος</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Annual</skos:prefLabel>
+    <rdf:type rdf:resource="#TimePeriod"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/BudgetCategory/RegularBudget">
+    <skos:prefLabel xml:lang="el">Τακτικός Προϋπολογισμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Regular Budget</skos:prefLabel>
+    <rdf:type rdf:resource="#BudgetCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Appointment">
+    <rdf:type rdf:resource="#PositionType"/>
+    <skos:prefLabel xml:lang="el">Διορισμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Appointment</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="FeeCompensationSpecification">
+    <skos:prefLabel xml:lang="el">Καθορισμός Αμοιβής - Αποζημίωσης</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Fee Compensation Specification</skos:prefLabel>
+    <rdf:type rdf:resource="#CollectiveBodyKind"/>
+    <rdf:type rdf:resource="#PositionType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/BudgetCategory/CofundedProject">
+    <rdf:type rdf:resource="#BudgetCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="el">Συγχρηματοδοτούμενο Έργο</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Co-funded Project</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="Replacement">
+    <skos:prefLabel xml:lang="el">Αντικατάσταση</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Replacement</skos:prefLabel>
+    <rdf:type rdf:resource="#PositionType"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="VacancyDep">
+    <rdf:type rdf:resource="#VacancyType"/>
+    <skos:prefLabel xml:lang="el">Προκήρυξη Πλήρωσης Θέσεων Διδακτικού Ερευνητικού Προσωπικού (ΔΕΠ) Πανεπιστημιακού τομέα</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="SuspensionReplacement">
+    <skos:prefLabel xml:lang="el">Παύση - Αντικατάσταση μέλους</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Suspension Replacement</skos:prefLabel>
+    <rdf:type rdf:resource="#CollectiveBodyKind"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:ID="BalanceSheet">
+    <skos:prefLabel xml:lang="el">Ισολογισμός</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Balance Sheet</skos:prefLabel>
+    <rdf:type rdf:resource="#AccountType"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+  <owl:NamedIndividual rdf:about="http://linkedeconomy.org/resource/BudgetCategory/PublicInvestmentProject">
+    <skos:prefLabel xml:lang="el">Πρόγραμμα Δημοσίων Επενδύσεων</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Public Investment Project</skos:prefLabel>
+    <rdf:type rdf:resource="#BudgetCategory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#KindScheme">
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:ID="Studies">
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:prefLabel xml:lang="el">Μελέτες</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Studies</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Services">
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <skos:prefLabel xml:lang="el">Υπηρεσίες</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Services</skos:prefLabel>
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Supplies">
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <skos:prefLabel xml:lang="el">Προμήθειες</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Supplies</skos:prefLabel>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Works">
+        <skos:prefLabel xml:lang="el">Έργα</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Works</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#KindScheme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#ProcedureTypeScheme">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:ID="LowValue">
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+        <skos:prefLabel xml:lang="el">Πρόχειρος Διαγωνισμός</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Low Value</skos:prefLabel>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Open">
+        <skos:prefLabel xml:lang="el">Ανοικτός Διαγωνισμός</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Open</skos:prefLabel>
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+    <skos:hasTopConcept>
+      <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Restricted">
+        <skos:topConceptOf rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+        <skos:prefLabel xml:lang="el">Κλειστός Διαγωνισμός</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Restricted</skos:prefLabel>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://purl.org/procurement/public-contracts#ProcedureTypeScheme"/>
+      </owl:NamedIndividual>
+    </skos:hasTopConcept>
+  </owl:NamedIndividual>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
