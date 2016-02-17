@@ -1,0 +1,19 @@
+home page/readme
+Should provide pictures, contents and explanations.
+
+file structure 
+
+Overall model
+Includes the integrated OWL and example SPARQL queries. Should be organized in versions through tags.
+
+<Per data source> file folder
+includes at least the following files:
+
+DCAT spec
+OWL
+SPARQL queries
+Data examples
+
+how to work
+Data owner administers his own <Per data source> file folder
+All the team discusses how to integrate new features from different sources in the general model
