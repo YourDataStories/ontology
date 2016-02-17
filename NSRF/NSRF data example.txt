@@ -1,0 +1,108 @@
+## PublicProject[Procurement] ##			
+<http://linkedeconomy.org/resource/Procurement/{MIS Code}> a elod:Procurement;			
+	rdfs:subclassOf elod:PublicProject;		
+	dc:subject "{Short description}"@el;		
+	dc:title "{MIS Title}"@el;		
+	elod:completion  "{Completion}"^^float;		
+	elod:countOfRelatedProjects  "{Sub-projects}""^^xsd:integer;		
+	elod:hasRelatedProject <http://linkedeconomy.org/resource/Subsidy/{MIS Code}/{subproject id}>;		
+	elod:beneficiary <http://linkedeconomy.org/resource/Organization/{VAT ID}>;		
+	elod:hasRelatedBudgetItem <http://linkedeconomy.org/resource/PublicWork/BudgetItem/{MIS Code}>;		
+	elod:hasRelatedContract <http://linkedeconomy.org/resource/PublicWork/Contract/{MIS Code}>;		
+	elod:hasRelatedSpendingItem <http://linkedeconomy.org/resource/PublicWork/SpendingItem/{MIS Code}>;		
+	elod:projectStatus <http://linkedeconomy.org/resource/ProjectStatus/{Status}>;		
+	elod:startDate "6/8/2011"^^xsd:date		
+	elod:endDate "31/12/15"^^xsd:date		
+			
+## SubProject ##			
+<http://linkedeconomy.org/resource/SubProject/{MIS Code}/{subproject id}> a elod:SubProject;			
+	dc:subject "{title}"@el;		
+	elod:projectId "{subproject id}"^^xsd:integer;		
+	elod:seller <http://linkedeconomy.org/resource/Organization/{VAT ID}>;		
+	elod:hasRelatedAdministrativeDecision <http://linkedeconomy.org/resource/Decision/{ADA}>;		
+	elod:hasRelatedBudgetItem <http://linkedeconomy.org/resource/Procurement/BudgetItem/{MIS Code}>;		
+	elod:startDate "8/8/2011"^^xsd:date		
+	elod:endDate "30/04/15"^^xsd:date		
+			
+			
+## BudgetItem ##			
+<http://linkedeconomy.org/resource/Procurement/BudgetItem/{MIS Code}> a elod:BudgetItem;			
+	elod:hasExpenditureLine [ a elod:ExpenditureLine;		
+		elod:price [ a gr:UnitPriceSpecification;	
+		gr:hasCurrencyValue "{Public Expenditure Budget}"^^xsd:float;	
+		gr:valueAddedTaxIncluded "true"^^xsd:boolean.	
+			
+			
+	];		
+			
+## Contract ##			
+<http://linkedeconomy.org/resource/Procurement/Contract/{MIS Code}> a pc:Contract;			
+	pc:agreedPrice [ a gr:UnitPriceSpecification;		
+		elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>;	
+		gr:hasCurrencyValue "{Contracts}"^^xsd:float;	
+		gr:valueAddedTaxIncluded "true"^^xsd:boolean.	
+	];		
+			
+## SpendingItem ##			
+<http://linkedeconomy.org/resource/Procurement/SpendingItem/{MIS Code}> a elod:SpendingItem;			
+	elod:hasExpenditureLine [ a elod:ExpenditureLine;		
+		elod:amount [ a gr:UnitPriceSpecification;	
+			elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>;
+			gr:hasCurrencyValue "{Payments}"^^xsd:float;
+			gr:valueAddedTaxIncluded "true"^^xsd:boolean.
+			
+	];		
+			
+## Beneficiary ##			
+<http://linkedeconomy.org/resource/Organization/{VAT ID}> a foaf:Organization, gr:BusinessEntity, org:Organization, rov:RegisteredOrganization;			
+	gr:name "{JOINT VENTURE DOMIKI-LATOMIKI}"^^xsd:string		
+			
+## non Financial (common fields for every Decision) ##			
+<http://linkedeconomy.org/resource/Decision/ΩΗ99Ω-ΣΟΟ> a elod:Decision;			
+	rdfs:subclassOf elod:NonFinancialDecision;		
+	elod:ada “ΩΗ99Ω-ΣΟΟ”^^<xsd:string>;		
+	dc:subject “ Measures to implement the Agreement …”@en;		
+	elod:protocolNumber “4337”^^<xsd:string>;		
+	elod:decisionStatus <http://linkedeconomy.org/resource/DecisionStatus/PUBLISHED>;		
+	elod:versionId “18260d3f-bdf5-41b4-96be-c1d8b7d4ce85”;		
+	dcterms:issued “2015-10-17+03:00”^^xsd:date;		
+	dc:publisher <http://linkedeconomy.org/resource/OrganizationalUnit/100011246 >;		
+	elod:buyer  <http://linkedeconomy.org/resource/Organization/090169674 >;		
+	elod:signer <http://linkedeconomy.org/resource/Signer/100010915>;		
+	elod:submissionTimestamp “2015-10-19T09:33:06.573+03:00”^^xsd:dateTime;		
+	elod:thematicCategory <http://linkedeconomy.org/resource/ThematicCategory/24>;		
+	elod:documentUrl “https://diavgeia.gov.gr/doc/ΩΗ99Ω-ΣΟΟ” ^^<xsd:string>;		
+	elod:privateData “false”^^xsd:boolean;		
+	elod:decisionTypeId “Α.1.1”^^<xsd:string>;		
+	elod:documentType “{document type}”^^<xsd:string>.		
+			
+##  Financial (including extra fields of this type of financial Decision) ##			
+<http://linkedeconomy.org/resource/CommittedItem/63054690ΒΒ-1ΜΣ> a 			
+	elod:CommittedItem;		
+	rdfs:subclassOf elod:FinancialDecision;		
+	elod:decisionTypeId “B.1.3”;		
+	elod:documentType “{document type}”^^<xsd:string>.		
+	elod:financialYear “2014”^^xsd:year;		
+	elod:isRecalledExpenseDecision “false”^^xsd:boolean;		
+	elod:isPartialWithdrawal “false”^^xsd:boolean;		
+	elod:price [ a gr:UnitPriceSpecification;		
+		elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>;	
+		gr:hasCurrencyValue "1746.6"^^xsd:float;	
+		gr:valueAddedTaxIncluded “true”^^xsd:Boolean	
+	];		
+	elod:hasExpenditureLine [ a elod:ExpenditureLine;		
+		elod:seller <http://linkedeconomy.org/resource/Organization/099505250>;	
+		elod:hasKae <http://linkedeconomy.org/resource/KaeCodes/1899α>;	
+		elod:amount [ a gr:UnitPriceSpecification;	
+		elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>;	
+		gr:hasCurrencyValue "397.64"^^xsd:float;	
+		gr:valueAddedTaxIncluded “true”^^xsd:boolean.	
+	];		
+	elod:remainingBudgetAmount [ a gr:UnitPriceSpecification;		
+		elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>;	
+		gr:hasCurrencyValue "7489.18"^^xsd:float;	
+		gr:valueAddedTaxIncluded “true”^^xsd:boolean.	
+	]		
+			
+			
+			
