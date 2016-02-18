@@ -1,4 +1,4 @@
-# YourDataStoriesOntology ontology
+# YourDataStories Ontology
 *The ontology that is used to describe YourDataStories datasets.*
 
 
