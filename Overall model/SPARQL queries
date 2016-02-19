@@ -8,6 +8,19 @@ SELECT ?s ?p ?o
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 WHERE {
 ?s elod:hasCpv ?cpv. ?cpv ?p ?o
+=======
+##Geo - Return all Lines within the specified Lines 
+
+
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/geosparql/function/>
+
+SELECT distinct *
+WHERE {
+?shape geo:hasGeometry ?g .
+?g geo:asWKT ?gWKT .
+FILTER (bif:st_within(?gWKT, "LINESTRING(24.472662 35.367233, 24.472588 35.367252)"^^geo:wktLiteral)) 
+>>>>>>> Overall-Model-Upadate-for-Geo
 }
 
 
