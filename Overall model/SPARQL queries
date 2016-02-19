@@ -1,5 +1,15 @@
 # Example Queries
 
+
+##Specific CPV Query Info
+
+SELECT ?s ?p ?o 
+from <http://yourdatastories.eu/NSRF/Diavgeia> 
+WHERE {
+?s elod:hasCpv ?cpv. ?cpv ?p ?o
+}
+
+
 ##project profile 
 
 
