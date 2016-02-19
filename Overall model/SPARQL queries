@@ -1,6 +1,7 @@
 # Example Queries
 
 
+<<<<<<< HEAD
 ##Specific CPV Query Info
 
 SELECT ?s ?p ?o 
