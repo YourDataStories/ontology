@@ -1,7 +1,7 @@
-project profile Queries
+# Example Queries
 
+##project profile 
 
-Τ0:Overall
 
 Single Project Info | query 1
 select distinct ?project ?percComplete (xsd:decimal(?prBudget) as ?priceBudget)
