@@ -6,6 +6,7 @@
     <!ENTITY dct "http://purl.org/dc/terms/" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY rov "http://www.w3.org/ns/regorg#" >
+    <!ENTITY sf "http://www.opengis.net/ont/sf#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY vcard "http://www.w3.org/2006/vcard/ns#" >
     <!ENTITY gr "http://purl.org/goodrelations/v1#" >
@@ -13,6 +14,7 @@
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
     <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
     <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY pc "http://purl.org/procurement/public-contracts#" >
@@ -21,7 +23,9 @@
 
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:sf="http://www.opengis.net/ont/sf#"
      xmlns:org="http://www.w3.org/ns/org#"
      xmlns:rov="http://www.w3.org/ns/regorg#"
      xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
@@ -357,17 +361,6 @@
     <!-- http://linkedeconomy.org/ontology#hasCorrectedDecision -->
 
     <owl:ObjectProperty rdf:about="&elod;hasCorrectedDecision">
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -379,6 +372,17 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;Decision"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -468,6 +472,14 @@
     <!-- http://linkedeconomy.org/ontology#hasRelatedAdministrativeDecision -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -479,6 +491,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasRelatedBudgetItem -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedBudgetItem">
+        <rdfs:range rdf:resource="&elod;BudgetItem"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -491,19 +511,20 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasRelatedBudgetItem -->
-
-    <owl:ObjectProperty rdf:about="&elod;hasRelatedBudgetItem">
-        <rdfs:range rdf:resource="&elod;BudgetItem"/>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#hasRelatedCommittedItem -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -511,8 +532,17 @@
     <!-- http://linkedeconomy.org/ontology#hasRelatedDecision -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDecision">
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;Decision"/>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasRelatedFeature -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedFeature">
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+        <rdfs:range rdf:resource="&geo;Feature"/>
     </owl:ObjectProperty>
     
 
@@ -687,6 +717,16 @@
     <!-- http://purl.org/dc/terms/publisher -->
 
     <owl:ObjectProperty rdf:about="&dct;publisher">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;Organization"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -699,16 +739,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -736,6 +766,15 @@
     <owl:ObjectProperty rdf:about="&pc;kind">
         <rdfs:domain rdf:resource="&pc;Contract"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#hasGeometry -->
+
+    <owl:ObjectProperty rdf:about="&geo;hasGeometry">
+        <rdfs:domain rdf:resource="&geo;Feature"/>
+        <rdfs:range rdf:resource="&geo;Geometry"/>
     </owl:ObjectProperty>
     
 
@@ -908,15 +947,6 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#coordinates -->
-
-    <owl:DatatypeProperty rdf:about="&elod;coordinates">
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#correctedVersionId -->
 
     <owl:DatatypeProperty rdf:about="&elod;correctedVersionId">
@@ -949,6 +979,33 @@
 
     <owl:DatatypeProperty rdf:about="&elod;countryId">
         <rdfs:domain rdf:resource="http://publicspending.net/geoOntology#Country"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#cpvCode -->
+
+    <owl:DatatypeProperty rdf:about="&elod;cpvCode">
+        <rdfs:domain rdf:resource="&elod;CPV"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#cpvEnglishSubject -->
+
+    <owl:DatatypeProperty rdf:about="&elod;cpvEnglishSubject">
+        <rdfs:domain rdf:resource="&elod;CPV"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#cpvGreekSubject -->
+
+    <owl:DatatypeProperty rdf:about="&elod;cpvGreekSubject">
+        <rdfs:domain rdf:resource="&elod;CPV"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -1470,6 +1527,14 @@
     
 
 
+    <!-- http://www.opengis.net/ont/geosparql#asWKT -->
+
+    <owl:DatatypeProperty rdf:about="&geo;asWKT">
+        <rdfs:domain rdf:resource="&geo;Geometry"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.w3.org/2006/vcard/ns#country-name -->
 
     <owl:DatatypeProperty rdf:about="&vcard;country-name">
@@ -1636,7 +1701,7 @@
 
     <owl:Class rdf:about="&elod;CommittedItem">
         <rdfs:label xml:lang="el">Δεσμευθέν Αντικείμενο</rdfs:label>
-        <rdfs:label xml:lang="en">Commited Item</rdfs:label>
+        <rdfs:label xml:lang="en">Committed Item</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;FinancialDecision"/>
     </owl:Class>
     
@@ -1807,6 +1872,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#PlaceOfInterest -->
+
+    <owl:Class rdf:about="&elod;PlaceOfInterest">
+        <rdfs:label xml:lang="en">Place Of Interest</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:comment xml:lang="en">The place where the Geo Infomation belongs to</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#Position -->
 
     <owl:Class rdf:about="&elod;Position">
@@ -1967,6 +2042,57 @@
         <rdfs:label xml:lang="el">Δημόσια Σύμβαση</rdfs:label>
         <rdfs:label xml:lang="en">Public Contract</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;FinancialDecision"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Feature -->
+
+    <owl:Class rdf:about="&geo;Feature">
+        <rdfs:label xml:lang="en">Feature</rdfs:label>
+        <rdfs:comment xml:lang="en">The class Feature, superclass of everything feature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Geometry -->
+
+    <owl:Class rdf:about="&geo;Geometry">
+        <rdfs:label xml:lang="el">Γεωμετρία</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry</rdfs:label>
+        <rdfs:comment xml:lang="en">The class Geometry, superclass of everything geometry.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Curve -->
+
+    <owl:Class rdf:about="&sf;Curve">
+        <rdfs:label xml:lang="el">Καμπύλη</rdfs:label>
+        <rdfs:label xml:lang="en">Curve</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&geo;Geometry"/>
+        <rdfs:comment xml:lang="en">Topological 1-dimensional geometric primitive representing the continuous image of a line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#LineString -->
+
+    <owl:Class rdf:about="&sf;LineString">
+        <rdfs:label xml:lang="en">Line String</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sf;Curve"/>
+        <rdfs:comment xml:lang="en">A curve composed of straight line segments.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Point -->
+
+    <owl:Class rdf:about="&sf;Point">
+        <rdfs:label xml:lang="el">Σημείο</rdfs:label>
+        <rdfs:label xml:lang="en">Point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&geo;Geometry"/>
+        <rdfs:comment xml:lang="en">Topological 0-dimensional geometric primitive representing a position.</rdfs:comment>
     </owl:Class>
     
 
@@ -2257,8 +2383,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Πρόχειρος Διαγωνισμός</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Low Value</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
+        <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2371,8 +2497,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Μελέτες</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Studies</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;KindScheme"/>
         <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
+        <skos:inScheme rdf:resource="&pc;KindScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2683,8 +2809,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Ανοικτός Διαγωνισμός</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Open</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2706,8 +2832,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Κλειστός Διαγωνισμός</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Restricted</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
         <skos:inScheme rdf:resource="&pc;ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;ProcedureTypeScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2718,8 +2844,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Υπηρεσίες</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Services</skos:prefLabel>
-        <skos:inScheme rdf:resource="&pc;KindScheme"/>
         <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
+        <skos:inScheme rdf:resource="&pc;KindScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2730,8 +2856,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Προμήθειες</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Supplies</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
         <skos:inScheme rdf:resource="&pc;KindScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
     </owl:NamedIndividual>
     
 
@@ -2742,8 +2868,8 @@
         <rdf:type rdf:resource="&skos;Concept"/>
         <skos:prefLabel xml:lang="el">Έργα</skos:prefLabel>
         <skos:prefLabel xml:lang="en">Works</skos:prefLabel>
-        <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
         <skos:inScheme rdf:resource="&pc;KindScheme"/>
+        <skos:topConceptOf rdf:resource="&pc;KindScheme"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
