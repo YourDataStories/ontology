@@ -11,11 +11,8 @@ A. Github web GUI or Github Desktop (more information at https://guides.github.c
 B. Command line
 *TO ADD LATER*
 
-*Overall model* 
-includes the integrated OWL and example SPARQL queries. 
-*"Per data source" file folder* 
-includes, at least, the following files: DCAT spec, OWL, SPARQL queries, Data examples.
-*home page/readme* 
-should provide pictures, contents and explanations.
+* *Overall model*  includes the integrated OWL and example SPARQL queries. 
+* *"Per data source" file folder* includes, at least, the following files: DCAT spec, OWL, SPARQL queries, Data examples.
+* *home page/readme* should provide pictures, contents and explanations.
 
 
