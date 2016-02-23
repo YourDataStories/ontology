@@ -9,18 +9,10 @@ A. Github web GUI or Github Desktop (more information at https://guides.github.c
 4. Admin will review your requests and will accept (and merge), comment, make changes or reject
 
 B. Command line
-TO ADD LATER
+*TO ADD LATER*
 
-
-*home page/readme*
-Should provide pictures, contents and explanations.
-
-###File structure
-
-*Overall model*
-Includes the integrated OWL and example SPARQL queries. 
-
-*"Per data source" file folder*
-Includes, at least, the following files: DCAT spec, OWL, SPARQL queries, Data examples
+*Overall model* includes the integrated OWL and example SPARQL queries. 
+*"Per data source" file folder* includes, at least, the following files: DCAT spec, OWL, SPARQL queries, Data examples.
+*home page/readme* should provide pictures, contents and explanations.
 
 
