@@ -23,6 +23,17 @@ WHERE {
 <http://linkedeconomy.org/resource/CPV/45233140-2>?p ?o
 }
 
+
+## Geospatial data
+
+select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
+where {
+?organization gr:name ?name ; vcard2006:hasAddress ?address . 
+?address vcard2006:street-address ?street ;
+vcard2006:postal-code ?pcode .
+}
+
+
 ##project profile 
 
 
@@ -32,7 +43,7 @@ from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
 ?project elod:hasRelatedAdministrativeDecision ?decision ; dcterms:title ?title ;
 elod:hasRelatedBudgetItem ?revBudget ;  elod:completion ?percComplete . 
-?project elod:price ?revUps . 
+?revBudget elod:price ?revUps . 
 ?revUps gr:hasCurrencyValue ?prBudget. 
 } 
 group by ?project
@@ -116,7 +127,10 @@ select distinct ?titleProject ?description ?percComplete
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
 <http://linkedeconomy.org/resource/Subsidy/372069> dcterms:title ?titleProject ; dcterms:description ?description ;
-elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. <http://linkedeconomy.org/resource/Subsidy/372069> elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. ?revSpend elod:hasExpenditureLine ?expSpend . ?expSpend elod:amount ?upsSpend . ?upsSpend gr:hasCurrencyValue ?prSpend
+elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; 
+elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
+?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. ?revSpend elod:hasExpenditureLine ?expSpend . 
+?expSpend elod:amount ?upsSpend . ?upsSpend gr:hasCurrencyValue ?prSpend
 filter (CONTAINS(?titleProject, " "@el))
 }
 
@@ -124,8 +138,8 @@ filter (CONTAINS(?titleProject, " "@el))
 
 
 
-T5:Subprojects
 
+T5:Subprojects
 
 Subprojects (connect to diavgeia) - Diavgeia data | query 1
 select distinct ?subproject
