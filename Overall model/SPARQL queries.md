@@ -1,6 +1,7 @@
 # Example Queries
 
-##Geo - Return all Lines within the specified Lines 
+##Geospatial information
+###Return all Lines within the specified Lines 
 
 
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
