@@ -1,9 +1,8 @@
 # Example Queries
 
-##Geospatial information
-###Return all Lines within the specified Lines 
+##Geospatial Data
 
-
+###Return all Lines within the specified Lines
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/geosparql/function/>
 
@@ -15,18 +14,7 @@ FILTER (bif:st_within(?gWKT, "LINESTRING(24.472662 35.367233, 24.472588 35.36725
 }
 
 
-##Specific CPV Query Info
-
-SELECT distinct ?p ?o 
-from <http://yourdatastories.eu/NSRF/Diavgeia> 
-WHERE {
-?s elod:hasCpv <http://linkedeconomy.org/resource/CPV/45233140-2>. 
-<http://linkedeconomy.org/resource/CPV/45233140-2>?p ?o
-}
-
-
-## Geospatial data
-
+###Return addresses and postal codes for Organizations
 select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
 ?organization gr:name ?name ; vcard2006:hasAddress ?address . 
@@ -35,10 +23,20 @@ vcard2006:postal-code ?pcode .
 }
 
 
+##CPV Queries
+
+### Return Information for Specific CPV
+SELECT distinct ?p ?o 
+from <http://yourdatastories.eu/NSRF/Diavgeia> 
+WHERE {
+?s elod:hasCpv <http://linkedeconomy.org/resource/CPV/45233140-2>. 
+<http://linkedeconomy.org/resource/CPV/45233140-2>?p ?o
+}
+
+
 ##project profile 
 
-
-Single Project Info | query 1
+###Single Project Info | query 1
 select distinct ?project ?percComplete (xsd:decimal(?prBudget) as ?priceBudget)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -50,8 +48,7 @@ elod:hasRelatedBudgetItem ?revBudget ;  elod:completion ?percComplete .
 group by ?project
 
 
-
-Single Project Info | query 2
+###Single Project Info | query 2
 select distinct
 ((count(distinct ?decision)) + (count(distinct ?decisionFinancial)) as ?decisionCount) 
 ((sum(xsd:decimal(?am))) +  (sum(xsd:decimal(?amContr))) as ?amount2)
@@ -75,12 +72,9 @@ union
 }
 
 
+##Diavgeia Descriptive Stats 
 
-
-T1:Diavgeia desc
-
-Financial Decisions
-
+###Returns Financial Decisions of a specific Public Project
 query 1 (decision type Β category)
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -93,9 +87,7 @@ filter (CONTAINS(?type, " "@el))
 }
 
 
-
-
-query 2 (decision type Δ category)
+###Returns Decisions of a specific decision type - Δ category
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?amContr)) as ?amount2)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -106,8 +98,7 @@ filter (CONTAINS(?type, " "@el))
 }
 
 
-
-Non-Financial Decisions
+###Returns Non-Financial Decisions of a specific Public Project
 select distinct (str(?type) as ?type1) (count(distinct ?decision) as ?count)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -117,32 +108,28 @@ where {
 order by desc (?count)
 
 
+##NSRF descriptive Stats
 
-
-
-
-T4: NSRF desc stats
-
+###Returns detailed information of a Public Project
 select distinct ?titleProject ?description ?percComplete
-(xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
+(xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
+(str(?startDate) as ?starts) (str(?endDate) as ?ends) 
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
-<http://linkedeconomy.org/resource/Subsidy/372069> dcterms:title ?titleProject ; dcterms:description ?description ;
+<http://linkedeconomy.org/resource/Subsidy/372069> dcterms:title ?titleProject ; 
+dcterms:description ?description ;
 elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; 
 elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
-?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. ?revSpend elod:hasExpenditureLine ?expSpend . 
+?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. 
+?revSpend elod:hasExpenditureLine ?expSpend . 
 ?expSpend elod:amount ?upsSpend . ?upsSpend gr:hasCurrencyValue ?prSpend
 filter (CONTAINS(?titleProject, " "@el))
 }
 
 
+##Subprojects
 
-
-
-
-T5:Subprojects
-
-Subprojects (connect to diavgeia) - Diavgeia data | query 1
+###Subprojects (connect to diavgeia) - Diavgeia data | query 1
 select distinct ?subproject
 (count(distinct ?decisionFinancial) as ?decisionFinancial)
 (count (distinct ?decision) as ?nonFinancial)
@@ -161,3 +148,41 @@ union
 }
 }
 
+
+##Overall Information of Data Model
+
+###Returns class treemap
+SELECT distinct *
+WHERE {
+?s rdfs:subClassOf ?p
+}
+
+
+###Returns Properties of a specific Class
+SELECT distinct ?property
+WHERE {
+?subject a elod:Subsidy ; ?property ?object
+}
+
+
+###Returns the Domains of a Property
+SELECT distinct ?class
+WHERE {
+?subject a ?class ; elod:hasRelatedProject ?object
+}
+
+
+###Returns NSRF descriptive stats for Public Projects which are related to Crete
+select distinct ?project ?percComplete (str(?titleProject) as ?title)
+(xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
+(str(?startDate) as ?starts) (str(?endDate) as ?ends) 
+from <http://yourdatastories.eu/NSRF/Diavgeia> 
+where {
+?project dcterms:title ?titleProject ; dcterms:description ?description ;
+elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; 
+elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
+?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. ?revSpend 
+elod:hasExpenditureLine ?expSpend . ?expSpend elod:amount ?upsSpend . ?upsSpend 
+gr:hasCurrencyValue ?prSpend
+FILTER regex(?titleProject, "Κρήτη", "i")
+}
