@@ -75,7 +75,6 @@ union
 ##Diavgeia Descriptive Stats 
 
 ###Financial Decisions of a specific Public Project
-query 1 (decision type Β category)
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
 from <<http://yourdatastories.eu/NSRF/Diavgeia>>
 where {
