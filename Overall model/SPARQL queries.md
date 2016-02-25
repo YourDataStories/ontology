@@ -2,7 +2,7 @@
 
 ##Geospatial Data
 
-###Return all Lines within the specified Lines
+###All Lines within the specified lines
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/geosparql/function/>
 
@@ -25,7 +25,7 @@ vcard2006:postal-code ?pcode .
 
 ##CPV Queries
 
-### Return Information for Specific CPV
+###Information for specific CPV
 SELECT distinct ?p ?o 
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 WHERE {
@@ -74,7 +74,7 @@ union
 
 ##Diavgeia Descriptive Stats 
 
-###Returns Financial Decisions of a specific Public Project
+###Financial Decisions of a specific Public Project
 query 1 (decision type Β category)
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -87,7 +87,7 @@ filter (CONTAINS(?type, " "@el))
 }
 
 
-###Returns Decisions of a specific decision type - Δ category
+###Decisions of a specific decision type - Δ category
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?amContr)) as ?amount2)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -98,7 +98,7 @@ filter (CONTAINS(?type, " "@el))
 }
 
 
-###Returns Non-Financial Decisions of a specific Public Project
+###Non-Financial Decisions of a specific Public Project
 select distinct (str(?type) as ?type1) (count(distinct ?decision) as ?count)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -110,7 +110,7 @@ order by desc (?count)
 
 ##NSRF descriptive Stats
 
-###Returns detailed information of a Public Project
+###Detailed information of a Public Project
 select distinct ?titleProject ?description ?percComplete
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
@@ -129,7 +129,7 @@ filter (CONTAINS(?titleProject, " "@el))
 
 ##Subprojects
 
-###Subprojects (connect to diavgeia) - Diavgeia data | query 1
+###Subprojects (connected to Diavgeia) - Diavgeia data | query 1
 select distinct ?subproject
 (count(distinct ?decisionFinancial) as ?decisionFinancial)
 (count (distinct ?decision) as ?nonFinancial)
@@ -151,7 +151,7 @@ union
 
 ##Overall Information of Data Model
 
-###Returns class treemap
+###Class treemap
 SELECT distinct *
 WHERE {
 ?s rdfs:subClassOf ?p
@@ -165,14 +165,14 @@ WHERE {
 }
 
 
-###Returns the Domains of a Property
+###Domains of a Property
 SELECT distinct ?class
 WHERE {
 ?subject a ?class ; elod:hasRelatedProject ?object
 }
 
 
-###Returns NSRF descriptive stats for Public Projects which are related to Crete
+###NSRF descriptive stats for Public Projects which are related to Crete
 select distinct ?project ?percComplete (str(?titleProject) as ?title)
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
