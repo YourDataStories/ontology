@@ -14,7 +14,7 @@ FILTER (bif:st_within(?gWKT, "LINESTRING(24.472662 35.367233, 24.472588 35.36725
 }
 
 
-###Return addresses and postal codes for Organizations
+###Addresses and postal codes for Organizations
 select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
 ?organization gr:name ?name ; vcard2006:hasAddress ?address . 
