@@ -211,3 +211,14 @@ where {?s qb:attribute ?attribute ;
 qb:componentRequired ?compRequired ; 
 qb:componentAttachment ?attachment  .
 } 
+
+##Sector of NSRF Public Projects
+
+###Return public projects of a specific Sector
+select distinct ?title
+from <<http://yourdatastories.eu/NSRF/Diavgeia>> 
+where {
+?project elod:sector ?sector ; dcterms:title ?title . 
+?sector skos:prefLabel "Road transport"^^xsd:string
+filter (CONTAINS(?title, " "@el))
+}
