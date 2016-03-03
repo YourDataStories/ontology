@@ -222,3 +222,11 @@ where {
 ?sector skos:prefLabel "Road transport"^^xsd:string
 filter (CONTAINS(?title, " "@el))
 }
+
+###Count of Public Projects per Sector
+select distinct ?sector ?label (count(distinct ?project) as ?count) 
+from <<http://yourdatastories.eu/NSRF/Diavgeia>> 
+where { 
+?project elod:sector ?sector  . 
+?sector skos:prefLabel ?label
+}
