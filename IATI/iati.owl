@@ -1,0 +1,356 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY org "http://www.w3.org/ns/org#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY rov "http://www.w3.org/ns/regorg#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY mu "http://mu.semte.ch/vocabularies/" >
+    <!ENTITY gr "http://purl.org/goodrelations/v1#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY elod "http://linkedeconomy.org/ontology#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/owl/owlapi/turtle#"
+     xml:base="http://www.semanticweb.org/owl/owlapi/turtle"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:org="http://www.w3.org/ns/org#"
+     xmlns:mu="http://mu.semte.ch/vocabularies/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:elod="http://linkedeconomy.org/ontology#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rov="http://www.w3.org/ns/regorg#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/owl/owlapi/turtle">
+        <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
+        <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
+        <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
+        <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
+        <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    
+
+
+    <!-- http://www.semanticweb.org/owl/owlapi/turtle#creator -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/owl/owlapi/turtle#creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#aidType -->
+
+    <owl:ObjectProperty rdf:about="&elod;aidType">
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#benefactor -->
+
+    <owl:ObjectProperty rdf:about="&elod;benefactor">
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#countryIsoCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasCurrency -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasCurrency">
+        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#orgType -->
+
+    <owl:ObjectProperty rdf:about="&elod;orgType">
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&org;Organization"/>
+        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
+        <rdfs:domain rdf:resource="&foaf;Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#sector -->
+
+    <owl:ObjectProperty rdf:about="&elod;sector">
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#transactionType -->
+
+    <owl:ObjectProperty rdf:about="&elod;transactionType">
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#type -->
+
+    <owl:ObjectProperty rdf:about="&rdf;type"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#broader -->
+
+    <owl:ObjectProperty rdf:about="&skos;broader"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
+
+    <owl:ObjectProperty rdf:about="&skos;hasTopConcept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:ObjectProperty rdf:about="&skos;inScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#narrower -->
+
+    <owl:ObjectProperty rdf:about="&skos;narrower"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#endDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;endDate"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#plannedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;plannedEndDate"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#plannedStartDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;plannedStartDate"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#projectId -->
+
+    <owl:DatatypeProperty rdf:about="&elod;projectId"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#refCode -->
+
+    <owl:DatatypeProperty rdf:about="&elod;refCode"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#startDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;startDate"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;title"/>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="&gr;hasCurrencyValue"/>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#name -->
+
+    <owl:DatatypeProperty rdf:about="&gr;name"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:DatatypeProperty rdf:about="&skos;definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+    <owl:DatatypeProperty rdf:about="&skos;notation"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#AidActivity -->
+
+    <owl:Class rdf:about="&elod;AidActivity">
+        <rdfs:label>Aid activity</rdfs:label>
+        <rdfs:comment>Activity supported through development aid</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#ExpenditureLine -->
+
+    <owl:Class rdf:about="&elod;ExpenditureLine"/>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#BusinessEntity -->
+
+    <owl:Class rdf:about="&gr;BusinessEntity">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#UnitPriceSpecification -->
+
+    <owl:Class rdf:about="&gr;UnitPriceSpecification"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="&skos;Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="&skos;ConceptScheme"/>
+    
+
+
+    <!-- http://www.w3.org/ns/org#Organization -->
+
+    <owl:Class rdf:about="&org;Organization">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/regorg#RegisteredOrganization -->
+
+    <owl:Class rdf:about="&rov;RegisteredOrganization">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="&foaf;Organization">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
