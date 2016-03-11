@@ -8,14 +8,6 @@ org: | http://www.w3.org/ns/org#
 rov: | http://www.w3.org/ns/regorg#
 gr: | http://purl.org/goodrelations/v1#
 
-### DESCRIPTION OF AN ORGANIZATION (BENEFACTOR) ###
-```xml
-:Organization/XM-DAC-7 a foaf:Organization, gr:BusinessEntity, org:Organization,      rov:RegisteredOrganization;
-                   foaf:name "Ministry of Foreign Affairs (DGIS)^^xsd:string";
-                   rov:orgType :Taxonomy/IATI/OrganizationType/10;
-                   elod:refCode "XM-DAC-7"^^xsd:string.
-```
-
 ### DESCRIPTION OF AN AID ACTIVITY ###
 ```xml
 :Aid/XM-DAC-7-PPR-24653 a elod:AidActivity;
@@ -56,6 +48,14 @@ gr: | http://purl.org/goodrelations/v1#
                     elod:hasTransaction :Transaction/c256d0999629
 ```
 
+### DESCRIPTION OF AN ORGANIZATION (BENEFACTOR) ###
+```xml
+:Organization/XM-DAC-7 a foaf:Organization, gr:BusinessEntity, org:Organization, rov:RegisteredOrganization;
+                   foaf:name "Ministry of Foreign Affairs (DGIS)^^xsd:string";
+                   rov:orgType :Taxonomy/IATI/OrganizationType/10;
+                   elod:refCode "XM-DAC-7"^^xsd:string.
+```
+
 ### DESCRIPTION OF AN AID ACTIVITY RELATED TRANSACTION ###
 ```xml
 :Transaction/c256d0999629 a elod:Transaction
@@ -71,4 +71,3 @@ gr: | http://purl.org/goodrelations/v1#
                               ];
                          ];
 ```
-
