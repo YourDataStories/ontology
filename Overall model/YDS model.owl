@@ -226,7 +226,6 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
                     <rdf:Description rdf:about="&elod;CommittedItem"/>
                     <rdf:Description rdf:about="&elod;Decision"/>
                     <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
@@ -381,8 +380,18 @@
     <owl:ObjectProperty rdf:about="&elod;hasAttachment">
         <rdfs:label xml:lang="en">has Attachment</rdfs:label>
         <rdfs:comment xml:lang="en">his property relates an Administrative Decision with an attached document.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;Attachment"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;Decision"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -543,6 +552,14 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -554,14 +571,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -608,8 +617,18 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDecision">
         <rdfs:label xml:lang="en">has Related Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates elod:CommittedItem, a pc:Contract or an elod:SpendingItem to an elod:Decision.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;Decision"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;Decision"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -665,7 +684,6 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
                     <rdf:Description rdf:about="&elod;CommittedItem"/>
                     <rdf:Description rdf:about="&elod;Decision"/>
                     <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
@@ -794,7 +812,6 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
                     <rdf:Description rdf:about="&elod;CommittedItem"/>
                     <rdf:Description rdf:about="&elod;Decision"/>
                     <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
@@ -836,7 +853,6 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
                     <rdf:Description rdf:about="&elod;CommittedItem"/>
                     <rdf:Description rdf:about="&elod;Decision"/>
                     <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
@@ -1195,7 +1211,7 @@
     <owl:DatatypeProperty rdf:about="&elod;decisionType">
         <rdfs:label xml:lang="en">Decision Type</rdfs:label>
         <rdfs:comment xml:lang="en">The type name of an Administrative Decision.</rdfs:comment>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1331,7 +1347,7 @@
         <rdfs:label xml:lang="en">Fek number</rdfs:label>
         <rdfs:comment xml:lang="en">The number of a FEK issue.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Fek"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
     </owl:DatatypeProperty>
     
 
