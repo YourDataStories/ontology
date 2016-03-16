@@ -22,6 +22,18 @@ where {
 vcard2006:postal-code ?pcode .
 }
 
+###Postal Codes of Organizations and the Municipalities they belong to
+PREFIX vcard2006: <<http://www.w3.org/2006/vcard/ns#>>
+PREFIX elodGeo: <<http://linkedeconomy.org/geoOntology#>>
+
+SELECT DISTINCT ?pcode ?nameMunicipality
+FROM <<http://yourdatastories.eu/NSRF/Diavgeia>>
+WHERE {
+  ?organization vcard2006:hasAddress ?address .
+  ?address vcard2006:postal-code ?pcode.
+  ?codeArea elodGeo:postalCode ?pcode .
+  ?municipality elodGeo:hasPart ?codeArea ; elodGeo:name ?nameMunicipality . 
+}
 
 ##CPV Queries
 
