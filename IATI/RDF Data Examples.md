@@ -37,7 +37,7 @@ gr: | http://purl.org/goodrelations/v1#
                               ];
                          ];
                     elod:hasRelatedDisbursedItem
-						[ a elod:CommittedItem;
+						[ a elod:DisbursedItem;
 		                  elod:amount
 		                      [ a elod:Amount;
                                 elod:hasCurrency :Currency/EUR;
