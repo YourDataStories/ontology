@@ -107,6 +107,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/geoOntology#hasPart -->
+
+    <owl:ObjectProperty rdf:about="&elodGeo;hasPart">
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+        <rdfs:domain rdf:resource="&elodGeo;Municipality"/>
+        <rdfs:range rdf:resource="&elodGeo;PostalCodeArea"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#accountRefersTo -->
 
     <owl:ObjectProperty rdf:about="&elod;accountRefersTo">
@@ -552,14 +562,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -571,6 +573,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1029,6 +1039,27 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://linkedeconomy.org/geoOntology#name -->
+
+    <owl:DatatypeProperty rdf:about="&elodGeo;name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:comment xml:lang="en">Names for Geo Ontology</rdfs:comment>
+        <rdfs:domain rdf:resource="&elodGeo;Municipality"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/geoOntology#postalCode -->
+
+    <owl:DatatypeProperty rdf:about="&elodGeo;postalCode">
+        <rdfs:label xml:lang="en">postal code</rdfs:label>
+        <rdfs:domain rdf:resource="&elodGeo;PostalCodeArea"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -1878,6 +1909,16 @@
         <rdfs:label xml:lang="en">Municipality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&skos;Concept"/>
         <rdfs:comment xml:lang="en">The municipality where the Decision refers to.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/geoOntology#PostalCodeArea -->
+
+    <owl:Class rdf:about="&elodGeo;PostalCodeArea">
+        <rdfs:label xml:lang="en">Postal Code Area</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <rdfs:comment xml:lang="en">This class representes the total informations about a postal code area.</rdfs:comment>
     </owl:Class>
     
 
