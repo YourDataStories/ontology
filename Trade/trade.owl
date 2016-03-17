@@ -25,9 +25,9 @@
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology#">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
-        <dc:title xml:lang="en">Bilateral Trade Ontology</dc:title>
         <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
         <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
+        <dc:title xml:lang="en">International Trade Ontology</dc:title>
         <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
         <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
         <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
@@ -47,9 +47,9 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology##creator -->
+    <!-- http://linkedeconomy.org/ontology#creator -->
 
-    <owl:AnnotationProperty rdf:about="&elod;#creator"/>
+    <owl:AnnotationProperty rdf:about="&elod;creator"/>
     
 
 
