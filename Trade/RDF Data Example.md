@@ -7,8 +7,8 @@ skos: | http://www.w3.org/2004/02/skos/core#
 
 ### DESCRIPTION OF A TRADED COMMODITY BETWEEN NL AND ZW  ###
 ```xml
-:TradedCommodity/NL/ZW/2000/0101210019
-                    a :TradedCommodity ;
+:TradeActivity/NL/ZW/2000/0101210019
+                    a :TradeActivity ;
                     elod:hsCode :Taxonomy/HS/0101210019 ;
                     elod:financialYear "2010"^^xsd:gYear ;
 					elod:hasOrigin :GroupNationalAgent/NL ;
