@@ -102,6 +102,15 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#amount -->
+
+    <owl:ObjectProperty rdf:about="&elod;amount">
+        <rdfs:label>Amount</rdfs:label>
+        <rdfs:range rdf:resource="&elod;Amount"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#benefactor -->
 
     <owl:ObjectProperty rdf:about="&elod;benefactor">
