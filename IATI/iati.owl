@@ -59,9 +59,9 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology##creator -->
+    <!-- http://linkedeconomy.org/ontology#creator -->
 
-    <owl:AnnotationProperty rdf:about="&elod;#creator"/>
+    <owl:AnnotationProperty rdf:about="&elod;creator"/>
     
 
 
@@ -431,13 +431,17 @@
 
     <!-- http://linkedeconomy.org/ontology#CommittedItem -->
 
-    <owl:Class rdf:about="&elod;CommittedItem"/>
+    <owl:Class rdf:about="&elod;CommittedItem">
+        <rdfs:comment>The total amount of all firm, written obligations from a donor or provider to provide a specified amount of funds, under particular terms and conditions, for specific purposes, for the benefit of the recipient.</rdfs:comment>
+    </owl:Class>
     
 
 
     <!-- http://linkedeconomy.org/ontology#DisbursedItem -->
 
-    <owl:Class rdf:about="&elod;DisbursedItem"/>
+    <owl:Class rdf:about="&elod;DisbursedItem">
+        <rdfs:comment>The total amount of outgoing funds that are placed at the disposal of a recipient government or organisation, or funds transferred between two separately reported activities.</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -445,6 +449,7 @@
 
     <owl:Class rdf:about="&elod;Transaction">
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
+        <rdfs:comment>Any financial transaction between two agents.</rdfs:comment>
     </owl:Class>
     
 

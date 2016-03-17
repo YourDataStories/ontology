@@ -7,6 +7,7 @@
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
+    <!ENTITY ontology "http://linkedeconomy.org/ontology##" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
@@ -19,13 +20,14 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontology="&elod;#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/owl/owlapi/turtle">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology#">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <dc:title xml:lang="en">Bilateral Trade Ontology</dc:title>
         <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
         <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
-        <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
         <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
         <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
         <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
@@ -45,15 +47,32 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology##creator -->
+
+    <owl:AnnotationProperty rdf:about="&elod;#creator"/>
+    
+
+
     <!-- http://purl.org/dc/elements/1.1/title -->
 
     <owl:AnnotationProperty rdf:about="&dc;title"/>
     
 
 
-    <!-- http://www.semanticweb.org/owl/owlapi/turtle#creator -->
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/owl/owlapi/turtle#creator"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="&xsd;gYear"/>
     
 
 
@@ -68,10 +87,18 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#amount -->
+
+    <owl:ObjectProperty rdf:about="&elod;amount">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#concerns -->
 
     <owl:ObjectProperty rdf:about="&elod;concerns">
-        <rdfs:domain rdf:resource="&elod;TradeObject"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:ObjectProperty>
     
@@ -94,20 +121,20 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#tradedTo -->
+    <!-- http://linkedeconomy.org/ontology#hasDestination -->
 
-    <owl:ObjectProperty rdf:about="&elod;tradedTo">
-        <rdfs:range rdf:resource="&elod;GroupNationalBuyer"/>
-        <rdfs:domain rdf:resource="&elod;TradeObject"/>
+    <owl:ObjectProperty rdf:about="&elod;hasDestination">
+        <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#trades -->
+    <!-- http://linkedeconomy.org/ontology#hasOrigin -->
 
-    <owl:ObjectProperty rdf:about="&elod;trades">
-        <rdfs:domain rdf:resource="&elod;GroupNationalSeller"/>
-        <rdfs:range rdf:resource="&elod;TradeObject"/>
+    <owl:ObjectProperty rdf:about="&elod;hasOrigin">
+        <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
     </owl:ObjectProperty>
     
 
@@ -131,19 +158,25 @@
 
     <!-- http://linkedeconomy.org/ontology#financialYear -->
 
-    <owl:DatatypeProperty rdf:about="&elod;financialYear"/>
+    <owl:DatatypeProperty rdf:about="&elod;financialYear">
+        <rdfs:range rdf:resource="&xsd;gYear"/>
+    </owl:DatatypeProperty>
     
 
 
     <!-- http://linkedeconomy.org/ontology#hasCurrencyValue -->
 
-    <owl:DatatypeProperty rdf:about="&elod;hasCurrencyValue"/>
+    <owl:DatatypeProperty rdf:about="&elod;hasCurrencyValue">
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
     
 
 
     <!-- http://linkedeconomy.org/ontology#valueAddedTaxIncluded -->
 
-    <owl:DatatypeProperty rdf:about="&elod;valueAddedTaxIncluded"/>
+    <owl:DatatypeProperty rdf:about="&elod;valueAddedTaxIncluded">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -166,31 +199,21 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#GroupNationalBuyer -->
+    <!-- http://linkedeconomy.org/ontology#GroupNationalAgent -->
 
-    <owl:Class rdf:about="&elod;GroupNationalBuyer">
-        <rdfs:label>Group national buyer</rdfs:label>
+    <owl:Class rdf:about="&elod;GroupNationalAgent">
+        <rdfs:label>Group national agent</rdfs:label>
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
-        <rdfs:comment>Agent representing the collection of all national buyers involved in international trade</rdfs:comment>
+        <rdfs:comment>Entity representing the collection of all national agents involved in international trade</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#GroupNationalSeller -->
+    <!-- http://linkedeconomy.org/ontology#TradeActivity -->
 
-    <owl:Class rdf:about="&elod;GroupNationalSeller">
-        <rdfs:label>Group national seller</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
-        <rdfs:comment>Agent representing the collection of all national buyers involved in international trade</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#TradeObject -->
-
-    <owl:Class rdf:about="&elod;TradeObject">
-        <rdfs:label>Trade object</rdfs:label>
-        <rdfs:comment>The commodity or service being traded</rdfs:comment>
+    <owl:Class rdf:about="&elod;TradeActivity">
+        <rdfs:label>Trade activity</rdfs:label>
+        <rdfs:comment>Activity defined by trade of a commodity between two agents</rdfs:comment>
     </owl:Class>
     
 
