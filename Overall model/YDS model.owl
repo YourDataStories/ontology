@@ -14,9 +14,9 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
     <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
     <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY pc "http://purl.org/procurement/public-contracts#" >
 ]>
@@ -25,6 +25,9 @@
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:sf="http://www.opengis.net/ont/sf#"
      xmlns:org="http://www.w3.org/ns/org#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -191,13 +194,24 @@
     <!-- http://linkedeconomy.org/ontology#amount -->
 
     <owl:ObjectProperty rdf:about="&elod;amount">
-        <rdfs:label>Amount</rdfs:label>
         <rdfs:label xml:lang="en">Amount</rdfs:label>
         <rdfs:comment xml:lang="en">This property links an “elod:ExpenditureLine” with an &quot;gr:UnitPriceSpecification&quot;</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Amount"/>
+
         <rdfs:domain rdf:resource="&elod;ExpenditureLine"/>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#assetGrantee -->
+
+    <owl:ObjectProperty rdf:about="&elod;assetGrantee">
+        <rdfs:label xml:lang="en">Asset Grantee</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a Decision B.3 with an Organization which is grantee.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -241,7 +255,6 @@
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
-
 
     <!-- http://linkedeconomy.org/ontology#beneficiary -->
 
@@ -467,7 +480,6 @@
     </owl:ObjectProperty>
     
 
-
     <!-- http://linkedeconomy.org/ontology#financeType -->
 
     <owl:ObjectProperty rdf:about="&elod;financeType">
@@ -484,8 +496,6 @@
         <rdfs:label xml:lang="en">Flow type</rdfs:label>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
-    
-
 
     <!-- http://linkedeconomy.org/ontology#hasAttachment -->
 
@@ -768,8 +778,6 @@
         </rdfs:domain>
     </owl:ObjectProperty>
     
-
-
     <!-- http://linkedeconomy.org/ontology#hasRelatedDisbursedItem -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
@@ -777,8 +785,6 @@
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
-    
-
 
     <!-- http://linkedeconomy.org/ontology#hasRelatedFeature -->
 
@@ -1029,6 +1035,18 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">Publisher</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the entity responsible for making it available</rdfs:comment>
+
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;Organization"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1040,16 +1058,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -1108,6 +1116,7 @@
     
 
 
+
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#type -->
 
     <owl:ObjectProperty rdf:about="&rdf;type">
@@ -1115,15 +1124,14 @@
     </owl:ObjectProperty>
     
 
-
     <!-- http://www.w3.org/2004/02/skos/core#broader -->
 
     <owl:ObjectProperty rdf:about="&skos;broader">
         <rdfs:label xml:lang="en">Broader</rdfs:label>
         <rdfs:label xml:lang="en">Broader concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more general (&quot;broader&quot;) than the other (&quot;narrower&quot;).</rdfs:comment>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -1600,7 +1608,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;financialYear">
         <rdfs:label xml:lang="en">Financial year</rdfs:label>
-        <rdfs:label xml:lang="en">financial year</rdfs:label>
         <rdfs:comment xml:lang="en">The financial year that the Decision concerns.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;CommittedItem"/>
         <rdfs:range rdf:resource="&xsd;gYear"/>
@@ -1780,7 +1787,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;projectId">
         <rdfs:label xml:lang="en">Project ID</rdfs:label>
-        <rdfs:label xml:lang="en">Project id</rdfs:label>
         <rdfs:comment xml:lang="en">The unique identifier of a project.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Subsidy"/>
         <rdfs:range rdf:resource="&xsd;string"/>
@@ -2080,6 +2086,7 @@
     
 
 
+
     <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
 
     <owl:DatatypeProperty rdf:about="&skos;altLabel">
@@ -2108,6 +2115,7 @@
 
     <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
     
+
 
 
     <!-- http://www.w3.org/2006/vcard/ns#country-name -->
@@ -2371,7 +2379,7 @@
         <rdfs:label xml:lang="en">Decision Status</rdfs:label>
         <rdfs:subClassOf rdf:resource="&skos;Concept"/>
         <rdfs:comment xml:lang="en">This class represents the Statuses of the Decisions.</rdfs:comment>
-    </owl:Class>
+
     
 
 

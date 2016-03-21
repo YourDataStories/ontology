@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY time "http://www.w3.org/2006/time#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY qb "http://purl.org/linked-data/cube#" >
+    <!ENTITY elod "http://linkedeconomy.org/ontology#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY elod-qb "http://linkedeconomy.org/data-cube/ontology#" >
+    <!ENTITY sdmx-measure "http://purl.org/linked-data/sdmx/2009/measure#" >
+    <!ENTITY sdmx-attribute "http://purl.org/linked-data/sdmx/2009/attribute#" >
+]>
+
+
+<rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
+     xml:base="http://linkedeconomy.org/ontology"
+     xmlns:sdmx-measure="http://purl.org/linked-data/sdmx/2009/measure#"
+     xmlns:elod-qb="http://linkedeconomy.org/data-cube/ontology#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#"
+     xmlns:qb="http://purl.org/linked-data/cube#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:elod="http://linkedeconomy.org/ontology#">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
+        <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <dct:creator xml:lang="en">Gerasimos Razis</dct:creator>
+        <dct:creator xml:lang="en">Giorgos Vafeiadis</dct:creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-02-26</owl:versionInfo>
+        <dct:creator xml:lang="en">Michalis Vafopoulos</dct:creator>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="&dct;creator"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts-datatypes#percentage -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/procurement/public-contracts-datatypes#percentage"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="&xsd;gYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#hasCpv -->
+
+    <owl:ObjectProperty rdf:about="&elod-qb;hasCpv">
+        <rdfs:range rdf:resource="&elod;CPV"/>
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#hasKae -->
+
+    <owl:ObjectProperty rdf:about="&elod-qb;hasKae">
+        <rdfs:range rdf:resource="&elod;KAE"/>
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#hasThematicCategory -->
+
+    <owl:ObjectProperty rdf:about="&elod-qb;hasThematicCategory">
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#submissionTimestamp -->
+
+    <owl:ObjectProperty rdf:about="&elod-qb;submissionTimestamp">
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+        <rdfs:range rdf:resource="&time;Instant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#codeList -->
+
+    <owl:ObjectProperty rdf:about="&qb;codeList">
+        <rdfs:domain rdf:resource="&qb;CodedProperty"/>
+        <rdfs:range rdf:resource="&qb;HierarchicalCodeList"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#dataSet -->
+
+    <owl:ObjectProperty rdf:about="&qb;dataSet">
+        <rdfs:range rdf:resource="&qb;DataSet"/>
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#hierarchyRoot -->
+
+    <owl:ObjectProperty rdf:about="&qb;hierarchyRoot">
+        <rdfs:domain rdf:resource="&qb;HierarchicalCodeList"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CPV"/>
+                    <rdf:Description rdf:about="&elod;KAE"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/linked-data/sdmx/2009/attribute#currency -->
+
+    <owl:ObjectProperty rdf:about="&sdmx-attribute;currency">
+        <rdfs:range rdf:resource="&elod;Currency"/>
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#decisionTypeId -->
+
+    <owl:DatatypeProperty rdf:about="&elod-qb;decisionTypeId">
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/data-cube/ontology#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="&elod-qb;hasCurrencyValue">
+        <rdfs:domain rdf:resource="&qb;Observation"/>
+        <rdfs:subPropertyOf rdf:resource="&sdmx-measure;obsValue"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/linked-data/sdmx/2009/measure#obsValue -->
+
+    <owl:DatatypeProperty rdf:about="&sdmx-measure;obsValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#CPV -->
+
+    <owl:Class rdf:about="&elod;CPV"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#Currency -->
+
+    <owl:Class rdf:about="&elod;Currency"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#KAE -->
+
+    <owl:Class rdf:about="&elod;KAE"/>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#AttributeProperty -->
+
+    <owl:Class rdf:about="&qb;AttributeProperty">
+        <rdfs:subClassOf rdf:resource="&qb;ComponentProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#CodedProperty -->
+
+    <owl:Class rdf:about="&qb;CodedProperty">
+        <rdfs:subClassOf rdf:resource="&qb;ComponentProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#ComponentProperty -->
+
+    <owl:Class rdf:about="&qb;ComponentProperty"/>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#DataSet -->
+
+    <owl:Class rdf:about="&qb;DataSet"/>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#DimensionProperty -->
+
+    <owl:Class rdf:about="&qb;DimensionProperty">
+        <rdfs:subClassOf rdf:resource="&qb;CodedProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#HierarchicalCodeList -->
+
+    <owl:Class rdf:about="&qb;HierarchicalCodeList"/>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#MeasureProperty -->
+
+    <owl:Class rdf:about="&qb;MeasureProperty">
+        <rdfs:subClassOf rdf:resource="&qb;ComponentProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/linked-data/cube#Observation -->
+
+    <owl:Class rdf:about="&qb;Observation"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="&skos;Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="&skos;ConceptScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="&time;Instant"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
