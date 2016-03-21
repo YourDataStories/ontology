@@ -2,12 +2,13 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY org "http://www.w3.org/ns/org#" >
     <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY org "http://www.w3.org/ns/org#" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY rov "http://www.w3.org/ns/regorg#" >
     <!ENTITY sf "http://www.opengis.net/ont/sf#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY vcard "http://www.w3.org/2006/vcard/ns#" >
     <!ENTITY gr "http://purl.org/goodrelations/v1#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
@@ -23,28 +24,39 @@
 
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:geo="http://www.opengis.net/ont/geosparql#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:sf="http://www.opengis.net/ont/sf#"
      xmlns:org="http://www.w3.org/ns/org#"
-     xmlns:rov="http://www.w3.org/ns/regorg#"
-     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:pc="http://purl.org/procurement/public-contracts#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:gr="http://purl.org/goodrelations/v1#"
-     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:elod="http://linkedeconomy.org/ontology#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:sf="http://www.opengis.net/ont/sf#"
+     xmlns:elod="http://linkedeconomy.org/ontology#"
+     xmlns:pc="http://purl.org/procurement/public-contracts#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rov="http://www.w3.org/ns/regorg#"
+     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
         <dct:creator xml:lang="en">Gerasimos Razis</dct:creator>
+        <creator xml:lang="en">Gerasimos Razis</creator>
+        <creator xml:lang="en">Giorgos Vafeiadis</creator>
         <dct:creator xml:lang="en">Giorgos Vafeiadis</dct:creator>
+        <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
+        <dc:title xml:lang="en">International Trade Ontology</dc:title>
         <owl:versionInfo xml:lang="en">Latest Update: 2015-10-20</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
+        <creator xml:lang="en">Michalis Vafopoulos</creator>
         <dct:creator xml:lang="en">Michalis Vafopoulos</dct:creator>
+        <creator xml:lang="en">Uros Milosevic</creator>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
     </owl:Ontology>
     
@@ -58,6 +70,18 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#creator -->
+
+    <owl:AnnotationProperty rdf:about="&elod;creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
     
 
 
@@ -147,13 +171,47 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#activityStatusType -->
+
+    <owl:ObjectProperty rdf:about="&elod;activityStatusType">
+        <rdfs:label xml:lang="en">Activity status</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#aidType -->
+
+    <owl:ObjectProperty rdf:about="&elod;aidType">
+        <rdfs:label xml:lang="en">Aid type</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#amount -->
 
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label xml:lang="en">Amount</rdfs:label>
         <rdfs:comment xml:lang="en">This property links an “elod:ExpenditureLine” with an &quot;gr:UnitPriceSpecification&quot;</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Amount"/>
+
         <rdfs:domain rdf:resource="&elod;ExpenditureLine"/>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#assetGrantee -->
+
+    <owl:ObjectProperty rdf:about="&elod;assetGrantee">
+        <rdfs:label xml:lang="en">Asset Grantee</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a Decision B.3 with an Organization which is grantee.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -188,6 +246,15 @@
     </owl:ObjectProperty>
     
 
+
+    <!-- http://linkedeconomy.org/ontology#benefactor -->
+
+    <owl:ObjectProperty rdf:about="&elod;benefactor">
+        <rdfs:label xml:lang="en">Benefactor</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
 
     <!-- http://linkedeconomy.org/ontology#beneficiary -->
 
@@ -248,6 +315,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#collaborationType -->
+
+    <owl:ObjectProperty rdf:about="&elod;collaborationType">
+        <rdfs:label xml:lang="en">Collaboration type</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#collectiveBodyKind -->
 
     <owl:ObjectProperty rdf:about="&elod;collectiveBodyKind">
@@ -297,6 +374,25 @@
         <rdfs:comment xml:lang="en">This property links a Decision A.2 with an Organizational Unit.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&org;OrganizationalUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#concerns -->
+
+    <owl:ObjectProperty rdf:about="&elod;concerns">
+        <rdfs:label xml:lang="en">Concerns</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#countryIsoCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -384,6 +480,22 @@
     </owl:ObjectProperty>
     
 
+    <!-- http://linkedeconomy.org/ontology#financeType -->
+
+    <owl:ObjectProperty rdf:about="&elod;financeType">
+        <rdfs:label xml:lang="en">Finance type</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#flowType -->
+
+    <owl:ObjectProperty rdf:about="&elod;flowType">
+        <rdfs:label xml:lang="en">Flow type</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
 
     <!-- http://linkedeconomy.org/ontology#hasAttachment -->
 
@@ -473,10 +585,23 @@
     <!-- http://linkedeconomy.org/ontology#hasCurrency -->
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
+        <rdfs:label xml:lang="en">Currency</rdfs:label>
         <rdfs:label xml:lang="en">has Currency</rdfs:label>
         <rdfs:comment xml:lang="en">This property defines the Currency for the prices specified by an instance of the “gr:UnitPriceSpecification”.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Amount"/>
         <rdfs:range rdf:resource="&elod;Currency"/>
         <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasDestination -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasDestination">
+        <rdfs:label xml:lang="en">Destination</rdfs:label>
+        <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
     </owl:ObjectProperty>
     
 
@@ -535,6 +660,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasOrigin -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasOrigin">
+        <rdfs:label xml:lang="en">Origin</rdfs:label>
+        <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasPosition -->
 
     <owl:ObjectProperty rdf:about="&elod;hasPosition">
@@ -562,6 +697,14 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -573,14 +716,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -605,9 +740,11 @@
     <!-- http://linkedeconomy.org/ontology#hasRelatedCommittedItem -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
+        <rdfs:label xml:lang="en">Commitment</rdfs:label>
         <rdfs:label xml:lang="en">has Related Committed Item</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates an elod:CommittedItem, a pc:Contract or an elod:SpendingItem to an elod:CommittedItem.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -641,7 +778,13 @@
         </rdfs:domain>
     </owl:ObjectProperty>
     
+    <!-- http://linkedeconomy.org/ontology#hasRelatedDisbursedItem -->
 
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
+        <rdfs:label xml:lang="en">Disbursement</rdfs:label>
+        <rdfs:range rdf:resource="&elod;DisbursedItem"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
 
     <!-- http://linkedeconomy.org/ontology#hasRelatedFeature -->
 
@@ -706,6 +849,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasTransaction -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasTransaction">
+        <rdfs:label xml:lang="en">Transaction</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&elod;Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasVacancyType -->
 
     <owl:ObjectProperty rdf:about="&elod;hasVacancyType">
@@ -735,6 +888,19 @@
         <rdfs:comment xml:lang="en">This property links an Organization with a &quot;elod:Country&quot;.</rdfs:comment>
         <rdfs:range rdf:resource="&vcard;Address"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#orgType -->
+
+    <owl:ObjectProperty rdf:about="&elod;orgType">
+        <rdfs:label xml:lang="en">Organization type</rdfs:label>
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&org;Organization"/>
+        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
+        <rdfs:domain rdf:resource="&foaf;Organization"/>
     </owl:ObjectProperty>
     
 
@@ -793,6 +959,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#sector -->
+
+    <owl:ObjectProperty rdf:about="&elod;sector">
+        <rdfs:label xml:lang="en">Sector</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#seller -->
 
     <owl:ObjectProperty rdf:about="&elod;seller">
@@ -845,11 +1021,21 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#transactionType -->
+
+    <owl:ObjectProperty rdf:about="&elod;transactionType">
+        <rdfs:label xml:lang="en">Transaction type</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.org/dc/terms/publisher -->
 
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">Publisher</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the entity responsible for making it available</rdfs:comment>
+
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -860,6 +1046,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -929,10 +1116,19 @@
     
 
 
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#type -->
+
+    <owl:ObjectProperty rdf:about="&rdf;type">
+        <rdfs:label xml:lang="en">Type</rdfs:label>
+    </owl:ObjectProperty>
+    
+
     <!-- http://www.w3.org/2004/02/skos/core#broader -->
 
     <owl:ObjectProperty rdf:about="&skos;broader">
         <rdfs:label xml:lang="en">Broader</rdfs:label>
+        <rdfs:label xml:lang="en">Broader concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more general (&quot;broader&quot;) than the other (&quot;narrower&quot;).</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;Concept"/>
@@ -943,6 +1139,7 @@
     <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
 
     <owl:ObjectProperty rdf:about="&skos;hasTopConcept">
+        <rdfs:label xml:lang="en">Top concept</rdfs:label>
         <rdfs:label xml:lang="en">has Top Concept</rdfs:label>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
@@ -954,6 +1151,7 @@
     <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
 
     <owl:ObjectProperty rdf:about="&skos;inScheme">
+        <rdfs:label xml:lang="en">Code list</rdfs:label>
         <rdfs:label xml:lang="en">in Scheme</rdfs:label>
         <rdfs:domain rdf:resource="&skos;Concept"/>
         <rdfs:range rdf:resource="&skos;ConceptScheme"/>
@@ -965,9 +1163,10 @@
 
     <owl:ObjectProperty rdf:about="&skos;narrower">
         <rdfs:label xml:lang="en">Narrower</rdfs:label>
+        <rdfs:label xml:lang="en">Narrower concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more specific (&quot;narrower&quot;) than the other (&quot;broader&quot;).</rdfs:comment>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
         <owl:inverseOf rdf:resource="&skos;broader"/>
     </owl:ObjectProperty>
     
@@ -1408,10 +1607,19 @@
     <!-- http://linkedeconomy.org/ontology#financialYear -->
 
     <owl:DatatypeProperty rdf:about="&elod;financialYear">
-        <rdfs:label xml:lang="en">financial year</rdfs:label>
+        <rdfs:label xml:lang="en">Financial year</rdfs:label>
         <rdfs:comment xml:lang="en">The financial year that the Decision concerns.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;CommittedItem"/>
         <rdfs:range rdf:resource="&xsd;gYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="&elod;hasCurrencyValue">
+        <rdfs:label xml:lang="en">Value</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
 
@@ -1515,6 +1723,22 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#plannedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;plannedEndDate">
+        <rdfs:label xml:lang="en">Planned end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#plannedStartDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;plannedStartDate">
+        <rdfs:label xml:lang="en">Planned start date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#primaryOfficer -->
 
     <owl:DatatypeProperty rdf:about="&elod;primaryOfficer">
@@ -1562,7 +1786,7 @@
     <!-- http://linkedeconomy.org/ontology#projectId -->
 
     <owl:DatatypeProperty rdf:about="&elod;projectId">
-        <rdfs:label xml:lang="en">Project id</rdfs:label>
+        <rdfs:label xml:lang="en">Project ID</rdfs:label>
         <rdfs:comment xml:lang="en">The unique identifier of a project.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Subsidy"/>
         <rdfs:range rdf:resource="&xsd;string"/>
@@ -1588,6 +1812,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#refCode -->
+
+    <owl:DatatypeProperty rdf:about="&elod;refCode">
+        <rdfs:label xml:lang="en">Reference code</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1654,6 +1886,15 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#transactionDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;transactionDate">
+        <rdfs:label xml:lang="en">Transaction date</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#validVatId -->
 
     <owl:DatatypeProperty rdf:about="&elod;validVatId">
@@ -1661,6 +1902,24 @@
         <rdfs:comment xml:lang="en">Whether the provided vat id is valid or not.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;boolean"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#valueAddedTaxIncluded -->
+
+    <owl:DatatypeProperty rdf:about="&elod;valueAddedTaxIncluded">
+        <rdfs:label xml:lang="en">VAT included</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#valueDate -->
+
+    <owl:DatatypeProperty rdf:about="&elod;valueDate">
+        <rdfs:label xml:lang="en">Value date</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -1756,6 +2015,7 @@
     <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
 
     <owl:DatatypeProperty rdf:about="&gr;hasCurrencyValue">
+        <rdfs:label xml:lang="en">Value</rdfs:label>
         <rdfs:label xml:lang="en">has Currency Value</rdfs:label>
         <rdfs:comment xml:lang="en">The amount of money specified for a budget or a payment.</rdfs:comment>
         <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
@@ -1824,6 +2084,38 @@
         <rdfs:domain rdf:resource="&geo;Geometry"/>
     </owl:DatatypeProperty>
     
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;altLabel">
+        <rdfs:label xml:lang="en">Alternative label</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:DatatypeProperty rdf:about="&skos;definition">
+        <rdfs:label xml:lang="en">Definition</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+    <owl:DatatypeProperty rdf:about="&skos;notation">
+        <rdfs:label xml:lang="en">Notation</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
+    
+
 
 
     <!-- http://www.w3.org/2006/vcard/ns#country-name -->
@@ -1944,6 +2236,24 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#AidActivity -->
+
+    <owl:Class rdf:about="&elod;AidActivity">
+        <rdfs:label>Aid activity</rdfs:label>
+        <rdfs:comment>Activity supported through development aid</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#Amount -->
+
+    <owl:Class rdf:about="&elod;Amount">
+        <rdfs:label>Amount</rdfs:label>
+        <rdfs:label xml:lang="en">Amount</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#Attachment -->
 
     <owl:Class rdf:about="&elod;Attachment">
@@ -2024,6 +2334,7 @@
         <rdfs:label xml:lang="el">Δεσμευθέν Αντικείμενο</rdfs:label>
         <rdfs:label xml:lang="en">Committed Item</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;FinancialDecision"/>
+        <rdfs:comment>The total amount of all firm, written obligations from a donor or provider to provide a specified amount of funds, under particular terms and conditions, for specific purposes, for the benefit of the recipient.</rdfs:comment>
         <rdfs:comment xml:lang="en">This class represents decisions having type B.1.3.</rdfs:comment>
     </owl:Class>
     
@@ -2068,6 +2379,14 @@
         <rdfs:label xml:lang="en">Decision Status</rdfs:label>
         <rdfs:subClassOf rdf:resource="&skos;Concept"/>
         <rdfs:comment xml:lang="en">This class represents the Statuses of the Decisions.</rdfs:comment>
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#DisbursedItem -->
+
+    <owl:Class rdf:about="&elod;DisbursedItem">
+        <rdfs:comment>The total amount of outgoing funds that are placed at the disposal of a recipient government or organisation, or funds transferred between two separately reported activities.</rdfs:comment>
     </owl:Class>
     
 
@@ -2121,6 +2440,16 @@
         <rdfs:label xml:lang="en">Financial Decision</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:comment xml:lang="en">This class represents the Financial Decisions</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#GroupNationalAgent -->
+
+    <owl:Class rdf:about="&elod;GroupNationalAgent">
+        <rdfs:label>Group national agent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+        <rdfs:comment>Entity representing the collection of all national agents involved in international trade</rdfs:comment>
     </owl:Class>
     
 
@@ -2349,6 +2678,24 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#TradeActivity -->
+
+    <owl:Class rdf:about="&elod;TradeActivity">
+        <rdfs:label>Trade activity</rdfs:label>
+        <rdfs:comment>Activity defined by trade of a commodity between two agents</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#Transaction -->
+
+    <owl:Class rdf:about="&elod;Transaction">
+        <rdfs:label xml:lang="en">Transaction</rdfs:label>
+        <rdfs:comment>Any financial transaction between two agents.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#VacancyType -->
 
     <owl:Class rdf:about="&elod;VacancyType">
@@ -2559,5 +2906,5 @@
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
 
