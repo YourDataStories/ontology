@@ -40,7 +40,7 @@
         <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
         <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
         <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
-        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-22</owl:versionInfo>
         <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
         <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
@@ -86,6 +86,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;activityStatusType">
         <rdfs:label xml:lang="en">Activity status</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a code indicating the lifecycle status of an ODA activity from pipeline to completion</rdfs:comment>
+        <rdfs:seeAlso>http://iatistandard.org/201/codelists/ActivityStatus/</rdfs:seeAlso>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -96,6 +99,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;aidType">
         <rdfs:label xml:lang="en">Aid type</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a DAC/CRS classification used to distinguish aid modalities.</rdfs:comment>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -107,6 +112,9 @@
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label>Amount</rdfs:label>
         <rdfs:range rdf:resource="&elod;Amount"/>
+        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
+        <rdfs:domain rdf:resource="&elod;DisbursedItem"/>
+        <rdfs:domain rdf:resource="&elod;Transaction"/>
     </owl:ObjectProperty>
     
 
@@ -115,8 +123,19 @@
 
     <owl:ObjectProperty rdf:about="&elod;benefactor">
         <rdfs:label xml:lang="en">Benefactor</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the agent representing the aid donor / extending organization.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#beneficiary -->
+
+    <owl:ObjectProperty rdf:about="&elod;beneficiary">
+        <rdfs:label xml:lang="en">Beneficiary</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the agent representing the aid recipient / implementing organization.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -125,6 +144,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;collaborationType">
         <rdfs:label xml:lang="en">Collaboration type</rdfs:label>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a DAC/CRS classification used to determine the character of resource flows (bilateral or multilateral).</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -135,7 +157,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -144,6 +168,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;financeType">
         <rdfs:label xml:lang="en">Finance type</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a DAC/CRS transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -154,6 +181,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;flowType">
         <rdfs:label xml:lang="en">Flow type</rdfs:label>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a DAC/CRS distinction between ODA and other types of resource flow.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -173,6 +203,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
         <rdfs:label xml:lang="en">Commitment</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
@@ -183,6 +214,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
         <rdfs:label xml:lang="en">Disbursement</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
@@ -193,21 +225,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasTransaction">
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
+        <rdfs:comment>Links to a related financial transaction between two entities.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;Transaction"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#orgType -->
-
-    <owl:ObjectProperty rdf:about="&elod;orgType">
-        <rdfs:label xml:lang="en">Organization type</rdfs:label>
-        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
-        <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&org;Organization"/>
-        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
-        <rdfs:domain rdf:resource="&foaf;Organization"/>
     </owl:ObjectProperty>
     
 
@@ -216,6 +236,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;sector">
         <rdfs:label xml:lang="en">Sector</rdfs:label>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:seeAlso>Links to a concept in a list of codes, names and descriptions used to identify the sector of destination of a contribution.</rdfs:seeAlso>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -226,6 +248,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;transactionType">
         <rdfs:label xml:lang="en">Transaction type</rdfs:label>
+        <rdfs:seeAlso>http://iatistandard.org/201/codelists/TransactionType/</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a concept in a code list used to distinguish transaction types (e.g. commitment, disbursement etc.)</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -243,6 +268,8 @@
 
     <owl:ObjectProperty rdf:about="&skos;broader">
         <rdfs:label xml:lang="en">Broader concept</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -251,6 +278,8 @@
 
     <owl:ObjectProperty rdf:about="&skos;hasTopConcept">
         <rdfs:label xml:lang="en">Top concept</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
     </owl:ObjectProperty>
     
 
@@ -258,7 +287,9 @@
     <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
 
     <owl:ObjectProperty rdf:about="&skos;inScheme">
-        <rdfs:label xml:lang="en">Code list</rdfs:label>
+        <rdfs:label xml:lang="en">Concept scheme</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
     </owl:ObjectProperty>
     
 
@@ -267,6 +298,23 @@
 
     <owl:ObjectProperty rdf:about="&skos;narrower">
         <rdfs:label xml:lang="en">Narrower concept</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/regorg#orgType -->
+
+    <owl:ObjectProperty rdf:about="&rov;orgType">
+        <rdfs:label xml:lang="en">Organization type</rdfs:label>
+        <rdfs:comment xml:lang="en">Expects a value from a code list used to ditinguish organization types.</rdfs:comment>
+        <rdfs:seeAlso>http://iatistandard.org/201/codelists/OrganisationType/</rdfs:seeAlso>
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&org;Organization"/>
+        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
+        <rdfs:domain rdf:resource="&foaf;Organization"/>
     </owl:ObjectProperty>
     
 
@@ -318,6 +366,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;refCode">
         <rdfs:label xml:lang="en">Reference code</rdfs:label>
+        <rdfs:comment xml:lang="en">Machine-readable identification string for the organisation.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -334,6 +384,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;transactionDate">
         <rdfs:label xml:lang="en">Transaction date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date on which the transaction was made or (in the case of commitments) agreed.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
@@ -343,6 +395,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;valueDate">
         <rdfs:label xml:lang="en">Value date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date to be used for determining the exchange rate for currency conversions.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
