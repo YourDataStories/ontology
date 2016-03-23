@@ -1063,16 +1063,6 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">Publisher</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the entity responsible for making it available</rdfs:comment>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1084,6 +1074,16 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;Organization"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -1577,6 +1577,7 @@
     <owl:DatatypeProperty rdf:about="&elod;endDate">
         <rdfs:label xml:lang="en">End date</rdfs:label>
         <rdfs:comment xml:lang="en">The Date that a Project ends.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:domain>
             <owl:Class>
@@ -1768,6 +1769,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedEndDate">
         <rdfs:label xml:lang="en">Planned end date</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -1776,6 +1779,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedStartDate">
         <rdfs:label xml:lang="en">Planned start date</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -1829,6 +1834,7 @@
     <owl:DatatypeProperty rdf:about="&elod;projectId">
         <rdfs:label xml:lang="en">Project ID</rdfs:label>
         <rdfs:comment xml:lang="en">The unique identifier of a project.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:domain rdf:resource="&elod;Subsidy"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -1862,7 +1868,9 @@
     <owl:DatatypeProperty rdf:about="&elod;refCode">
         <rdfs:label xml:lang="en">Reference code</rdfs:label>
         <rdfs:comment xml:lang="en">Machine-readable identification string for the organisation.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Machine-readable identification string for the organization.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:DatatypeProperty>
     
 
@@ -1894,6 +1902,7 @@
     <owl:DatatypeProperty rdf:about="&elod;startDate">
         <rdfs:label xml:lang="en">Start date</rdfs:label>
         <rdfs:comment xml:lang="en">The Date that a Project starts.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:domain>
             <owl:Class>
@@ -1934,6 +1943,7 @@
     <owl:DatatypeProperty rdf:about="&elod;transactionDate">
         <rdfs:label xml:lang="en">Transaction date</rdfs:label>
         <rdfs:comment xml:lang="en">The date on which the transaction was made or (in the case of commitments) agreed.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
@@ -1955,6 +1965,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;valueAddedTaxIncluded">
         <rdfs:label xml:lang="en">VAT included</rdfs:label>
+        <rdfs:domain rdf:resource="&elod;Amount"/>
+        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&xsd;boolean"/>
     </owl:DatatypeProperty>
     
@@ -1965,6 +1977,7 @@
     <owl:DatatypeProperty rdf:about="&elod;valueDate">
         <rdfs:label xml:lang="en">Value date</rdfs:label>
         <rdfs:comment xml:lang="en">The date to be used for determining the exchange rate for currency conversions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
@@ -2065,6 +2078,7 @@
         <rdfs:label xml:lang="en">Value</rdfs:label>
         <rdfs:label xml:lang="en">has Currency Value</rdfs:label>
         <rdfs:comment xml:lang="en">The amount of money specified for a budget or a payment.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;Amount"/>
         <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>

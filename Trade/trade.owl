@@ -28,7 +28,7 @@
         <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
         <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
         <dc:title xml:lang="en">International Trade Ontology</dc:title>
-        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-04</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-22</owl:versionInfo>
         <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
         <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
@@ -92,6 +92,7 @@
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label xml:lang="en">Amount</rdfs:label>
         <rdfs:range rdf:resource="&elod;Amount"/>
+        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
@@ -101,6 +102,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;concerns">
         <rdfs:label xml:lang="en">Concerns</rdfs:label>
+        <rdfs:seeAlso>http://www.wcoomd.org/en/topics/nomenclature.aspx</rdfs:seeAlso>
+        <rdfs:comment>Links to a code representing the related commodity group.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;TradeActivity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:ObjectProperty>
@@ -112,6 +115,7 @@
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">Country</rdfs:label>
         <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -130,6 +134,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasDestination">
         <rdfs:label xml:lang="en">Destination</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the agent representing the importing country.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
         <rdfs:domain rdf:resource="&elod;TradeActivity"/>
     </owl:ObjectProperty>
@@ -140,6 +145,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasOrigin">
         <rdfs:label xml:lang="en">Origin</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the agent representing the exporting country.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;GroupNationalAgent"/>
         <rdfs:domain rdf:resource="&elod;TradeActivity"/>
     </owl:ObjectProperty>
