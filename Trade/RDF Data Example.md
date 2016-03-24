@@ -23,7 +23,7 @@ skos: | http://www.w3.org/2004/02/skos/core#
 ### DESCRIPTION OF A GROUP NATIONAL AGENT ###
 ```xml
 :GroupNationalAgent/NL a elod:GroupNationalAgent ;
-                    elod:countryIsoCode :Taxonomy/ISO-3166-1/Country/NL .
+                    elod:countryIsoCode :Country/NL .
 ```
 
 ### DESCRIPTION OF A HARMONIZED COMMODITY DESCRIPTION AND CODING SYSTEM CODE ###
