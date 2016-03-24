@@ -5,7 +5,7 @@ elod: | http://linkedeconomy.org/ontology#
 skos: | http://www.w3.org/2004/02/skos/core#
 
 
-### DESCRIPTION OF A TRADED COMMODITY BETWEEN NL AND ZW  ###
+### DESCRIPTION OF A TRADE ACTIVITY BETWEEN NL AND ZW  ###
 ```xml
 :TradeActivity/NL/ZW/2000/0101210019
                     a :TradeActivity ;
