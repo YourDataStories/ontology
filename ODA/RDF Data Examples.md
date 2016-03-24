@@ -16,6 +16,7 @@ gr: | http://purl.org/goodrelations/v1#
                     dct:description “Strengthening Politics and Civil Society ultimate phase” ^^xsd:string;
                     dct:modified “2015-08-13T14:39:48”^^xsd:dateTime
                     elod:countryIsoCode :Country/ZW;
+					elod:regionCode :Taxonomy/IATI/Region/298
                     elod:benefactor :Organization/XM-DAC-7
                     elod:beneficiary :Organization/ZEN
                     elod:sector :Taxonomy/OECD/CRS/15160;
