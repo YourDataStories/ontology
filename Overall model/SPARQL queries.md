@@ -20,7 +20,7 @@ WHERE {
 ```xml
 select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  ?organization gr:name ?name ; vcard2006:hasAddress ?address . 
+  ?organization gr:legalName ?name ; vcard2006:hasAddress ?address . 
   ?address vcard2006:street-address ?street ;
   vcard2006:postal-code ?pcode .
 }
