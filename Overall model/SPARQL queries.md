@@ -68,26 +68,47 @@ group by ?project
 
 ### Q2. Single Project Info Diavgeia
 ```xml
-select distinct
-((count(distinct ?decision)) + (count(distinct ?decisionFinancial)) as ?decisionCount) 
-((sum(xsd:decimal(?am))) +  (sum(xsd:decimal(?amContr))) as ?amount2)
+select distinct ((count(distinct ?decision)) + (count(distinct ?decisionFinancial)) 
++ (count(distinct ?decisionFinancialb13))
++ (count(distinct ?decisionFinancial2))  
++(count(distinct ?decisionFinancial3))
+as ?decisionCount) 
+((sum(xsd:decimal(?am))) + (sum(xsd:decimal(?amContr))) 
++ (sum(xsd:decimal(?amContr2)))
++ (sum(xsd:decimal(?amb13))) 
+as ?amount)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  {
-    <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial .
-    ?decisionFinancial a elod:FinancialDecision ; elod:hasExpenditureLine ?expLine . 
-    ?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am
-  }
-  union
-  {
-    <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial .
-    ?decisionFinancial a elod:FinancialDecision ;  pc:agreedPrice ?upsContr . ?upsContr gr:hasCurrencyValue ?amContr
-  }
-  union
-  {
-    <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision.
-    ?decision a elod:NonFinancialDecision
-  }
+{
+<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial .
+?decisionFinancial a elod:FinancialDecision ; elod:hasExpenditureLine ?expLine . 
+?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am
+filter not exists {?decisionFinancial elod:hasCorrectedDecision ?corrected}
+}
+union
+{
+<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancialb13 .
+?decisionFinancialb13 a elod:FinancialDecision ;  elod:price ?upsb13 . ?upsb13 gr:hasCurrencyValue ?amb13
+filter not exists {?decisionFinancialb13 elod:hasCorrectedDecision ?correctedb13}
+}
+union
+{
+<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial2 .
+?decisionFinancial2 a elod:FinancialDecision ;  pc:agreedPrice ?upsContr . ?upsContr gr:hasCurrencyValue ?amContr
+filter not exists {?decisionFinancial2 elod:hasCorrectedDecision ?corrected2}
+}
+union
+{
+<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial3 .
+?decisionFinancial3 a elod:FinancialDecision ;  pc:documentsPrice ?upsContr2 . ?upsContr2 gr:hasCurrencyValue ?amContr2
+filter not exists {?decisionFinancial3 elod:hasCorrectedDecision ?corrected3}
+}
+union
+{
+<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision.
+?decision a elod:NonFinancialDecision
+filter not exists {?decision elod:hasCorrectedDecision ?corrected5}
+}
 }
 ```
 
