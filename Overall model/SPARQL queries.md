@@ -268,3 +268,14 @@ where {
   ?sector skos:prefLabel ?label
 }
 ```
+## J. Organizations
+
+### Q1. Return the connection of Sellers from Projects to Organizations URIs and their related information
+```xml
+select distinct ?org ?vatId ?greekName ?engName
+from <http://yourdatastories.eu/NSRF/Diavgeia>
+where {
+?subsidy elod:seller ?seller . ?seller rdfs:seeAlso ?org .
+?org gr:vatID ?vatId ; gr:legalName ?greekName ; elod:translation ?engName
+} 
+```
