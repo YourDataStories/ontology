@@ -2,7 +2,7 @@
 
 ## Geospatial Data
 
-### All resources inside a bounding box
+### Q1. All resources inside a bounding box
 ```xml
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX elod: <http://linkedeconomy.org/ontology#>
@@ -17,7 +17,7 @@ WHERE {
 }
 ```
 
-### Addresses and postal codes for Organizations
+### Q2. Addresses and postal codes for Organizations
 ```xml
 select distinct ?name ?street ?pcode from <<http://yourdatastories.eu/NSRF/Diavgeia>>
 where {
