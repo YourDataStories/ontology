@@ -1,6 +1,6 @@
 # Example Queries
 
-## Geospatial Data
+## A. Geospatial Data
 
 ### Q1. All resources inside a bounding box
 ```xml
