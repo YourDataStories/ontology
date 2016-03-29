@@ -25,7 +25,7 @@ where {
   vcard2006:postal-code ?pcode .
 }
 ```
-### Postal Codes of Organizations and the Municipalities they belong to
+### Q3. Postal Codes of Organizations and the Municipalities they belong to
 ```xml
 PREFIX vcard2006: <http://www.w3.org/2006/vcard/ns#>
 PREFIX elodGeo: <http://linkedeconomy.org/geoOntology#>
@@ -39,9 +39,9 @@ WHERE {
   ?municipality elodGeo:hasPart ?codeArea ; elodGeo:name ?nameMunicipality . 
 }
 ```
-## CPV Queries
+## B. CPV Queries
 
-###Information for specific CPV
+### Q1. Information for specific CPV
 ```xml
 SELECT distinct ?p ?o 
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -51,9 +51,9 @@ WHERE {
 }
 ```
 
-## project profile 
+## C. Project profile 
 
-###Single Project Info | query 1
+### Q1. Single Project Info NSRF
 ```xml
 select distinct ?project ?percComplete (xsd:decimal(?prBudget) as ?priceBudget)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -66,7 +66,7 @@ where {
 group by ?project
 ```
 
-### Single Project Info | query 2
+### Q2. Single Project Info Diavgeia
 ```xml
 select distinct
 ((count(distinct ?decision)) + (count(distinct ?decisionFinancial)) as ?decisionCount) 
@@ -91,9 +91,9 @@ where {
 }
 ```
 
-## Diavgeia Descriptive Stats 
+## D. Diavgeia Descriptive Stats 
 
-### Financial Decisions of a specific Public Project
+### Q1. Financial Decisions of a specific Public Project
 ```xml
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -106,7 +106,7 @@ where {
 }
 ```
 
-### Decisions of a specific decision type - Δ category
+### Q2. Decisions of a specific decision type - Δ category
 ```xml
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?amContr)) as ?amount2)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -118,7 +118,7 @@ where {
 }
 ```
 
-### Non-Financial Decisions of a specific Public Project
+### Q3. Non-Financial Decisions of a specific Public Project
 ```xml
 select distinct (str(?type) as ?type1) (count(distinct ?decision) as ?count)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
@@ -129,9 +129,9 @@ where {
 order by desc (?count)
 ```
 
-## NSRF descriptive Stats
+## E. NSRF descriptive Stats
 
-### Detailed information of a Public Project
+### Q1. Detailed information of a Public Project
 ```xml
 select distinct ?titleProject ?description ?percComplete
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
@@ -149,9 +149,9 @@ where {
 }
 ```
 
-## Subprojects
+## F. Subprojects
 
-### Subprojects (connected to Diavgeia) - Diavgeia data | query 1
+### Q1. Subprojects (connected to Diavgeia) - Diavgeia data | query 1
 ```xml
 select distinct ?subproject
 (count(distinct ?decisionFinancial) as ?decisionFinancial)
@@ -172,9 +172,9 @@ where {
 }
 ```
 
-## Overall Information of Data Model
+## G. Overall Information of Data Model
 
-###Class treemap
+### Q1. Class treemap
 ```xml
 SELECT distinct *
 WHERE {
@@ -182,7 +182,7 @@ WHERE {
 }
 ```
 
-### Returns Properties of a specific Class
+### Q2. Returns Properties of a specific Class
 ```xml
 SELECT distinct ?property
 WHERE {
@@ -190,7 +190,7 @@ WHERE {
 }
 ```
 
-### Domains of a Property
+### Q3. Domains of a Property
 ```xml
 SELECT distinct ?class
 WHERE {
@@ -198,7 +198,7 @@ WHERE {
 }
 ```
 
-### NSRF descriptive stats for Public Projects which are related to Crete
+### Q4. NSRF descriptive stats for Public Projects which are related to Crete
 ```xml
 select distinct ?project ?percComplete (str(?titleProject) as ?title)
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
@@ -215,9 +215,9 @@ where {
 }
 ```
 
-## Data Cube Implementation
+## H. Data Cube Implementation
 
-### Return Dimension Properties
+### Q1. Return Dimension Properties
 ```xml
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct * 
@@ -227,7 +227,7 @@ where {
 } 
 ```
 
-### Return Information about Observations
+### Q2. Return Information about Observations
 ```xml
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct ?p ?o
@@ -236,7 +236,7 @@ where {
 	?s a qb:Observation ; ?p ?o
 }
 ```
-### Return Information about Data Strcucture Definition
+### Q3. Return Information about Data Strcucture Definition
 ```xml
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct ?attribute ?compRequired ?attachment
@@ -247,9 +247,9 @@ where {?s qb:attribute ?attribute ;
 } 
 ```
 
-## Sector of NSRF Public Projects
+## I. Sector of NSRF Public Projects
 
-### Return public projects of a specific Sector
+### Q1. Return public projects of a specific Sector
 ```xml
 select distinct ?title
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
@@ -259,7 +259,7 @@ where {
   filter (CONTAINS(?title, " "@el))
 }
 ```
-### Count of Public Projects per Sector
+### Q2. Count of Public Projects per Sector
 ```xml
 select distinct ?sector ?label (count(distinct ?project) as ?count) 
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
