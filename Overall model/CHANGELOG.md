@@ -1,6 +1,21 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [1.1.0] - 2016-03-30
+### Added
+- More informations for Organizations.
+- SPARQL queries for Organizations.
+- Add org:hasUnit property to OWL file and pilot 1 graph.
+- Add connection of Organizations from NSRF to Organizations from Diavgeia through property rdfs:seeAlso.
+- Create Google Spreadsheet with SPARQL query results for pilot 1.
+
+### Changed
+- UUIDs of update.
+
+### Removed
+- Remove elod:countryId property.
+
+
 ## [1.0.0] - 2016-03-16
 ### Added
 - Add some T-box information for classes and object properies to pilot 1 graph.
