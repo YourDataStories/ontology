@@ -300,3 +300,24 @@ where {
 ?org gr:vatID ?vatId ; gr:legalName ?greekName ; elod:translation ?engName
 } 
 ```
+
+### Q2. Return basic information of Spending Items and the connection of them to Public Projects and Subprojects
+```xml
+select distinct ?project ?date (str(?decisionType) as ?type)  (STR(SAMPLE(?buyerName)) as ?nameBuyer) (STR(SAMPLE(?sellerName)) as ?nameSeller)
+(str(?subject) as ?decisionSubject) (xsd:decimal(?am) as ?amount) (str(?ada) as ?decisionAda)
+from <http://yourdatastories.eu/NSRF/Diavgeia> 
+where {
+?project elod:hasRelatedAdministrativeDecision ?decision .
+?decision elod:decisionTypeId ?type ; elod:ada ?ada ; elod:decisionType ?decisionType ; 
+dcterms:subject ?subject ; dcterms:issued ?date ;
+dcterms:publisher ?orgUnit .
+OPTIONAL{?buyer org:hasUnit ?orgUnit OPTIONAL{?buyer gr:legalName ?buyerName .}}
+OPTIONAL{?decision elod:hasExpenditureLine ?expLine OPTIONAL{?expLine elod:seller ?seller ; elod:amount ?ups . } 
+OPTIONAL{?seller gr:legalName ?sellerName . }}
+?ups gr:hasCurrencyValue ?am.
+filter(?type = "Β.2.2"^^xsd:string) 
+#filter (CONTAINS(?buyerName, " "@el))
+filter (CONTAINS(?decisionType, " "@el))
+filter not exists {?decision elod:hasCorrectedDecision ?corrected}
+} limit 100
+```
