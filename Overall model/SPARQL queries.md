@@ -440,7 +440,7 @@ WHERE {
     	elod:amount ?amount.
 	?commodity skos:prefLabel ?harmonizedSystemCommodity.
 	?amount elod:hasCurrencyValue ?value.
-	FILTER (?year >= "2009"^^xsd:gYear && ?year <= "2013"^^xsd:gYear)
+	FILTER (?year >= "2009"^^xsd:gYear && ?year < "2013"^^xsd:gYear)
 } ORDER BY ?year
 
 ```
@@ -460,6 +460,6 @@ WHERE {
     	elod:amount ?amount.
 	?commodity skos:prefLabel ?harmonizedSystemCommodity.
 	?amount elod:hasCurrencyValue ?value.
-	FILTER (?year >= "2009"^^xsd:gYear && ?year <= "2013"^^xsd:gYear)
+	FILTER (?year >= "2009"^^xsd:gYear && ?year < "2013"^^xsd:gYear)
 } ORDER BY ?year
 ```
