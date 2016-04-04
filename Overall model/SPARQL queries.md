@@ -3,7 +3,7 @@
 ## A. Geospatial Data
 
 ### Q1. All resources inside a bounding box
-```xml
+```
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 
@@ -17,7 +17,7 @@ WHERE {
 ```
 
 ### Q2. Addresses and postal codes for Organizations
-```xml
+```
 select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
   ?organization gr:legalName ?name ; vcard2006:hasAddress ?address . 
@@ -26,7 +26,7 @@ where {
 }
 ```
 ### Q3. Postal Codes of Organizations and the Municipalities they belong to
-```xml
+```
 PREFIX vcard2006: <http://www.w3.org/2006/vcard/ns#>
 PREFIX elodGeo: <http://linkedeconomy.org/geoOntology#>
 
@@ -42,7 +42,7 @@ WHERE {
 ## B. CPV Queries
 
 ### Q1. Information for specific CPV
-```xml
+```
 SELECT distinct ?p ?o 
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 WHERE {
@@ -54,7 +54,7 @@ WHERE {
 ## C. Project profile 
 
 ### Q1. Single Project Info NSRF
-```xml
+```
 select distinct ?project ?percComplete (xsd:decimal(?prBudget) as ?priceBudget)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -67,7 +67,7 @@ group by ?project
 ```
 
 ### Q2. Single Project Info Diavgeia
-```xml
+```
 select distinct ((count(distinct ?decision)) + (count(distinct ?decisionFinancial)) 
 + (count(distinct ?decisionFinancialb13))
 + (count(distinct ?decisionFinancial2))  
@@ -115,7 +115,7 @@ filter not exists {?decision elod:hasCorrectedDecision ?corrected5}
 ## D. Diavgeia Descriptive Stats 
 
 ### Q1. Financial Decisions of a specific Public Project
-```xml
+```
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -128,7 +128,7 @@ where {
 ```
 
 ### Q2. Decisions of a specific decision type - Δ category
-```xml
+```
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?amContr)) as ?amount2)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -140,7 +140,7 @@ where {
 ```
 
 ### Q3. Non-Financial Decisions of a specific Public Project
-```xml
+```
 select distinct (str(?type) as ?type1) (count(distinct ?decision) as ?count)
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -153,7 +153,7 @@ order by desc (?count)
 ## E. NSRF descriptive Stats
 
 ### Q1. Detailed information of a Public Project
-```xml
+```
 select distinct ?titleProject ?description ?percComplete
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
@@ -173,7 +173,7 @@ where {
 ## F. Subprojects
 
 ### Q1. Subprojects (connected to Diavgeia) - Diavgeia data | query 1
-```xml
+```
 select distinct ?subproject
 (count(distinct ?decisionFinancial) as ?decisionFinancial)
 (count (distinct ?decision) as ?nonFinancial)
@@ -196,7 +196,7 @@ where {
 ## G. Overall Information of Data Model
 
 ### Q1. Class treemap
-```xml
+```
 SELECT distinct *
 WHERE {
 	?s rdfs:subClassOf ?p
@@ -204,7 +204,7 @@ WHERE {
 ```
 
 ### Q2. Returns Properties of a specific Class
-```xml
+```
 SELECT distinct ?property
 WHERE {
 	?subject a elod:Subsidy ; ?property ?object
@@ -212,7 +212,7 @@ WHERE {
 ```
 
 ### Q3. Domains of a Property
-```xml
+```
 SELECT distinct ?class
 WHERE {
 	?subject a ?class ; elod:hasRelatedProject ?object
@@ -220,7 +220,7 @@ WHERE {
 ```
 
 ### Q4. NSRF descriptive stats for Public Projects which are related to Crete
-```xml
+```
 select distinct ?project ?percComplete (str(?titleProject) as ?title)
 (xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
@@ -239,7 +239,7 @@ where {
 ## H. Data Cube Implementation
 
 ### Q1. Return Dimension Properties
-```xml
+```
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct * 
 from <http://yourdatastories.eu/Diavgeia/DataCube>
@@ -249,7 +249,7 @@ where {
 ```
 
 ### Q2. Return Information about Observations
-```xml
+```
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct ?p ?o
 from <http://yourdatastories.eu/Diavgeia/DataCube> 
@@ -258,7 +258,7 @@ where {
 }
 ```
 ### Q3. Return Information about Data Strcucture Definition
-```xml
+```
 prefix qb:<http://purl.org/linked-data/cube#>
 select distinct ?attribute ?compRequired ?attachment
 from <http://yourdatastories.eu/Diavgeia/DataCube>
@@ -271,7 +271,7 @@ where {?s qb:attribute ?attribute ;
 ## I. Sector of NSRF Public Projects
 
 ### Q1. Return public projects of a specific Sector
-```xml
+```
 select distinct ?title
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
@@ -281,7 +281,7 @@ where {
 }
 ```
 ### Q2. Count of Public Projects per Sector
-```xml
+```
 select distinct ?sector ?label (count(distinct ?project) as ?count) 
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where { 
@@ -292,7 +292,7 @@ where {
 ## J. Organizations
 
 ### Q1. Return the connection of Sellers from Projects to Organizations URIs and their related information
-```xml
+```
 select distinct ?org ?vatId ?greekName ?engName
 from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
@@ -302,7 +302,7 @@ where {
 ```
 
 ### Q2. Return basic information of Spending Items and the connection of them to Public Projects and Subprojects
-```xml
+```
 select distinct ?project ?date (str(?decisionType) as ?type)  (STR(SAMPLE(?buyerName)) as ?nameBuyer) (STR(SAMPLE(?sellerName)) as ?nameSeller)
 (str(?subject) as ?decisionSubject) (xsd:decimal(?am) as ?amount) (str(?ada) as ?decisionAda)
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
@@ -325,7 +325,7 @@ filter not exists {?decision elod:hasCorrectedDecision ?corrected}
 ## K. Official Development Aid
 ### Q1. How much did the NL spend on ODA related to Zimbabwe in the time frame 2009-2012?
 
-```xml
+```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 
 SELECT (SUM(?value) AS ?totalDisbursement)
@@ -345,7 +345,7 @@ FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:d
 
 ### Q2.1 What sectors was this money spent on (e.g., human rights, infrastructure, health, etc.)...
 
-```xml
+```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -365,7 +365,7 @@ WHERE {
 }
 ```
 ### Q2.2 ...and in which relation (e.g., was there a focus on health, or did all sectors get the same?)?
-```xml
+```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
@@ -398,7 +398,7 @@ WHERE {
 ```
 ### Q3. Who actually received the money (e.g., the Zimbabwean government, local NGOs, Dutch NGOs, international organisations)?
 
-```xml
+```
 PREFIX ro: <http://purl.org/wf4ever/ro#>
 PREFIX rov: <http://www.w3.org/ns/regorg#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -425,7 +425,7 @@ WHERE {
 
 #### A. Export:
 
-```xml
+```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
@@ -445,7 +445,7 @@ WHERE {
 
 ```
 #### B. Import:
-```xml
+```
 PREFIX elod: <http://linkedeconomy.org/ontology#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
