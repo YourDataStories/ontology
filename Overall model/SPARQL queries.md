@@ -321,3 +321,145 @@ filter (CONTAINS(?decisionType, " "@el))
 filter not exists {?decision elod:hasCorrectedDecision ?corrected}
 } limit 100
 ```
+
+## Official Development Aid
+### Q1. How much did the NL spend on ODA related to Zimbabwe in the time frame 2009-2012?
+
+```xml
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+
+SELECT (SUM(?value) AS ?totalDisbursement)
+FROM <http://yourdatastories.eu/pilot2>
+WHERE {
+    ?activity elod:startDate ?startDate;
+              elod:benefactor ?benefactor;
+              elod:beneficiary ?beneficiary;
+              elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
+              elod:hasRelatedDisbursedItem ?disbursement.
+    ?benefactor elod:countryIsoCode <http://linkedeconomy.org/resource/Country/NL>.
+    ?disbursement elod:amount ?amount.
+    ?amount elod:hasCurrencyValue ?value.
+FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:date)
+}
+```
+
+### Q2.1 What sectors was this money spent on (e.g., human rights, infrastructure, health, etc.)...
+
+```xml
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?activityId ?activityTitle ?sector
+FROM <http://yourdatastories.eu/pilot2> 
+WHERE {
+    ?activity elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
+              elod:benefactor ?benefactor;          
+              elod:projectId ?activityId;
+              dct:title ?activityTitle;
+              elod:startDate ?startDate;
+              elod:sector ?sectorCode.
+    ?benefactor elod:countryIsoCode <http://linkedeconomy.org/resource/Country/NL>.
+    ?sectorCode skos:prefLabel ?sector.
+    FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:date)
+}
+```
+### Q2.2 ...and in which relation (e.g., was there a focus on health, or did all sectors get the same?)?
+```xml
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?sector ?numberOfProjects (?numberOfProjects*100/xsd:float(?total) AS  ?percentage)
+FROM <http://yourdatastories.eu/pilot2>
+WHERE {
+  {
+    SELECT (COUNT(?activity) AS ?total)
+    WHERE{
+      ?activity elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
+              elod:benefactor ?benefactor;          
+              elod:startDate ?startDate.
+      ?benefactor elod:countryIsoCode <http://linkedeconomy.org/resource/Country/NL>.
+      FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:date)
+    }
+  }
+  {
+    SELECT (COUNT(?activity) AS ?numberOfProjects) ?sectorCode  ?sector
+    WHERE{
+      ?activity elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
+              elod:benefactor ?benefactor;          
+              elod:startDate ?startDate;
+              elod:sector ?sectorUri.
+      ?benefactor elod:countryIsoCode <http://linkedeconomy.org/resource/Country/NL>.
+      ?sectorUri skos:prefLabel ?sector.
+      FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:date)
+    }
+  }
+}
+```
+### Q3. Who actually received the money (e.g., the Zimbabwean government, local NGOs, Dutch NGOs, international organisations)?
+
+```xml
+PREFIX ro: <http://purl.org/wf4ever/ro#>
+PREFIX rov: <http://www.w3.org/ns/regorg#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+
+SELECT ?activityId ?beneficiaryName ?orgType
+FROM <http://yourdatastories.eu/pilot2>
+WHERE {
+    ?activity elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
+              elod:beneficiary ?beneficiary;
+              elod:benefactor ?benefactor;
+              elod:startDate ?startDate;
+              elod:projectId ?activityId.
+    ?benefactor elod:countryIsoCode <http://linkedeconomy.org/resource/Country/NL>.
+    ?beneficiary foaf:name ?beneficiaryName;
+                 rov:orgType ?orgTypeUri.
+    ?orgTypeUri skos:prefLabel ?orgType.
+    FILTER (?startDate >= "2009-01-01"^^xsd:date && ?startDate < "2013-01-01"^^xsd:date)
+}
+```
+
+## International Trade 
+### Q1. How did NL's trade relations with Zimbabwe develop during the same time frame?
+
+#### A. Export:
+
+```xml
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?harmonizedSystemCommodity ?year ?value
+FROM <http://yourdatastories.eu/pilot2>
+WHERE {
+    ?s a elod:TradeActivity;
+        elod:hasOrigin <http://linkedeconomy.org/resource/GroupNationalAgent/NL>;
+    	elod:hasDestination <http://linkedeconomy.org/resource/GroupNationalAgent/ZW>;
+    	elod:financialYear ?year;
+    	elod:concerns ?commodity;
+    	elod:amount ?amount.
+	?commodity skos:prefLabel ?harmonizedSystemCommodity.
+	?amount elod:hasCurrencyValue ?value.
+	FILTER (?year >= "2009"^^xsd:gYear && ?year <= "2013"^^xsd:gYear)
+} ORDER BY ?year
+
+```
+#### B. Import:
+```xml
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?harmonizedSystemCommodity ?year ?value
+FROM <http://yourdatastories.eu/pilot2>
+WHERE {
+    ?s a elod:TradeActivity;
+        elod:hasOrigin <http://linkedeconomy.org/resource/GroupNationalAgent/ZW>;
+    	elod:hasDestination <http://linkedeconomy.org/resource/GroupNationalAgent/NL>;
+    	elod:financialYear ?year;
+    	elod:concerns ?commodity;
+    	elod:amount ?amount.
+	?commodity skos:prefLabel ?harmonizedSystemCommodity.
+	?amount elod:hasCurrencyValue ?value.
+	FILTER (?year >= "2009"^^xsd:gYear && ?year <= "2013"^^xsd:gYear)
+} ORDER BY ?year
+```
