@@ -322,7 +322,7 @@ filter not exists {?decision elod:hasCorrectedDecision ?corrected}
 } limit 100
 ```
 
-## Official Development Aid
+## K. Official Development Aid
 ### Q1. How much did the NL spend on ODA related to Zimbabwe in the time frame 2009-2012?
 
 ```xml
@@ -420,7 +420,7 @@ WHERE {
 }
 ```
 
-## International Trade 
+## L. International Trade 
 ### Q1. How did NL's trade relations with Zimbabwe develop during the same time frame?
 
 #### A. Export:
