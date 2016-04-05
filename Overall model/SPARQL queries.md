@@ -123,7 +123,7 @@ where {
   ?decision a elod:FinancialDecision ; elod:decisionType ?type ;
   elod:hasExpenditureLine ?expLine . 
   ?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am
-  filter (CONTAINS(?type, " "@el))
+  filter langMatches(lang(?type),'el')
 }
 ```
 
@@ -135,7 +135,7 @@ where {
   <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision .
   ?decision pc:agreedPrice ?ups ; elod:decisionType ?type . 
   ?ups gr:hasCurrencyValue ?amContr .
-  filter (CONTAINS(?type, " "@el))
+  filter langMatches(lang(?type),'el')
 }
 ```
 
@@ -166,7 +166,8 @@ where {
   ?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. 
   ?revSpend elod:hasExpenditureLine ?expSpend . 
   ?expSpend elod:amount ?upsSpend . ?upsSpend gr:hasCurrencyValue ?prSpend
-  filter (CONTAINS(?titleProject, " "@el))
+  filter langMatches(lang(?titleProject),'el')
+  filter langMatches(lang(?description),'el')
 }
 ```
 
@@ -277,7 +278,7 @@ from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
   ?project elod:sector ?sector ; dcterms:title ?title . 
   ?sector skos:prefLabel "Road transport"^^xsd:string
-  filter (CONTAINS(?title, " "@el))
+  filter langMatches(lang(?title),'el')
 }
 ```
 ### Q2. Count of Public Projects per Sector
@@ -316,8 +317,7 @@ OPTIONAL{?decision elod:hasExpenditureLine ?expLine OPTIONAL{?expLine elod:selle
 OPTIONAL{?seller gr:legalName ?sellerName . }}
 ?ups gr:hasCurrencyValue ?am.
 filter(?type = "Β.2.2"^^xsd:string) 
-#filter (CONTAINS(?buyerName, " "@el))
-filter (CONTAINS(?decisionType, " "@el))
+filter langMatches(lang(?decisionType),'el')
 filter not exists {?decision elod:hasCorrectedDecision ?corrected}
 } limit 100
 ```
