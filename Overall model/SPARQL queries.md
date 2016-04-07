@@ -51,6 +51,16 @@ WHERE {
 }
 ```
 
+### Q2. CPV codes from Decisions of NSRF Projects 
+```
+SELECT distinct ?p ?o 
+from <http://yourdatastories.eu/NSRF/Diavgeia>
+WHERE {
+	?s elod:hasCpv <http://linkedeconomy.org/resource/CPV/45233140-2>. 
+	<http://linkedeconomy.org/resource/CPV/45233140-2> ?p ?o
+}
+```
+
 ## C. Project profile 
 
 ### Q1. Single Project Info NSRF
@@ -290,6 +300,17 @@ where {
   ?sector skos:prefLabel ?label
 }
 ```
+
+### Q3. OECD CRS Code of NSRF Projects
+```
+select distinct ?sector ?label (count(distinct ?project) as ?count) 
+from <http://yourdatastories.eu/NSRF/Diavgeia> 
+where { 
+  ?project elod:sector ?sector  . 
+  ?sector skos:prefLabel ?label
+}
+```
+
 ## J. Organizations
 
 ### Q1. Return the connection of Sellers from Projects to Organizations URIs and their related information
