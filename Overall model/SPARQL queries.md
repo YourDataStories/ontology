@@ -1,5 +1,8 @@
 # Example Queries
 
+## Query results can be retrieved by the following google spreadsheet,
+https://docs.google.com/spreadsheets/d/1pbxI1_ScQhLCAavwFg68RLxhAs0QNHpyOx9SKb5Wm54/edit
+
 ## A. Geospatial Data
 
 ### Q1. All resources inside a bounding box
