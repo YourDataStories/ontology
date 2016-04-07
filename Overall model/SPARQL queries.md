@@ -1,6 +1,6 @@
 # Example Queries
 
-### Query results can be retrieved by [this google spreadsheet] (https://docs.google.com/spreadsheets/d/1pbxI1_ScQhLCAavwFg68RLxhAs0QNHpyOx9SKb5Wm54/edit)
+### Query results can be retrieved by [this google spreadsheet] (https://docs.google.com/spreadsheets/d/1pbxI1_ScQhLCAavwFg68RLxhAs0QNHpyOx9SKb5Wm54/edit).
 
 ## A. Geospatial Data
 
