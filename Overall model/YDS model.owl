@@ -710,14 +710,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -729,6 +721,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1456,17 +1456,6 @@
         <rdfs:label xml:lang="en">Cpv Greek Subject</rdfs:label>
         <rdfs:comment xml:lang="en">The greek name of a CPV instance.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;CPV"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#currencyId -->
-
-    <owl:DatatypeProperty rdf:about="&elod;currencyId">
-        <rdfs:label xml:lang="en">Currency Id</rdfs:label>
-        <rdfs:comment xml:lang="en">The code of a Currency expressed in the ISO 4217 format.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Currency"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
