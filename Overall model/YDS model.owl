@@ -393,6 +393,7 @@
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">Country</rdfs:label>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
@@ -556,17 +557,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasCorrectedDecision">
         <rdfs:label xml:lang="en">has Corrected Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates any type of Decision to a one of same type.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -578,6 +568,17 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;Decision"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -710,6 +711,14 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -721,14 +730,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1032,6 +1033,17 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#subsidyMunicipality -->
+
+    <owl:ObjectProperty rdf:about="&elod;subsidyMunicipality">
+        <rdfs:label xml:lang="en">subsidy municipality</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a Public Project to Municipality where belongs to.</rdfs:comment>
+        <rdfs:range rdf:resource="&elodGeo;Municipality"/>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#timePeriod -->
 
     <owl:ObjectProperty rdf:about="&elod;timePeriod">
@@ -1060,6 +1072,16 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">Publisher</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the entity responsible for making it available</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1071,16 +1093,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
