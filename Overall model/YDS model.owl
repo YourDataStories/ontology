@@ -557,17 +557,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasCorrectedDecision">
         <rdfs:label xml:lang="en">has Corrected Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates any type of Decision to a one of same type.</rdfs:comment>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -579,6 +568,17 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;Decision"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                    <rdf:Description rdf:about="&pc;Contract"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -711,14 +711,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -730,6 +722,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1112,6 +1112,17 @@
 
     <owl:ObjectProperty rdf:about="&pc;documentsPrice">
         <rdfs:label xml:lang="en">Documents Price</rdfs:label>
+        <rdfs:comment xml:lang="en">A public contract has usually an estimated price specified before tenders are received. It may be an exact estimated price or a range comprising minimal and maximal estimated price. In both cases, the price is linked to the contract via this property.</rdfs:comment>
+        <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#estimatedPrice -->
+
+    <owl:ObjectProperty rdf:about="&pc;estimatedPrice">
+        <rdfs:label xml:lang="en">Estimated Price</rdfs:label>
         <rdfs:comment xml:lang="en">A public contract has usually an estimated price specified before tenders are received. It may be an exact estimated price or a range comprising minimal and maximal estimated price. In both cases, the price is linked to the contract via this property.</rdfs:comment>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:domain rdf:resource="&pc;Contract"/>
