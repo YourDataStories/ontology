@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [1.1.1] - 2016-04-16
+### Added
+- Add elod:subsidyMunicipality property which links "elod:Subsidy" to "elodGeo:Municipality".
+- Add new range class elod:PublicProject for elod:countryIsoCode property.
+- Add pc:estimatedPrice to OWL file.
+
+### Removed
+- Remove elod:currencyId property.
+
 ## [1.1.0] - 2016-03-30
 ### Added
 - More informations for Organizations.
