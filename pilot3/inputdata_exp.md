@@ -1,6 +1,7 @@
 ###Input data from the Open Tender Electronic Daily(OpenTED)###
+
 Column | Data
--- -- -- -- -- - | -- -- -- -- -- -- -- -- -
+------------- |:-------------:
 contract_cpv_code | 45233120
 contract_contract_award_month | 11
 contract_notice_dispatch_month | 12
