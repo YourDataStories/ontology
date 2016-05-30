@@ -393,6 +393,7 @@
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">Country</rdfs:label>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
@@ -710,14 +711,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has Related Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -729,6 +722,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Subproject"/>
+                    <rdf:Description rdf:about="&elod;Subsidy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1032,6 +1033,17 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#subsidyMunicipality -->
+
+    <owl:ObjectProperty rdf:about="&elod;subsidyMunicipality">
+        <rdfs:label xml:lang="en">subsidy municipality</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a Public Project to Municipality where belongs to.</rdfs:comment>
+        <rdfs:range rdf:resource="&elodGeo;Municipality"/>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#timePeriod -->
 
     <owl:ObjectProperty rdf:about="&elod;timePeriod">
@@ -1060,6 +1072,16 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">Publisher</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the entity responsible for making it available</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1071,16 +1093,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -1100,6 +1112,17 @@
 
     <owl:ObjectProperty rdf:about="&pc;documentsPrice">
         <rdfs:label xml:lang="en">Documents Price</rdfs:label>
+        <rdfs:comment xml:lang="en">A public contract has usually an estimated price specified before tenders are received. It may be an exact estimated price or a range comprising minimal and maximal estimated price. In both cases, the price is linked to the contract via this property.</rdfs:comment>
+        <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#estimatedPrice -->
+
+    <owl:ObjectProperty rdf:about="&pc;estimatedPrice">
+        <rdfs:label xml:lang="en">Estimated Price</rdfs:label>
         <rdfs:comment xml:lang="en">A public contract has usually an estimated price specified before tenders are received. It may be an exact estimated price or a range comprising minimal and maximal estimated price. In both cases, the price is linked to the contract via this property.</rdfs:comment>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:domain rdf:resource="&pc;Contract"/>
@@ -1456,17 +1479,6 @@
         <rdfs:label xml:lang="en">Cpv Greek Subject</rdfs:label>
         <rdfs:comment xml:lang="en">The greek name of a CPV instance.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;CPV"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#currencyId -->
-
-    <owl:DatatypeProperty rdf:about="&elod;currencyId">
-        <rdfs:label xml:lang="en">Currency Id</rdfs:label>
-        <rdfs:comment xml:lang="en">The code of a Currency expressed in the ISO 4217 format.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Currency"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
