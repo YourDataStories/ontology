@@ -486,3 +486,34 @@ WHERE {
 	FILTER (?year >= "2009"^^xsd:gYear && ?year < "2013"^^xsd:gYear)
 } ORDER BY ?year
 ```
+
+## M. Cross-domain queries
+### Q. How does the Greek public spending on road transport in Greece compare to the Dutch government's contribution to the development of the same sector in developing countries (2009-2012)?
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX elod: <http://linkedeconomy.org/ontology#>
+
+SELECT ?greekProjectSpending ?dutchAidSpending WHERE {
+  {
+    SELECT (SUM(?amount) AS ?greekProjectSpending) WHERE {
+      ?publicProject a elod:PublicProject;
+         elod:countryIsoCode ?country;
+         elod:hasRelatedSpendingItem/elod:hasExpenditureLine/elod:amount/gr:hasCurrencyValue ?amount;
+         elod:startDate ?startDate;
+         elod:sector <http://linkedeconomy.org/resource/Taxonomy/OECD/CRS/21020>.
+      FILTER(?startDate > "2009"^^xsd:gYear && ?startDate < "2013"^^xsd:gYear)
+    }
+  }
+  {
+    SELECT (SUM(?amount) AS ?dutchAidSpending) WHERE {
+      ?activity a elod:AidActivity;
+         elod:countryIsoCode ?country;
+         elod:hasRelatedDisbursedItem/elod:amount/elod:hasCurrencyValue ?amount;
+         elod:startDate ?startDate;
+         elod:sector <http://linkedeconomy.org/resource/Taxonomy/OECD/CRS/21020>.
+      FILTER(?startDate > "2009"^^xsd:gYear && ?startDate < "2013"^^xsd:gYear)
+    }
+  }
+}
+```
