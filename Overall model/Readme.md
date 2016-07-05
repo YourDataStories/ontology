@@ -1,4 +1,5 @@
 #Data model views
+![Basic concepts of the Linked Open Economy modelling](https://www.dropbox.com/s/h6kx1qt6expqlt9/YDS%20UML%20short.png?dl=1)
 
 ##Input data examples
 Input data extracts per data source can be found [here](https://github.com/YourDataStories/ontology/blob/master/Overall%20model/Input%20Data%20Examples.md).
