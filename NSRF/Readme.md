@@ -1,5 +1,5 @@
 #Data model views
-![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/0hn6rkfe7hnhktj/espa_class.pdf?dl=0)
+![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/yt5ghkglgqa03z4/NSRF_Class_Diagram.png?dl=0)
 
 ##Input data examples
 Input data extracts per data source can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/Input%20Data%20Example.md).
