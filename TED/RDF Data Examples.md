@@ -13,7 +13,7 @@ pc: | http://purl.org/procurement/public-contracts#
 <http://linkedeconomy.org/resource/Contract/294257> a pc:Contract ;
         elod:sector <http://linkedeconomy.org/resource/Taxonomy/OECD/CRS/21020>;
         dcterms:title “N3 Mulhuddart interchange upgrade.”@en;
-        dcterms:description “Construction of a new road bridge adjacent to the existing over the N3...”@el ;
+        dcterms:description “Construction of a new road bridge adjacent to the existing over the N3...”@en ;
         dcterms:issued "2012-11-16"^^xsd:date;
         elod:contractId “294257”^^xsd:string;
         pc:awardDate ”2012-07-31”^^xsd:date;
@@ -26,7 +26,7 @@ pc: | http://purl.org/procurement/public-contracts#
         pc:kind <http://linkedeconomy.org/resource/Taxonomy/KindScheme/WORKS> ;
                pc:estimatedPrice [ a gr:UnitPriceSpecification;
                             gr:hasCurrencyValue "5200000"^^xsd:float;
-                            gr:valueAddedTaxIncluded “false”^^xsd:Boolean;
+                            gr:valueAddedTaxIncluded “false”^^xsd:boolean;
                             elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>
                           ].
                           
@@ -40,10 +40,10 @@ pc:Tender pc:bidder <http://linkedeconomy.org/resource/Organization/{authority i
 
 <http://linkedeconomy.org/resource/Taxonomy/OECD/CRS/21020> skos:prefLabel "Road transport"^^xsd:string.
 
-<http://linkedeconomy.org/resource/CPV/45221111-3> skos:notation "45221111-3";
+<http://linkedeconomy.org/resource/CPV/45221111-3> skos:notation "45221111-3"^^xsd:string;
         skos:prefLabel "Road bridge construction work"@en.
         
-<http://linkedeconomy.org/resource/CPV/45233120-6> skos:notation "45233120-6";
+<http://linkedeconomy.org/resource/CPV/45233120-6> skos:notation "45233120-6"^^xsd:string;
         skos:prefLabel "Road construction works"@en.
 
 <http://linkedeconomy.org/resource/Currency/EUR> skos:notation "EUR";
