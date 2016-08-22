@@ -1438,7 +1438,7 @@
         <rdfs:label xml:lang="en">count of related projects</rdfs:label>
         <rdfs:comment xml:lang="en">The total count of subprojects which are parts of a specific Public Project.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Subsidy"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
 

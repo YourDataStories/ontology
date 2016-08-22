@@ -20,7 +20,7 @@ geo: | http://www.opengis.net/ont/geosparql#
         dcterms:subject “Το έργο αφορά στη βελτίωση της χάραξης της υπάρχου...”@el
         elod:projectId “277637”^^xsd:string;
         elod:completion “72”^^xsd:float;
-        elod:countOfRelatedProjects “3”^^xsd:string;
+        elod:countOfRelatedProjects “3”^^xsd:integer;
         elod:startDate”2011-02-24T00:00:00”^^xsd:dateTime;
         elod:endDate”2014-08-20T00:00:00”^^xsd:dateTime;
         elod:hasRelatedBudgetItem <http://linkedeconomy.org/resource/Subsidy/BudgetItem/277637>;
