@@ -26,7 +26,7 @@ geo: | http://www.opengis.net/ont/geosparql#
         <http://linkedeconomy.org/resource/Subsidy/BudgetItem/277637> 
                elod:price [ a gr:UnitPriceSpecification;
                             gr:hasCurrencyValue "11194580.00"^^xsd:float;
-                            gr:valueAddedTaxIncluded “true”^^xsd:Boolean;
+                            gr:valueAddedTaxIncluded “true”^^xsd:boolean;
                             elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>
                           ].
         <http://linkedeconomy.org/resource/Subsidy/SpendingItem/277637> 
