@@ -86,7 +86,10 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+    </owl:AnnotationProperty>
     
 
 
@@ -802,10 +805,30 @@
     <!-- http://linkedeconomy.org/ontology#hasRelatedDisbursedItem -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
-        <rdfs:label xml:lang="en">Disbursement</rdfs:label>
+        <rdfs:label xml:lang="en">has related disbursed item</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links an Aid Activity to the related elod:DisbursedItem.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasRelatedExpenseApprovalItem -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedExpenseApprovalItem">
+        <rdfs:label xml:lang="en">has related expense approval item</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates an elod:CommittedItem, an elod:ExpenseApprovalItem or an elod:SpendingItem to an elod:ExpenseApprovalItem.</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;ExpenseApprovalItem"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;CommittedItem"/>
+                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
+                    <rdf:Description rdf:about="&elod;SpendingItem"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -814,6 +837,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedFeature">
         <rdfs:label xml:lang="en">has related feature</rdfs:label>
+        <rdfs:comment xml:lang="en">It links a Public Project to the feature which contains geographical information about its Geometry.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;PublicProject"/>
         <rdfs:range rdf:resource="&geo;Feature"/>
     </owl:ObjectProperty>
@@ -924,6 +948,17 @@
         <rdfs:comment xml:lang="en">This property links a Committed Item or a Budget Item with a “gr:UnitPriceSpecification”</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;BudgetItem"/>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#regionCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;regionCode">
+        <rdfs:label xml:lang="en">region code</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a region code.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -1063,6 +1098,16 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">publisher</rdfs:label>
         <rdfs:comment xml:lang="en">An entity responsible for making the resource available.</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                    <rdf:Description rdf:about="&foaf;Organization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1074,16 +1119,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -1177,8 +1212,8 @@
     <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
 
     <owl:ObjectProperty rdf:about="&skos;hasTopConcept">
-        <rdfs:label xml:lang="en">Top concept</rdfs:label>
-        <rdfs:label xml:lang="en">has Top Concept</rdfs:label>
+        <rdfs:label xml:lang="en">has top concept</rdfs:label>
+        <rdfs:comment xml:lang="en">In order to provide an efficient access to the entry points of broader/narrower concept hierarchies, SKOS defines a skos:hasTopConcept property. This property allows one to link a concept scheme to the (possibly many) most general concepts it contains.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
         <owl:inverseOf rdf:resource="&skos;topConceptOf"/>
@@ -1328,6 +1363,7 @@
 
     <owl:DatatypeProperty rdf:about="&elodGeo;postalCode">
         <rdfs:label xml:lang="en">postal code</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the postal codes of postal code areas (elodGeo:PostalCodeArea)</rdfs:comment>
         <rdfs:domain rdf:resource="&elodGeo;PostalCodeArea"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -1780,6 +1816,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedEndDate">
         <rdfs:label xml:lang="en">planned end date</rdfs:label>
+        <rdfs:comment xml:lang="en">Planned end date of an acitivty</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
@@ -1790,6 +1827,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedStartDate">
         <rdfs:label xml:lang="en">planned start date</rdfs:label>
+        <rdfs:comment xml:lang="en">Planned start date of an acitivty</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
@@ -1882,6 +1920,15 @@
         <rdfs:comment xml:lang="en">Machine-readable identification string for the organization.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;string"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#refersTo -->
+
+    <owl:DatatypeProperty rdf:about="&elod;refersTo">
+        <rdfs:label xml:lang="en">refers to</rdfs:label>
+        <rdfs:comment xml:lang="en">Where an administrative decision refers to. It could be referred to either a project or a subproject.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -2164,6 +2211,7 @@
 
     <owl:DatatypeProperty rdf:about="&skos;altLabel">
         <rdfs:label xml:lang="en">alternative label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The alternative labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -2172,6 +2220,7 @@
 
     <owl:DatatypeProperty rdf:about="&skos;definition">
         <rdfs:label xml:lang="en">definition</rdfs:label>
+        <rdfs:comment xml:lang="en">skos:definition supplies a complete explanation of the intended meaning of a concept.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -2180,13 +2229,17 @@
 
     <owl:DatatypeProperty rdf:about="&skos;notation">
         <rdfs:label xml:lang="en">notation</rdfs:label>
+        <rdfs:comment xml:lang="en">A notation is a string of characters used to uniquely identify a concept within the scope of a given concept scheme.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+    </owl:DatatypeProperty>
     
 
 
