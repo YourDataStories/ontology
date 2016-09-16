@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [1.1.2] - 2016-09-16
+### Added
+- Representation of Common Procurement Vocabulary(CPV) in a SKOS concept scheme.
+
+### Changed
+- Change rdfs:range of elod:countOfRelatedProjects property from xsd:string to xsd:integer.
+
+### Update
+- Update OWL file, Input data Example and RDF data Example of Overall model.
+
 ## [1.1.1] - 2016-04-16
 ### Added
 - Add elod:subsidyMunicipality property which links "elod:Subsidy" to "elodGeo:Municipality".
