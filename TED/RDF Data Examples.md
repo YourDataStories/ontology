@@ -26,7 +26,7 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 		pc:contractingAuthority [a gr:BusinessEntity; a org:Organization; a foaf:Organization; a rov:Organization ;
 							gr:name "RWE GasNet- s.r.o." ;
 							pc:authorityKind <http://purl.org/procurement/public-contracts-authority-kinds#LocalAuthority>;
-						        vcard:hasAddress [ a vcard:Address ;
+						    vcard:hasAddress [ a vcard:Address ;
 							vcard:postal-code "400 01"^^xsd:string ;
 							vcard:street-address "Klíšská 940/96"^^xsd:string ;
 							]
@@ -42,7 +42,7 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 							pc:criterionWeight "100"^^pcdt:percentage ;
 							pc:weightedCriterion [ a skos:Concept
 							] 						
-						]
+					]
 		]
 ]
 
@@ -71,8 +71,8 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 							gr:name "Wielkopolska WojewÃ³dzka Komenda Ochotniczych HufcÃ³w Pracy" ;
 							pc:authorityKind <http://purl.org/procurement/public-contracts-authority-kinds#{authorityKind}> ;
 							vcard:hasAddress [ a vcard:Address ;
-								vcard:postal-code "61-485"^^xsd:string ;
-								vcard:street-address "ul. 28 Czerwca 1956r. nr 211"^^xsd:string .
+							vcard:postal-code "61-485"^^xsd:string ;
+							vcard:street-address "ul. 28 Czerwca 1956r. nr 211"^^xsd:string .
 							] ;
                             elod:countryIsoCode <http://linkedeconomy.org/resource/Country/{countryIsoCode}>						
 		];						
@@ -80,8 +80,8 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 					pc:bidder [ a gr:BusinessEntity; a org:Organization ; a foaf:Organization; a rov:Organization ;
 								gr:name "ZakÅ‚ad Doskonalenia Zawodowego" ;
 								vcard:hasAddress [ a vcard:Address
-											vcard:postal-code "60-179"^^xsd:string ;
-											vcard:street-address "ul. JeleniogÃ³rska 4/6"^^xsd:string ;
+								vcard:postal-code "60-179"^^xsd:string ;
+								vcard:street-address "ul. JeleniogÃ³rska 4/6"^^xsd:string ;
 								]
 					]
 		
@@ -91,6 +91,6 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 							pc:criterionWeight 100^^pcdt:percentage ;
 							pc:weightedCriterion [a skos:Concept
 							]
-						]		
+			        ]		
 		]
 ]
