@@ -14,7 +14,6 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
     <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
-    <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
     <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -38,13 +37,15 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:gr="http://purl.org/goodrelations/v1#"
-     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:elod="http://linkedeconomy.org/ontology#">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Pilot3 Ontology</rdfs:label>
+        <dct:creator xml:lang="en">Eleftherios Galanos</dct:creator>
+        <dct:creator xml:lang="en">Giorgos Vafeiadis</dct:creator>
         <dct:creator xml:lang="en">Islam A. Hassan</dct:creator>
-        <owl:versionInfo xml:lang="en">Latest Update: 2016-07-14</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-09-16</owl:versionInfo>
+        <dct:creator xml:lang="en">Michalis Vafopoulos</dct:creator>
         <dc:title xml:lang="en">Pilot3 Ontology</dc:title>
     </owl:Ontology>
     
@@ -61,125 +62,15 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#creator -->
-
-    <owl:AnnotationProperty rdf:about="&elod;creator"/>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#financialYear -->
-
-    <owl:AnnotationProperty rdf:about="&elod;financialYear">
-        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#hasCurrency -->
-
-    <owl:AnnotationProperty rdf:about="&elod;hasCurrency">
-        <rdfs:label xml:lang="en">has Currency</rdfs:label>
-        <rdfs:comment xml:lang="en">This property defines the Currency for the prices specified by an instance of the “gr:UnitPriceSpecification”.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/description -->
-
-    <owl:AnnotationProperty rdf:about="&dc;description"/>
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/publisher -->
-
-    <owl:AnnotationProperty rdf:about="&dc;publisher">
-        <rdfs:label xml:lang="en-us">Publisher</rdfs:label>
-        <rdfs:comment xml:lang="en-us">An entity responsible for making the resource available</rdfs:comment>
-        <dc:description xml:lang="en-us">Examples of a Publisher include a person, an organisation,
-         or a service.
-         Typically, the name of a Publisher should be used to
-         indicate the entity.</dc:description>
-        <dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
-        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
-    </owl:AnnotationProperty>
-    
-
-
     <!-- http://purl.org/dc/elements/1.1/title -->
 
     <owl:AnnotationProperty rdf:about="&dc;title"/>
     
 
 
-    <!-- http://purl.org/dc/elements/1.1/type -->
-
-    <owl:AnnotationProperty rdf:about="&dc;type"/>
-    
-
-
     <!-- http://purl.org/dc/terms/creator -->
 
     <owl:AnnotationProperty rdf:about="&dct;creator"/>
-    
-
-
-    <!-- http://purl.org/dc/terms/description -->
-
-    <owl:AnnotationProperty rdf:about="&dct;description">
-        <rdfs:label xml:lang="en">Description</rdfs:label>
-        <rdfs:comment xml:lang="en">The description that includes a description of a Public Project.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://purl.org/dc/terms/title -->
-
-    <owl:AnnotationProperty rdf:about="&dct;title">
-        <rdfs:label xml:lang="en">Title</rdfs:label>
-        <rdfs:comment xml:lang="en">The title of a Resource.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subproject"/>
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
-
-    <owl:AnnotationProperty rdf:about="&gr;hasCurrencyValue">
-        <rdfs:label xml:lang="en">has currency value</rdfs:label>
-        <rdfs:comment xml:lang="en">The amount of money specified for a budget or a payment or a public service or a product.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
-        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#definition -->
-
-    <owl:AnnotationProperty rdf:about="&skos;definition"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#note -->
-
-    <owl:AnnotationProperty rdf:about="&skos;note"/>
-    
-
-
-    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
-
-    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
-    
-
-
-    <!-- http://www.w3.org/2006/vcard/ns#url -->
-
-    <owl:AnnotationProperty rdf:about="&vcard;url">
-        <rdfs:domain rdf:resource="&vcard;VCard"/>
-    </owl:AnnotationProperty>
     
 
 
@@ -206,6 +97,12 @@
     
 
 
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="&xsd;duration"/>
+    
+
+
     <!-- http://www.w3.org/2001/XMLSchema#gYear -->
 
     <rdfs:Datatype rdf:about="&xsd;gYear"/>
@@ -223,13 +120,24 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#buyer -->
+    <!-- http://linkedeconomy.org/ontology#awardConcernsNotice -->
 
-    <owl:ObjectProperty rdf:about="&elod;buyer">
-        <rdfs:label xml:lang="en">Buyer</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links an Organization or an org:OrganizationalUnit with an Administrative Decision.</rdfs:comment>
+    <owl:ObjectProperty rdf:about="&elod;awardConcernsNotice">
+        <rdfs:label xml:lang="en">award concerns notice</rdfs:label>
+        <rdfs:comment xml:lang="en">Relates an award notice with a notice.</rdfs:comment>
+        <rdfs:range rdf:resource="&pc;Contract"/>
         <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#countryIsoCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
+        <rdfs:label xml:lang="en">country iso code</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a country ISO code.</rdfs:comment>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -237,19 +145,8 @@
     <!-- http://linkedeconomy.org/ontology#hasCurrency -->
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
-        <rdfs:label xml:lang="en">has Currency</rdfs:label>
+        <rdfs:label xml:lang="en">has currency</rdfs:label>
         <rdfs:comment xml:lang="en">This property defines the Currency for the prices specified by an instance of the “gr:UnitPriceSpecification”.</rdfs:comment>
-        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
-        <rdfs:range rdf:resource="&skos;Concept"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#hasVat -->
-
-    <owl:ObjectProperty rdf:about="&elod;hasVat">
-        <rdfs:label xml:lang="en">has vat</rdfs:label>
-        <rdfs:comment xml:lang="en">relates a gr:UnitPriceSpecification with a SKOS concept that represents the vat of the amount.</rdfs:comment>
         <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -273,6 +170,7 @@
     <owl:ObjectProperty rdf:about="&pc;agreedPrice">
         <rdfs:label xml:lang="en">Agreed Price</rdfs:label>
         <rdfs:comment xml:lang="en">After a tender is awarded a Contract, a price is agreed between the awarded supplier and the contracting authority. This property assigns that price is assigned to the Contract.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property for a price stated on the contract with the supplier. Cardinality 0..1</rdfs:comment>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:domain rdf:resource="&pc;Contract"/>
     </owl:ObjectProperty>
@@ -283,8 +181,11 @@
 
     <owl:ObjectProperty rdf:about="&pc;authorityKind">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">Kind of contracting authority</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for a kind of a contracting authority. Only a predefined SKOS concept can be used. Cardinality 0..1</rdfs:comment>
         <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -334,9 +235,9 @@
     <owl:ObjectProperty rdf:about="&pc;bidder">
         <rdfs:label xml:lang="en">Tender bidder</rdfs:label>
         <rdfs:comment xml:lang="en">Property for bidder submitting the tender. Cardinality 0..1</rdfs:comment>
-        <rdfs:range rdf:resource="&gr;BusinessEntity"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts"/>
         <rdfs:domain rdf:resource="&pc;Tender"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -350,6 +251,7 @@
         <rdfs:range rdf:resource="&gr;BusinessEntity"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts"/>
         <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -361,6 +263,7 @@
         <rdfs:label xml:lang="cs">Odhadovaná cena zakázky</rdfs:label>
         <rdfs:label xml:lang="en">Exact estimated price</rdfs:label>
         <rdfs:comment xml:lang="cs">Vlastnost pro odhadovanou cenu veřejné zakázky. Může jít o přesně odhadovanou částku nebo interval. Kardinalita 0..1</rdfs:comment>
+        <rdfs:comment xml:lang="en">A public contract has usually an estimated price specified before tenders are received. It may be an exact estimated price or a range comprising minimal and maximal estimated price. In both cases, the price is linked to the contract via this property.</rdfs:comment>
         <rdfs:comment xml:lang="en">Property for estimated price of public contract. It can be an exact estimation or an interval. Cardinality 0..1</rdfs:comment>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts"/>
@@ -373,6 +276,8 @@
 
     <owl:ObjectProperty rdf:about="&pc;kind">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">Contract kind</rdfs:label>
+        <rdfs:comment xml:lang="en">Kind of a public contract specifies a basic focus of the contract on works, supplies or services. Only a predefined SKOS concept can be used.</rdfs:comment>
         <rdfs:domain rdf:resource="&pc;Contract"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -396,6 +301,8 @@
 
     <owl:ObjectProperty rdf:about="&pc;procedureType">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">Procedure type</rdfs:label>
+        <rdfs:comment xml:lang="en">Type of procedure of a public contract specifies a procedure which is applied to publish information about the contract and choose a supplier. Only a predefined value can be used. Cardinality 0..1</rdfs:comment>
         <rdfs:domain rdf:resource="&pc;Contract"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -415,16 +322,6 @@
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
-
-    <owl:ObjectProperty rdf:about="&skos;inScheme">
-        <rdfs:label xml:lang="en">in Scheme</rdfs:label>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
-        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.w3.org/2006/vcard/ns#hasAddress -->
 
     <owl:ObjectProperty rdf:about="&vcard;hasAddress">
@@ -432,16 +329,6 @@
         <rdfs:comment xml:lang="en">To specify the components of the delivery address for the object</rdfs:comment>
         <rdfs:range rdf:resource="&vcard;Address"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://xmlns.com/foaf/0.1/isPrimaryTopicOf -->
-
-    <owl:ObjectProperty rdf:about="&foaf;isPrimaryTopicOf">
-        <rdfs:label xml:lang="en">is primary topic of</rdfs:label>
-        <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
     </owl:ObjectProperty>
     
 
@@ -468,43 +355,13 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#documentType -->
+    <!-- http://linkedeconomy.org/ontology#tenderDeadline -->
 
-    <owl:DatatypeProperty rdf:about="&elod;documentType">
-        <rdfs:label xml:lang="en">Document Type</rdfs:label>
-        <rdfs:comment xml:lang="en">The type of a Decision.</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="&elod;tenderDeadline">
+        <rdfs:label xml:lang="en">Time-limit for receipt of tenders or requests to participate</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for time limit for receipt of tenders or requests to participate. Cardinality 0..1</rdfs:comment>
         <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#documentUrl -->
-
-    <owl:DatatypeProperty rdf:about="&elod;documentUrl">
-        <rdfs:label xml:lang="en">document url</rdfs:label>
-        <rdfs:comment xml:lang="en">The URL address of the PDF file of an Administrative Decision.</rdfs:comment>
-        <rdfs:domain rdf:resource="&pc;Contract"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#vatPercentage -->
-
-    <owl:DatatypeProperty rdf:about="&elod;vatPercentage">
-        <rdfs:range rdf:resource="&xsd;float"/>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://purl.org/dc/terms/description -->
-
-    <owl:DatatypeProperty rdf:about="&dct;description">
-        <rdfs:label xml:lang="en">Description</rdfs:label>
-        <rdfs:comment xml:lang="en">The description that includes a description of a Public Project.</rdfs:comment>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
 
@@ -523,8 +380,9 @@
     <!-- http://purl.org/dc/terms/title -->
 
     <owl:DatatypeProperty rdf:about="&dct;title">
-        <rdfs:label xml:lang="en">Title</rdfs:label>
-        <rdfs:comment xml:lang="en">The title of a Resource.</rdfs:comment>
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -535,6 +393,7 @@
     <owl:DatatypeProperty rdf:about="&gr;hasCurrencyValue">
         <rdfs:label xml:lang="en">has currency value</rdfs:label>
         <rdfs:comment xml:lang="en">The amount of money specified for a budget or a payment or a public service or a product.</rdfs:comment>
+        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
@@ -586,19 +445,46 @@
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+    <!-- http://purl.org/procurement/public-contracts#duration -->
 
-    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
+    <owl:DatatypeProperty rdf:about="&pc;duration">
+        <rdfs:label xml:lang="en">Duration of contract</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for duration of contract. The duration may be described in days, months, years, etc. Cardinality 0..1</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;duration"/>
+    </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.w3.org/2006/vcard/ns#locality -->
+    <!-- http://purl.org/procurement/public-contracts#estimatedEndDate -->
 
-    <owl:DatatypeProperty rdf:about="&vcard;locality">
-        <rdfs:label xml:lang="en">locality</rdfs:label>
-        <rdfs:comment xml:lang="en">The locality (e.g. city or town) associated with the address of the object.</rdfs:comment>
-        <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="&vcard;Address"/>
+    <owl:DatatypeProperty rdf:about="&pc;estimatedEndDate">
+        <rdfs:label xml:lang="en">Estimated end date of contract</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for estimated end date of public contract realization. Cardinality 0..1</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#startDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;startDate">
+        <rdfs:label xml:lang="en">Start date of contract</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for start date of public contract realization coming from the contract&apos;s text.</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
     </owl:DatatypeProperty>
     
 
@@ -719,15 +605,6 @@
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
-
-    <owl:Class rdf:about="&skos;ConceptScheme">
-        <rdfs:label xml:lang="en">Concept Scheme</rdfs:label>
-        <rdfs:comment xml:lang="en">This class represents a collection of skos:Concept as means of representing knowledge.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.w3.org/2006/vcard/ns#Address -->
 
     <owl:Class rdf:about="&vcard;Address">
@@ -772,16 +649,6 @@
         <rdfs:label xml:lang="en">Organization</rdfs:label>
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:comment xml:lang="en">Represents a kind of Agent corresponding to social institutions such as companies, societies etc.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://xmlns.com/foaf/0.1/Person -->
-
-    <owl:Class rdf:about="&foaf;Person">
-        <rdfs:label xml:lang="en">Person</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
-        <rdfs:comment xml:lang="en">Physical Persons. In LinkedEconomy we are interested for persons as economic agents.</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
