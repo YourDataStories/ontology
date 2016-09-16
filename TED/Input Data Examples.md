@@ -1,24 +1,47 @@
 ## Input Data From TED
+
+##Notices
 Column | Real Data
 ------------ | -------------
-contract_authority_official_name | Fingal County Council
-contract_authority_town | Swords
-contract_authority_address | PO Box 174, Fingal County Hall, Main Street
-contract_contract_award_title | N3 Mulhuddart interchange upgrade.
-contract_contract_description | Construction of a new road bridge adjacent to the existing over the N3...
-contract_cpv_code | 45233120
-contract_id | 294257
-contract_initial_value_cost_eur | 5200000
-contract_initial_value_currency | EUR
-contract_initial_value_vat_included | FALSE
-contract_operator_address | Kill, C. Kildare
-contract_operator_official_name | BAM Civil Ltd
-contract_contract_award_day | 31
-contract_contract_award_month | 7
-contract_contract_award_year | 2012
-contract_type_contract | WORKS
-document_title_text | road construction works
-document_cpvs | 45221111;45233120
-document_dispatch_date | 20121116
-document_doc_url | http://ted.europa.eu/udl?uri=TED:NOTICE:366795-2012:TEXT:EN:HTML
-document_document_type | Contract award
+ID_NOTICE_CN | 201531314
+DT_DISPATCH | 22-Jan-15
+CAE_NAME | RWE GasNet- s.r.o
+CAE_ADDRESS | Klíšská 940/96
+CAE_POSTAL_CODE | 400 01
+ISO_COUNTRY_CODE | CZ
+CAE_TYPE | 4
+TYPE_OF_CONTRACT | U
+CPV | 44163100
+ADDITIONAL_CPVS | 44163000
+VALUE_EURO_FIN_1 | 7331647.05
+DURATION | 36.02
+CONTRACT_START | 1-Apr-15
+CONTRACT_COMPLETION | 31-Mar-18
+PROCEDURE | RES
+CRIT_CODE | L 
+CRIT_WEIGHTS | 
+DT_APPLICATIONS | 4-Mar-15
+
+##Award Notices
+Column | Real Data
+------------ | -------------
+DT_DISPATCH | 30-Dec-14
+CAE_NAME | Weimarer WohnstÃ¤tte GmbH
+CAE_ADDRESS | Frauenplan 6
+CAE_POSTAL_CODE | 99423
+ISO_COUNTRY_CODE | DE
+CAE_TYPE | 3
+TYPE_OF_CONTRACT | W
+CPV | 45214220
+ADDITIONAL_CPVS |
+VALUE_EURO_FIN_2 | 417129.41	
+TOP_TYPE | OPE
+CRIT_CODE | L
+CRIT_WEIGHTS | 
+ID_AWARD | 6630372
+TITLE |	Trockenbauarbeiten
+WIN_NAME | TM Ausbau GmbH
+WIN_ADDRESS | Oberfrohnaer StraÃŸe 66
+WIN_POSTAL_CODE | 9117
+WIN_COUNTRY_CODE | DE	
+DT_AWARD | 18-Jul-14
