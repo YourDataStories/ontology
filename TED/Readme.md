@@ -1,5 +1,5 @@
 #Data model views
-![Basic concepts of the TED modelling](https://dl.dropboxusercontent.com/u/4447272/TED.png)
+![Basic concepts of the TED modelling](https://www.dropbox.com/s/n4m6ancd3mh8l3x/TED_16-09.png?dl=1)
 
 
 ##Input data examples
