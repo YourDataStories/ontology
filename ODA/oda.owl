@@ -112,9 +112,6 @@
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label>Amount</rdfs:label>
         <rdfs:range rdf:resource="&elod;Amount"/>
-        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
-        <rdfs:domain rdf:resource="&elod;DisbursedItem"/>
-        <rdfs:domain rdf:resource="&elod;Transaction"/>
     </owl:ObjectProperty>
     
 
@@ -124,7 +121,6 @@
     <owl:ObjectProperty rdf:about="&elod;benefactor">
         <rdfs:label xml:lang="en">Benefactor</rdfs:label>
         <rdfs:comment xml:lang="en">Links to the agent representing the aid donor / extending organization.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
@@ -135,7 +131,7 @@
     <owl:ObjectProperty rdf:about="&elod;beneficiary">
         <rdfs:label xml:lang="en">Beneficiary</rdfs:label>
         <rdfs:comment xml:lang="en">Links to the agent representing the aid recipient / implementing organization.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -157,9 +153,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">Country</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -203,7 +197,6 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
         <rdfs:label xml:lang="en">Commitment</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
@@ -214,7 +207,6 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
         <rdfs:label xml:lang="en">Disbursement</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
         <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
@@ -226,7 +218,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasTransaction">
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
         <rdfs:comment>Links to a related financial transaction between two entities.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;Transaction"/>
     </owl:ObjectProperty>
     
@@ -238,7 +229,6 @@
         <rdfs:label xml:lang="en">Sector</rdfs:label>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:seeAlso>Links to a concept in a list of codes, names and descriptions used to identify the sector of destination of a contribution.</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -296,6 +286,8 @@
 
     <owl:ObjectProperty rdf:about="&skos;narrower">
         <rdfs:label xml:lang="en">Narrower concept</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -306,11 +298,16 @@
         <rdfs:label xml:lang="en">Organization type</rdfs:label>
         <rdfs:comment xml:lang="en">Expects a value from a code list used to ditinguish organization types.</rdfs:comment>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/OrganisationType/</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&org;Organization"/>
-        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
-        <rdfs:domain rdf:resource="&foaf;Organization"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;Organization"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -330,7 +327,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;endDate">
         <rdfs:label xml:lang="en">End date</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -340,7 +336,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedEndDate">
         <rdfs:label xml:lang="en">Planned end date</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -350,7 +345,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;plannedStartDate">
         <rdfs:label xml:lang="en">Planned start date</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -360,7 +354,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;projectId">
         <rdfs:label xml:lang="en">Project ID</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -381,7 +374,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;startDate">
         <rdfs:label xml:lang="en">Start date</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
