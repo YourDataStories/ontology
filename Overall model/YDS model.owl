@@ -2,8 +2,8 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY org "http://www.w3.org/ns/org#" >
     <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY org "http://www.w3.org/ns/org#" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY rov "http://www.w3.org/ns/regorg#" >
     <!ENTITY sf "http://www.opengis.net/ont/sf#" >
@@ -14,9 +14,9 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
     <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
-    <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
-    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY pc "http://purl.org/procurement/public-contracts#" >
 ]>
@@ -24,23 +24,23 @@
 
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:geo="http://www.opengis.net/ont/geosparql#"
-     xmlns:foaf="http://xmlns.com/foaf/0.1/"
-     xmlns:sf="http://www.opengis.net/ont/sf#"
-     xmlns:org="http://www.w3.org/ns/org#"
-     xmlns:rov="http://www.w3.org/ns/regorg#"
-     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:pc="http://purl.org/procurement/public-contracts#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:org="http://www.w3.org/ns/org#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:gr="http://purl.org/goodrelations/v1#"
-     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:elod="http://linkedeconomy.org/ontology#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:sf="http://www.opengis.net/ont/sf#"
+     xmlns:elod="http://linkedeconomy.org/ontology#"
+     xmlns:pc="http://purl.org/procurement/public-contracts#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rov="http://www.w3.org/ns/regorg#"
+     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
         <dct:creator xml:lang="en">Gerasimos Razis</dct:creator>
@@ -86,10 +86,7 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:AnnotationProperty rdf:about="&skos;prefLabel">
-        <rdfs:label xml:lang="en">preferred label</rdfs:label>
-        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
-    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
     
 
 
@@ -137,9 +134,7 @@
 
     <owl:ObjectProperty rdf:about="&elodGeo;hasPart">
         <rdfs:label xml:lang="en">has part</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a municipality to their relative postal code areas.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elodGeo;Municipality"/>
-        <rdfs:range rdf:resource="&elodGeo;PostalCodeArea"/>
+        <rdfs:comment xml:lang="en">This property links a geographic area to its parts.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -179,9 +174,7 @@
     <owl:ObjectProperty rdf:about="&elod;activityStatusType">
         <rdfs:label xml:lang="en">activity status</rdfs:label>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/ActivityStatus/</rdfs:seeAlso>
-        <rdfs:comment xml:lang="en">Links to a code indicating the lifecycle status of an ODA activity from pipeline to completion</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Links to a code indicating the lifecycle status of an activity from pipeline to completion</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -203,15 +196,15 @@
 
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label xml:lang="en">amount</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links to an “elod:Amount” / &quot;gr:UnitPriceSpecification&quot;.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;Amount"/>
-        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
-        <rdfs:domain rdf:resource="&elod;DisbursedItem"/>
-        <rdfs:domain rdf:resource="&elod;ExpenditureLine"/>
-        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
-        <rdfs:domain rdf:resource="&elod;Transaction"/>
-        <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:comment xml:lang="en">This property links to an amount.</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Amount"/>
+                    <rdf:Description rdf:about="&gr;UnitPriceSpecification"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -251,8 +244,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;benefactor">
         <rdfs:label xml:lang="en">benefactor</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to the agent representing the aid donor / extending organization. The organisation that provides the subsidy.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:comment xml:lang="en">Links to the agent representing the party providing the funds.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
@@ -262,18 +254,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;beneficiary">
         <rdfs:label xml:lang="en">beneficiary</rdfs:label>
-        <rdfs:comment xml:lang="en">The recipient of a subsidy. It could be any type of organisation or person.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
+        <rdfs:comment xml:lang="en">Links to the agent representing the party receiving the funds.</rdfs:comment>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -282,8 +264,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;budgetRefersTo">
         <rdfs:label xml:lang="en">budget refers to</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Decision B.1.1 with an Organization.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:comment xml:lang="en">This property links a budget line to any type of act of an organization, e.g. administrative decision, aid activity, and public project.</rdfs:comment>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -303,17 +284,6 @@
         <rdfs:label xml:lang="en">buyer</rdfs:label>
         <rdfs:comment xml:lang="en">Buyer of a service or product from a Seller.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -322,10 +292,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;collaborationType">
         <rdfs:label xml:lang="en">collaboration type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a DAC/CRS classification used to determine the character of resource flows (bilateral or multilateral).</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Links to a classification used to determine the character of resource flows (bilateral or multilateral), e.g  a DAC/CRS classification for ODA activities.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -335,7 +303,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;collectiveBodyKind">
         <rdfs:label xml:lang="en">collective body kind</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:CollectiveBodyKind&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a  Collective Body Kind.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CollectiveBodyKind"/>
         <rdfs:domain rdf:resource="&elod;Decision"/>
     </owl:ObjectProperty>
@@ -346,7 +314,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;collectiveBodyType">
         <rdfs:label xml:lang="en">collective body type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:CollectiveBodyType&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a Collective Body Type.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CollectiveBodyType"/>
         <rdfs:domain rdf:resource="&elod;Decision"/>
     </owl:ObjectProperty>
@@ -389,8 +357,7 @@
     <owl:ObjectProperty rdf:about="&elod;concerns">
         <rdfs:label xml:lang="en">concerns</rdfs:label>
         <rdfs:seeAlso>http://www.wcoomd.org/en/topics/nomenclature.aspx</rdfs:seeAlso>
-        <rdfs:comment>Links to a code representing the related commodity group.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;TradeActivity"/>
+        <rdfs:comment>Links to a concept an activity is related to, e.g. a code representing the related commodity group.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -401,10 +368,7 @@
     <owl:ObjectProperty rdf:about="&elod;countryIsoCode">
         <rdfs:label xml:lang="en">country iso code</rdfs:label>
         <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a country ISO code.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:domain rdf:resource="&elod;PublicProject"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -415,7 +379,7 @@
         <rdfs:label xml:lang="en">decision municipality</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Decision with the related Municipality.</rdfs:comment>
         <rdfs:range rdf:resource="&elodGeo;Municipality"/>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
     </owl:ObjectProperty>
     
 
@@ -425,18 +389,8 @@
     <owl:ObjectProperty rdf:about="&elod;decisionStatus">
         <rdfs:label xml:lang="en">decision status</rdfs:label>
         <rdfs:comment xml:lang="en">This class represents the Statuses of the Decisions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;DecisionStatus"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -497,10 +451,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;financeType">
         <rdfs:label xml:lang="en">finance type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a DAC/CRS transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Links to a transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -510,8 +462,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;flowType">
         <rdfs:label xml:lang="en">flow type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a DAC/CRS distinction between ODA and other types of resource flow.</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a DAC/CRS distinction between ODA and other types of resource flow.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -523,18 +475,8 @@
     <owl:ObjectProperty rdf:about="&elod;hasAttachment">
         <rdfs:label xml:lang="en">has attachment</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates an Administrative Decision with an attached document.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;Attachment"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -543,9 +485,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasBudgetCategory">
         <rdfs:label xml:lang="en">has budget category</rdfs:label>
-        <rdfs:comment xml:lang="en">This property defines the Budget Category relating to the Financial Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property defines the Budget Category relating to Administrative Decisions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;BudgetCategory"/>
-        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
     </owl:ObjectProperty>
     
 
@@ -554,9 +496,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasBudgetKind">
         <rdfs:label xml:lang="en">has budget kind</rdfs:label>
-        <rdfs:comment xml:lang="en">This property defines the Budget Kind relating to the non Financial Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property defines the Budget Kind relating to Administrative Decisions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;BudgetKind"/>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
     </owl:ObjectProperty>
     
 
@@ -565,29 +507,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasCorrectedDecision">
         <rdfs:label xml:lang="en">has corrected decision</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates any type of Decision to a one of same type.</rdfs:comment>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:comment xml:lang="en">This property relates any type of Decision to a Decision of the same type.</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;AdministrativeDecision"/>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
     </owl:ObjectProperty>
     
 
@@ -596,9 +518,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasCpv">
         <rdfs:label xml:lang="en">has cpv</rdfs:label>
-        <rdfs:comment xml:lang="en">The contracts are associated with CPV codes. This property links them with instances of classes other than “Contracts”.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The contracts are associated with CPV codes. This property links them with instances of classes other than Contracts.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CPV"/>
-        <rdfs:domain rdf:resource="&elod;ExpenditureLine"/>
     </owl:ObjectProperty>
     
 
@@ -607,11 +528,16 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
         <rdfs:label xml:lang="en">has currency</rdfs:label>
-        <rdfs:comment xml:lang="en">This property defines the Currency for the prices specified by an instance of the “gr:UnitPriceSpecification”.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
-        <rdfs:range rdf:resource="&elod;Currency"/>
-        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
+        <rdfs:comment xml:lang="en">This property defines the Currency for the prices specified by an instance of a Unit Price Specification.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Amount"/>
+                    <rdf:Description rdf:about="&gr;UnitPriceSpecification"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -631,19 +557,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasExpenditureLine">
         <rdfs:label xml:lang="en">has expenditure line</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates a part of a payment with an elod:ExpenditureLine.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property relates a part of a payment with an Expenditure Line.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;ExpenditureLine"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:domain rdf:resource="&elod;FinancialDecision"/>
     </owl:ObjectProperty>
     
 
@@ -652,7 +568,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasKae">
         <rdfs:label xml:lang="en">has kae</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a KAE code with an “elod:ExpenditureLine”.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a KAE code with an Expenditure Line.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;ExpenditureLine"/>
         <rdfs:range rdf:resource="&elod;KAE"/>
     </owl:ObjectProperty>
@@ -663,7 +579,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasOfficialAdministrativeChange">
         <rdfs:label xml:lang="en">has official administrative change</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:OfficialAdministrativeChange&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a Official Administrative Change.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;OfficialAdministrativeChange"/>
     </owl:ObjectProperty>
@@ -674,7 +590,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasOpinionOrgType">
         <rdfs:label xml:lang="en">has opinion organization type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:OpinionOrgType&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a Opinion Organization Type.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;OpinionOrgType"/>
     </owl:ObjectProperty>
@@ -696,7 +612,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasPosition">
         <rdfs:label xml:lang="en">has position</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:Position&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a Position.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;Position"/>
     </owl:ObjectProperty>
@@ -707,7 +623,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasPositionType">
         <rdfs:label xml:lang="en">has position type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:PositionType&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a PositionType.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;PositionType"/>
     </owl:ObjectProperty>
@@ -719,22 +635,12 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has related administrative decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
+        <rdfs:range rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;PublicProject"/>
                     <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -746,15 +652,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedBudgetItem">
         <rdfs:label xml:lang="en">has related budget item</rdfs:label>
+        <rdfs:comment>Links an undertaken action, such as a public payment to a related budget item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;BudgetItem"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -763,20 +662,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
         <rdfs:label xml:lang="en">has related committed item</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates an elod:CommittedItem, a pc:Contract or an elod:SpendingItem to an elod:CommittedItem.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:comment xml:lang="en">This property relates a concept, such as a Contract or a Spending Item, to a Committed Item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -785,19 +672,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDecision">
         <rdfs:label xml:lang="en">has related decision</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates elod:CommittedItem, a pc:Contract or an elod:SpendingItem to an elod:Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a concept, such as a contract, to a related decision.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Decision"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -806,10 +682,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
         <rdfs:label xml:lang="en">has related disbursed item</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links an Aid Activity to the related elod:DisbursedItem.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:comment xml:lang="en">This property links a concept, such as an Aid Activity, to the related Disbursed Item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -818,17 +692,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedExpenseApprovalItem">
         <rdfs:label xml:lang="en">has related expense approval item</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates an elod:CommittedItem, an elod:ExpenseApprovalItem or an elod:SpendingItem to an elod:ExpenseApprovalItem.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a concept to a related Expense Approval Item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;ExpenseApprovalItem"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -837,8 +702,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedFeature">
         <rdfs:label xml:lang="en">has related feature</rdfs:label>
-        <rdfs:comment xml:lang="en">It links a Public Project to the feature which contains geographical information about its Geometry.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+        <rdfs:comment xml:lang="en">It links a concept to the feature which contains geographical information about its Geometry.</rdfs:comment>
         <rdfs:range rdf:resource="&geo;Feature"/>
     </owl:ObjectProperty>
     
@@ -848,9 +712,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedProject">
         <rdfs:label xml:lang="en">has related project</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Public Project to the related Subprojects.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a concept to the related projects.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Subproject"/>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
     </owl:ObjectProperty>
     
 
@@ -859,8 +722,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedSpendingItem">
         <rdfs:label xml:lang="en">has related spending item</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a concept, such as a public project, to a related spending item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;SpendingItem"/>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
     </owl:ObjectProperty>
     
 
@@ -869,7 +732,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasSpatialType">
         <rdfs:label xml:lang="en">has spatial type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:SpatialType&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a SpatialType.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;SpatialType"/>
     </owl:ObjectProperty>
@@ -880,19 +743,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasThematicCategory">
         <rdfs:label xml:lang="en">has thematic category</rdfs:label>
-        <rdfs:comment xml:lang="en">This property defines the Thematic Category of a Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property defines the Thematic Category of an Adminsitrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&elod;ThematicCategory"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -902,7 +755,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasTransaction">
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
         <rdfs:comment>Links to a related financial transaction between two entities.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&elod;Transaction"/>
     </owl:ObjectProperty>
     
@@ -912,7 +764,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasVacancyType">
         <rdfs:label xml:lang="en">has vacancy type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a &quot;elod:VacancyType&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a non Financial Decision with a Vacancy Type.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&elod;VacancyType"/>
     </owl:ObjectProperty>
@@ -923,7 +775,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasVatType">
         <rdfs:label xml:lang="en">has Vat Type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links an Organization with a SKOS concept that represents the category of its vat id.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links an Organization with a Concept that represents the category of its vat id.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;VatType"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
@@ -934,7 +786,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;isRegisteredAt">
         <rdfs:label xml:lang="en">is registered at</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links an Organization with a &quot;elod:Country&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links an Organization with an Address.</rdfs:comment>
         <rdfs:range rdf:resource="&vcard;Address"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
@@ -945,8 +797,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;price">
         <rdfs:label xml:lang="en">price</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Committed Item or a Budget Item with a “gr:UnitPriceSpecification”</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;BudgetItem"/>
+        <rdfs:comment xml:lang="en">This property links a concept with a Price Specification.</rdfs:comment>
         <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
     </owl:ObjectProperty>
     
@@ -957,7 +808,6 @@
     <owl:ObjectProperty rdf:about="&elod;regionCode">
         <rdfs:label xml:lang="en">region code</rdfs:label>
         <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a region code.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -978,19 +828,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;relatedFek">
         <rdfs:label xml:lang="en">related fek</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates a Fek issue with an Organization.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links a Fek issue to a related concept.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Fek"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -999,8 +838,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;relatedLaw">
         <rdfs:label xml:lang="en">related law</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Decision with the related Law.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:comment xml:lang="en">This property links a concept to the related Law.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Law"/>
     </owl:ObjectProperty>
     
@@ -1010,9 +848,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;sector">
         <rdfs:label xml:lang="en">sector</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a sector (e.g. of trade)</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links to a Concept representing a sector (e.g. of trade)</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -1024,16 +861,6 @@
         <rdfs:label xml:lang="en">seller</rdfs:label>
         <rdfs:comment xml:lang="en">Seller of a service or product to a Buyer.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenditureLine"/>
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1042,19 +869,9 @@
 
     <owl:ObjectProperty rdf:about="&elod;signer">
         <rdfs:label xml:lang="en">signer</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Decision with the Signer who signed it.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property links an Administrative Decision with the Signer who signed it.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&foaf;Person"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1074,8 +891,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;timePeriod">
         <rdfs:label xml:lang="en">time period</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a Decision with the related time period.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:comment xml:lang="en">This property links a concept with the related time period.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;TimePeriod"/>
     </owl:ObjectProperty>
     
@@ -1085,8 +901,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;transactionType">
         <rdfs:label xml:lang="en">transaction type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a concept in a code list used to distinguish transaction types (e.g. commitment, disbursement etc.)</rdfs:comment>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/TransactionType/</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a concept in a code list used to distinguish transaction types (e.g. commitment, disbursement etc.)</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -1098,27 +914,7 @@
     <owl:ObjectProperty rdf:about="&dct;publisher">
         <rdfs:label xml:lang="en">publisher</rdfs:label>
         <rdfs:comment xml:lang="en">An entity responsible for making the resource available.</rdfs:comment>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                    <rdf:Description rdf:about="&foaf;Organization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -1203,8 +999,8 @@
         <rdfs:label xml:lang="en">Broader</rdfs:label>
         <rdfs:label xml:lang="en">Broader concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more general (&quot;broader&quot;) than the other (&quot;narrower&quot;).</rdfs:comment>
-        <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -1213,7 +1009,7 @@
 
     <owl:ObjectProperty rdf:about="&skos;hasTopConcept">
         <rdfs:label xml:lang="en">has top concept</rdfs:label>
-        <rdfs:comment xml:lang="en">In order to provide an efficient access to the entry points of broader/narrower concept hierarchies, SKOS defines a skos:hasTopConcept property. This property allows one to link a concept scheme to the (possibly many) most general concepts it contains.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property allows one to link a concept scheme to the (possibly many) most general concepts it contains.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
         <owl:inverseOf rdf:resource="&skos;topConceptOf"/>
@@ -1238,8 +1034,8 @@
         <rdfs:label xml:lang="en">Narrower</rdfs:label>
         <rdfs:label xml:lang="en">Narrower concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more specific (&quot;narrower&quot;) than the other (&quot;broader&quot;).</rdfs:comment>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
         <owl:inverseOf rdf:resource="&skos;broader"/>
     </owl:ObjectProperty>
     
@@ -1326,13 +1122,18 @@
 
     <owl:ObjectProperty rdf:about="&rov;orgType">
         <rdfs:label xml:lang="en">organization type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property records the type of company.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property records the type of organization.</rdfs:comment>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/OrganisationType/</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
-        <rdfs:domain rdf:resource="&org;Organization"/>
-        <rdfs:domain rdf:resource="&rov;RegisteredOrganization"/>
-        <rdfs:domain rdf:resource="&foaf;Organization"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
+                    <rdf:Description rdf:about="&org;Organization"/>
+                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -1386,19 +1187,8 @@
     <owl:DatatypeProperty rdf:about="&elod;ada">
         <rdfs:label xml:lang="en">ada</rdfs:label>
         <rdfs:comment xml:lang="en">It is a unique code that acquires any action after completion of the registration in Greek Transparency Portal. It is mandatory that every administrative decision should have this code.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1440,8 +1230,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;completion">
         <rdfs:label xml:lang="en">completion</rdfs:label>
-        <rdfs:comment xml:lang="en">The percentage of completion of ongoing works for a Public Project.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
+        <rdfs:comment xml:lang="en">The percentage of completion of an activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
@@ -1452,18 +1241,8 @@
     <owl:DatatypeProperty rdf:about="&elod;correctedVersionId">
         <rdfs:label xml:lang="en">corrected version id</rdfs:label>
         <rdfs:comment xml:lang="en">The Version Id of a corrected decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1473,41 +1252,8 @@
     <owl:DatatypeProperty rdf:about="&elod;countOfRelatedProjects">
         <rdfs:label xml:lang="en">count of related projects</rdfs:label>
         <rdfs:comment xml:lang="en">The total count of subprojects which are parts of a specific Public Project.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#cpvCode -->
-
-    <owl:DatatypeProperty rdf:about="&elod;cpvCode">
-        <rdfs:label xml:lang="en">Cpv Code</rdfs:label>
-        <rdfs:comment xml:lang="en">The code of a CPV instance.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;CPV"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#cpvEnglishSubject -->
-
-    <owl:DatatypeProperty rdf:about="&elod;cpvEnglishSubject">
-        <rdfs:label xml:lang="en">Cpv English Subject</rdfs:label>
-        <rdfs:comment xml:lang="en">The english name of a CPV instance.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;CPV"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#cpvGreekSubject -->
-
-    <owl:DatatypeProperty rdf:about="&elod;cpvGreekSubject">
-        <rdfs:label xml:lang="en">Cpv Greek Subject</rdfs:label>
-        <rdfs:comment xml:lang="en">The greek name of a CPV instance.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;CPV"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -1527,18 +1273,8 @@
     <owl:DatatypeProperty rdf:about="&elod;decisionType">
         <rdfs:label xml:lang="en">decision type</rdfs:label>
         <rdfs:comment xml:lang="en">The type name of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&rdfs;Literal"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1548,18 +1284,8 @@
     <owl:DatatypeProperty rdf:about="&elod;decisionTypeId">
         <rdfs:label xml:lang="en">decision type id</rdfs:label>
         <rdfs:comment xml:lang="en">The type id of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1568,19 +1294,9 @@
 
     <owl:DatatypeProperty rdf:about="&elod;documentType">
         <rdfs:label xml:lang="en">document type</rdfs:label>
-        <rdfs:comment xml:lang="en">The type of a Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The type of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1590,18 +1306,8 @@
     <owl:DatatypeProperty rdf:about="&elod;documentUrl">
         <rdfs:label xml:lang="en">document url</rdfs:label>
         <rdfs:comment xml:lang="en">The URL address of the PDF file of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1621,17 +1327,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;endDate">
         <rdfs:label xml:lang="en">end date</rdfs:label>
-        <rdfs:comment xml:lang="en">The Date that a Public Project ends.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:comment xml:lang="en">The date that an activity ends.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1686,7 +1383,7 @@
         <rdfs:label xml:lang="en">fek year</rdfs:label>
         <rdfs:comment xml:lang="en">The number of a FEK issue.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Fek"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     
 
@@ -1695,8 +1392,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;financialYear">
         <rdfs:label xml:lang="en">financial year</rdfs:label>
-        <rdfs:comment xml:lang="en">The financial year that the Decision concerns.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;CommittedItem"/>
+        <rdfs:comment xml:lang="en">The financial year of an activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     
@@ -1728,8 +1424,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;interCountryLaw">
         <rdfs:label xml:lang="en">internal country law</rdfs:label>
-        <rdfs:comment xml:lang="en">Indicates whether a law is interCountry or not.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:comment xml:lang="en">Indicates whether a law is inter-country or not.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;boolean"/>
     </owl:DatatypeProperty>
     
@@ -1772,7 +1468,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;lawNumber">
         <rdfs:label xml:lang="en">law number</rdfs:label>
-        <rdfs:comment xml:lang="en">The numer of law.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The number of law.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Law"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -1794,7 +1490,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;numberOfPeople">
         <rdfs:label xml:lang="en">number of people</rdfs:label>
-        <rdfs:comment xml:lang="en">The muber of employees.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The number of employees.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Decision"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
@@ -1817,7 +1513,6 @@
     <owl:DatatypeProperty rdf:about="&elod;plannedEndDate">
         <rdfs:label xml:lang="en">planned end date</rdfs:label>
         <rdfs:comment xml:lang="en">Planned end date of an acitivty</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -1828,7 +1523,6 @@
     <owl:DatatypeProperty rdf:about="&elod;plannedStartDate">
         <rdfs:label xml:lang="en">planned start date</rdfs:label>
         <rdfs:comment xml:lang="en">Planned start date of an acitivty</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -1849,20 +1543,9 @@
 
     <owl:DatatypeProperty rdf:about="&elod;privateData">
         <rdfs:label xml:lang="en">private data</rdfs:label>
-        <rdfs:comment xml:lang="en">Indicates whether a Decision contains private data or not.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Indicates whether an Administrative Decision contains private data or not.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;boolean"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1871,8 +1554,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;proceedingNumber">
         <rdfs:label xml:lang="en">proceeding number</rdfs:label>
-        <rdfs:comment xml:lang="en">proceeding number.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:comment xml:lang="en">Proceeding number of an Adiminstrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -1882,10 +1565,16 @@
 
     <owl:DatatypeProperty rdf:about="&elod;projectId">
         <rdfs:label xml:lang="en">project id</rdfs:label>
-        <rdfs:comment xml:lang="en">The unique identifier of an elod:PublicProject or an elod:AidActivity.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
+        <rdfs:comment xml:lang="en">The unique identifier of an Public Project or an Aid Activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;AidActivity"/>
+                    <rdf:Description rdf:about="&elod;PublicProject"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1894,20 +1583,9 @@
 
     <owl:DatatypeProperty rdf:about="&elod;protocolNumber">
         <rdfs:label xml:lang="en">protocol number</rdfs:label>
-        <rdfs:comment xml:lang="en">The protocol number of a Decision.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The protocol number of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1916,7 +1594,6 @@
 
     <owl:DatatypeProperty rdf:about="&elod;refCode">
         <rdfs:label xml:lang="en">Reference code</rdfs:label>
-        <rdfs:comment xml:lang="en">Machine-readable identification string for the organisation.</rdfs:comment>
         <rdfs:comment xml:lang="en">Machine-readable identification string for the organization.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;string"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
@@ -1928,7 +1605,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;refersTo">
         <rdfs:label xml:lang="en">refers to</rdfs:label>
-        <rdfs:comment xml:lang="en">Where an administrative decision refers to. It could be referred to either a project or a subproject.</rdfs:comment>
+        <rdfs:comment xml:lang="en">What an administrative decision refers to. It could refer to either a project or a subproject.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1938,7 +1615,7 @@
     <owl:DatatypeProperty rdf:about="&elod;regulatoryActNumber">
         <rdfs:label xml:lang="en">Regulatory act number</rdfs:label>
         <rdfs:comment xml:lang="en">The number of Regulatory Act.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Decision"/>
+        <rdfs:domain rdf:resource="&elod;RegulatoryAct"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -1959,17 +1636,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;startDate">
         <rdfs:label xml:lang="en">start date</rdfs:label>
-        <rdfs:comment xml:lang="en">The Date that a Public Project starts.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
+        <rdfs:comment xml:lang="en">The date that an activity starts.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                    <rdf:Description rdf:about="&elod;Subsidy"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -1978,20 +1646,8 @@
 
     <owl:DatatypeProperty rdf:about="&elod;submissionTimestamp">
         <rdfs:label xml:lang="en">submission timestamp</rdfs:label>
-        <rdfs:comment xml:lang="en">The date a Decision was inserted into the system.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The date a concept was inserted into the system.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2003,7 +1659,6 @@
         <rdfs:comment xml:lang="en">The date on which the transaction was made or (in the case of commitments) agreed.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2024,9 +1679,15 @@
     <owl:DatatypeProperty rdf:about="&elod;valueAddedTaxIncluded">
         <rdfs:label xml:lang="en">VAT included</rdfs:label>
         <rdfs:comment xml:lang="en">This property specifies whether VAT is included in an amount.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
-        <rdfs:domain rdf:resource="&gr;UnitPriceSpecification"/>
         <rdfs:range rdf:resource="&xsd;boolean"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Amount"/>
+                    <rdf:Description rdf:about="&gr;UnitPriceSpecification"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2038,7 +1699,6 @@
         <rdfs:comment xml:lang="en">The date to be used for determining the exchange rate for currency conversions.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2047,20 +1707,9 @@
 
     <owl:DatatypeProperty rdf:about="&elod;versionId">
         <rdfs:label xml:lang="en">version id</rdfs:label>
-        <rdfs:comment xml:lang="en">Indicates whether the Organization is a one without vat Id.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Indicates the version id of an Administrative Decision.</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2070,7 +1719,6 @@
     <owl:DatatypeProperty rdf:about="&dct;description">
         <rdfs:label xml:lang="en">description</rdfs:label>
         <rdfs:comment xml:lang="en">A description of the resource. Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -2082,18 +1730,6 @@
         <rdfs:label xml:lang="en">issued</rdfs:label>
         <rdfs:comment xml:lang="en">Date of formal issuance (e.g., publication) of the resource.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2103,19 +1739,6 @@
     <owl:DatatypeProperty rdf:about="&dct;subject">
         <rdfs:label xml:lang="en">subject</rdfs:label>
         <rdfs:comment xml:lang="en">The topic of the resource. Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary.</rdfs:comment>
-        <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;BudgetItem"/>
-                    <rdf:Description rdf:about="&elod;CommittedItem"/>
-                    <rdf:Description rdf:about="&elod;Decision"/>
-                    <rdf:Description rdf:about="&elod;ExpenseApprovalItem"/>
-                    <rdf:Description rdf:about="&elod;SpendingItem"/>
-                    <rdf:Description rdf:about="&pc;Contract"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2125,7 +1748,6 @@
     <owl:DatatypeProperty rdf:about="&dct;title">
         <rdfs:label xml:lang="en">title</rdfs:label>
         <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;Subproject"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -2148,17 +1770,8 @@
     <owl:DatatypeProperty rdf:about="&gr;legalName">
         <rdfs:label xml:lang="en">legal name</rdfs:label>
         <rdfs:comment xml:lang="en">The legal name of an organization. It may be accompanied with a language indicator.</rdfs:comment>
+        <rdfs:domain rdf:resource="&gr;BusinessEntity"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&org;OrganizationalUnit"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:DatatypeProperty>
     
 
@@ -2236,10 +1849,7 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
-        <rdfs:label xml:lang="en">preferred label</rdfs:label>
-        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
     
 
 
@@ -2510,6 +2120,8 @@
     <!-- http://linkedeconomy.org/ontology#DisbursedItem -->
 
     <owl:Class rdf:about="&elod;DisbursedItem">
+        <rdfs:label>Disbursed Item</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&elod;FinancialDecision"/>
         <rdfs:comment>The total amount of outgoing funds that are placed at the disposal of a recipient government or organisation, or funds transferred between two separately reported activities.</rdfs:comment>
     </owl:Class>
     
@@ -3026,9 +2638,24 @@
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:comment xml:lang="en">Physical Persons. In LinkedEconomy we are interested for persons as economic agents.</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
 
