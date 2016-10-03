@@ -610,31 +610,12 @@
     
 
 
-    <!-- http://www.w3.org/ns/regorg#orgCategory -->
-
-    <owl:ObjectProperty rdf:about="&rov;orgCategory">
-        <rdfs:label xml:lang="en">organization category</rdfs:label>
-        <rdfs:comment xml:lang="en">Code of Buyer category.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;OrganizationCategory"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&gr;BusinessEntity"/>
-                    <rdf:Description rdf:about="&org;Organization"/>
-                    <rdf:Description rdf:about="&rov;RegisteredOrganization"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.w3.org/ns/regorg#orgStatus -->
 
     <owl:ObjectProperty rdf:about="&rov;orgStatus">
         <rdfs:label xml:lang="en">organization status</rdfs:label>
         <rdfs:comment xml:lang="en">Indication of whether the Buyer is active. Possible values are active, inactive and pending.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;OrganizationStatus"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
