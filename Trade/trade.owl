@@ -91,8 +91,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label xml:lang="en">Amount</rdfs:label>
-        <rdfs:range rdf:resource="&elod;Amount"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:comment>This property links to an amount.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -102,7 +101,7 @@
     <owl:ObjectProperty rdf:about="&elod;concerns">
         <rdfs:label xml:lang="en">Concerns</rdfs:label>
         <rdfs:seeAlso>http://www.wcoomd.org/en/topics/nomenclature.aspx</rdfs:seeAlso>
-        <rdfs:comment>Links to a code representing the related commodity group.</rdfs:comment>
+        <rdfs:comment>Links to a concept an activity is related to, e.g. a code representing the related commodity group.</rdfs:comment>
         <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:ObjectProperty>
     
@@ -121,7 +120,6 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
         <rdfs:label xml:lang="en">Currency</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
         <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:ObjectProperty>
     
@@ -170,6 +168,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;financialYear">
         <rdfs:label xml:lang="en">Financial year</rdfs:label>
+        <rdfs:comment xml:lang="en">The financial year of an activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     

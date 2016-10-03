@@ -88,8 +88,6 @@
         <rdfs:label xml:lang="en">Activity status</rdfs:label>
         <rdfs:comment xml:lang="en">Links to a code indicating the lifecycle status of an ODA activity from pipeline to completion</rdfs:comment>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/ActivityStatus/</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -111,7 +109,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;amount">
         <rdfs:label>Amount</rdfs:label>
-        <rdfs:range rdf:resource="&elod;Amount"/>
+        <rdfs:comment xml:lang="en">This property links to an amount.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -120,7 +118,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;benefactor">
         <rdfs:label xml:lang="en">Benefactor</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to the agent representing the aid donor / extending organization.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Links to the agent representing the party providing the funds.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
@@ -130,7 +128,7 @@
 
     <owl:ObjectProperty rdf:about="&elod;beneficiary">
         <rdfs:label xml:lang="en">Beneficiary</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to the agent representing the aid recipient / implementing organization.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Links to the agent representing the party receiving the funds.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
@@ -141,9 +139,7 @@
     <owl:ObjectProperty rdf:about="&elod;collaborationType">
         <rdfs:label xml:lang="en">Collaboration type</rdfs:label>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
-        <rdfs:comment xml:lang="en">Links to a DAC/CRS classification used to determine the character of resource flows (bilateral or multilateral).</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Links to a classification used to determine the character of resource flows (bilateral or multilateral), e.g  a DAC/CRS classification for ODA activities.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -162,10 +158,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;financeType">
         <rdfs:label xml:lang="en">Finance type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a DAC/CRS transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Links to a transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&elod;AidActivity"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -187,7 +181,6 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
         <rdfs:label xml:lang="en">Currency</rdfs:label>
-        <rdfs:domain rdf:resource="&elod;Amount"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -197,8 +190,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedCommittedItem">
         <rdfs:label xml:lang="en">Commitment</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a concept, such as a Contract or a Spending Item, to a Committed Item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -208,7 +201,6 @@
     <owl:ObjectProperty rdf:about="&elod;hasRelatedDisbursedItem">
         <rdfs:label xml:lang="en">Disbursement</rdfs:label>
         <rdfs:range rdf:resource="&elod;DisbursedItem"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -219,6 +211,15 @@
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
         <rdfs:comment>Links to a related financial transaction between two entities.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#regionCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;regionCode">
+        <rdfs:label xml:lang="en">Region</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a skos:Concept representing a region code.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -327,6 +328,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;endDate">
         <rdfs:label xml:lang="en">End date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date on which an activity ends.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
@@ -354,6 +356,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;projectId">
         <rdfs:label xml:lang="en">Project ID</rdfs:label>
+        <rdfs:comment xml:lang="en">The unique identifier of a Public Project or an Aid Activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -374,6 +377,7 @@
 
     <owl:DatatypeProperty rdf:about="&elod;startDate">
         <rdfs:label xml:lang="en">Start date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date on which an activity ends.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
     </owl:DatatypeProperty>
     
