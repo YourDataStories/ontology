@@ -36,12 +36,12 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology/oda">
-        <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
+        <rdfs:label xml:lang="en">Linked Economy - Official Development Assistance</rdfs:label>
         <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
         <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
-        <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
         <owl:versionInfo xml:lang="en">Latest Update: 2016-03-22</owl:versionInfo>
         <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
+        <dc:title xml:lang="en">Official Development Assistance Ontology</dc:title>
         <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
     </owl:Ontology>
