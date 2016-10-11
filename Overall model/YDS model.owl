@@ -45,9 +45,8 @@
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
         <dct:creator xml:lang="en">Gerasimos Razis</dct:creator>
         <dct:creator xml:lang="en">Giorgos Vafeiadis</dct:creator>
-        <dc:title xml:lang="en">IATI Activities Ontology</dc:title>
-        <dc:title xml:lang="en">International Trade Ontology</dc:title>
         <owl:versionInfo xml:lang="en">Latest Update: 2016-03-30</owl:versionInfo>
+        <dc:title xml:lang="en">Linked Economy Ontology</dc:title>
         <creator xml:lang="en">Michalis Vafopoulos</creator>
         <creator xml:lang="en">Uros Milosevic</creator>
         <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
@@ -496,6 +495,15 @@
         <rdfs:label xml:lang="en">has related spending item</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a concept, such as a public project, to a related spending item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;SpendingItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasStatisticalIndicator -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasStatisticalIndicator">
+        <rdfs:label xml:lang="en">has statistical indicator</rdfs:label>
+        <rdfs:range rdf:resource="&elod;StatisticalIndicator"/>
     </owl:ObjectProperty>
     
 
@@ -1028,6 +1036,15 @@
         <rdfs:comment xml:lang="en">This property specifies an amount in terms of actual currency value.</rdfs:comment>
         <rdfs:domain rdf:resource="&elod;Amount"/>
         <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="&elod;hasValue">
+        <rdfs:label xml:lang="en">has value</rdfs:label>
+        <rdfs:comment xml:lang="en">Any value other than a currency value.</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -1764,6 +1781,15 @@
         <rdfs:label xml:lang="en">Spending Item</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;FinancialDecision"/>
         <rdfs:comment xml:lang="en">This is the final stage of an Expense Budget Item. Part or total of the expense approval items proceed to payment from buyer to seller.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#StatisticalIndicator -->
+
+    <owl:Class rdf:about="&elod;StatisticalIndicator">
+        <rdfs:label xml:lang="en">Statistical Indicator</rdfs:label>
+        <rdfs:comment xml:lang="en">Any statistical indicator (e.g. GDP).</rdfs:comment>
     </owl:Class>
     
 
