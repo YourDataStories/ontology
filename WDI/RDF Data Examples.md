@@ -6,17 +6,17 @@ skos: | http://www.w3.org/2004/02/skos/core#
 elod: |  http://linkedeconomy.org/ontology#
 
 
-### DESCRIPTION OF A NON-FINANCIAL STATISTICAL INDICATOR ###
+### DESCRIPTION OF A STATISTICAL INDICATOR ###
 ```xml
-:AFG/AG.CON.FERT.PT.ZS/2009 a elod:StatisticalIndicator;
+:ZWE/SH.STA.BRTC.ZS/2009 a elod:StatisticalIndicator;
                     elod:financialYear “2009-01-01”^^xsd:gYear;
-                    elod:hasValue “258.9739821”^^xsd:string;
+                    elod:hasValue “60.2”^^xsd:string;
                     elod:concerns
 	                    [ a skos:Concept;
-						  skos:prefLabel "Fertilizer consumption (% of fertilizer production)"^^xsd:string;
-						  skos:note "Food and Agriculture Organization, electronic files and web site."^^xsd:string;
-						  skos:notation "AG.CON.FERT.PT.ZS"^^xsd:string;
-						  skos:definition "Fertilizer consumption measures the quantity of plant nutrients used per unit of arable land. Fertilizer products cover nitrogenous, potash, and phosphate fertilizers (including ground rock phosphate). Traditional nutrients--animal and plant manures--are not included. For the purpose of data dissemination, FAO has adopted the concept of a calendar year (January to December). Some countries compile fertilizer data on a calendar year basis, while others are on a split-year basis."^^xsd:string;
+						  skos:prefLabel "Births attended by skilled health staff (% of total)"^^xsd:string;
+						  skos:note "UNICEF, State of the World's Children, Childinfo, and Demographic and Health Surveys."^^xsd:string;
+						  skos:notation "SH.STA.BRTC.ZS"^^xsd:string;
+						  skos:definition "Births attended by skilled health staff are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and advice to women during pregnancy, labor, and the postpartum period; to conduct deliveries on their own; and to care for newborns."^^xsd:string;
 		                  skos:inScheme
 		                      [ a skos:ConceptScheme;
                                 skos:prefLabel "World Development Indicators code list"^^xsd:string;
@@ -24,9 +24,9 @@ elod: |  http://linkedeconomy.org/ontology#
                          ];
 ```
 
-### DESCRIPTION OF A FINANCIAL STATISTICAL INDICATOR ###
+### DESCRIPTION OF A FINANCIAL INDICATOR ###
 ```xml
-:AFG/BN.GSR.MRCH.CD/2009 a elod:StatisticalIndicator;
+:AFG/BN.GSR.MRCH.CD/2009 a elod:FinancialIndicator;
                     elod:financialYear “2009-01-01”^^xsd:gYear;
                     elod:concerns
 	                    [ a skos:Concept;
