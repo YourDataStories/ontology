@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY org "http://www.w3.org/ns/org#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY rov "http://www.w3.org/ns/regorg#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY mu "http://mu.semte.ch/vocabularies/" >
+    <!ENTITY gr "http://purl.org/goodrelations/v1#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY elod "http://linkedeconomy.org/ontology#" >
+    <!ENTITY ontology "http://linkedeconomy.org/ontology##" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://linkedeconomy.org/ontology/wdi#"
+     xml:base="http://linkedeconomy.org/ontology/wdi"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:org="http://www.w3.org/ns/org#"
+     xmlns:mu="http://mu.semte.ch/vocabularies/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:elod="http://linkedeconomy.org/ontology#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rov="http://www.w3.org/ns/regorg#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:ontology="&elod;#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology/wdi">
+        <rdfs:label xml:lang="en">Linked Economy - World Development Indicators</rdfs:label>
+        <elod:creator xml:lang="en">Gerasimos Razis</elod:creator>
+        <elod:creator xml:lang="en">Giorgos Vafeiadis</elod:creator>
+        <owl:versionInfo xml:lang="en">Latest Update: 2016-03-22</owl:versionInfo>
+        <elod:creator xml:lang="en">Michalis Vafopoulos</elod:creator>
+        <elod:creator xml:lang="en">Uros Milosevic</elod:creator>
+        <dc:title xml:lang="en">World Development Indicators Ontology</dc:title>
+        <foaf:homepage rdf:resource="http://linkedeconomy.org/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#creator -->
+
+    <owl:AnnotationProperty rdf:about="&elod;creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="&xsd;gYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/amount -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/amount">
+        <rdfs:label xml:lang="en">Amount</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to an amount.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/concerns -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/concerns">
+        <rdfs:label xml:lang="en">Concerns</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a concept an activity is related to, e.g. a code representing the related commodity group.</rdfs:comment>
+        <rdfs:seeAlso xml:lang="en">http://www.wcoomd.org/en/topics/nomenclature.aspx</rdfs:seeAlso>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/hasCurrency -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/hasCurrency">
+        <rdfs:label xml:lang="en">Currency</rdfs:label>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/#hasStatisticalIndicator -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/#hasStatisticalIndicator">
+        <rdfs:label xml:lang="en">has statistical indicator</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links an economic agent to a statistical indicator.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/#StatisticalIndicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/wdi#hasFinancialIndicator -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/wdi#hasFinancialIndicator">
+        <rdfs:label xml:lang="en">has financial indicator</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links an economic agent to a financial indicator.</rdfs:comment>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/#FinancialIndicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:ObjectProperty rdf:about="&skos;inScheme">
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;ConceptScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/financialYear -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/financialYear">
+        <rdfs:label xml:lang="en">Financial year</rdfs:label>
+        <rdfs:comment xml:lang="en">The financial year of an activity.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;gYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/hasCurrencyValue">
+        <rdfs:label xml:lang="en">Currency value</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/hasValue -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/hasValue">
+        <rdfs:label xml:lang="en">Value</rdfs:label>
+        <rdfs:comment xml:lang="en">Any value other than a currency value.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;altLabel">
+        <rdfs:label xml:lang="en">Alternative label</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:DatatypeProperty rdf:about="&skos;definition">
+        <rdfs:label xml:lang="en">Definition</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+    <owl:DatatypeProperty rdf:about="&skos;notation">
+        <rdfs:label xml:lang="en">Notation</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:DatatypeProperty rdf:about="&skos;note">
+        <rdfs:label xml:lang="en">Note</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">Preferred label</rdfs:label>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;ConceptScheme"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/Country -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/Country">
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/#Amount -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/#Amount">
+        <rdfs:label xml:lang="en">Amount</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/#FinancialIndicator -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/#FinancialIndicator">
+        <rdfs:label xml:lang="en">Financial Indicator</rdfs:label>
+        <rdfs:comment xml:lang="en">A financial indicator is a data element that represents financial data for a specified time, place, and other characteristics.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/#StatisticalIndicator -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/#StatisticalIndicator">
+        <rdfs:label xml:lang="en">Statistical Indicator</rdfs:label>
+        <rdfs:comment xml:lang="en">A statistical indicator is a data element that represents statistical data for a specified time, place, and other characteristics.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="&skos;Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="&skos;ConceptScheme"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
