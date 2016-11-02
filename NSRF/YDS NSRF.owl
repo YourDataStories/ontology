@@ -173,21 +173,21 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#amount -->
-
-    <owl:ObjectProperty rdf:about="&elod;amount">
-        <rdfs:label xml:lang="en">amount</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links to an amount.</rdfs:comment>
-        <rdfs:range rdf:resource="&gr;UnitPriceSpecification"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#beneficiary -->
 
     <owl:ObjectProperty rdf:about="&elod;beneficiary">
         <rdfs:label xml:lang="en">beneficiary</rdfs:label>
         <rdfs:comment xml:lang="en">The recipient of a subsidy. It could be any type of organisation or person.</rdfs:comment>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#buyer -->
+
+    <owl:ObjectProperty rdf:about="&elod;buyer">
+        <rdfs:label>buyer</rdfs:label>
+        <rdfs:comment>Buyer of a service or product from a Seller.</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
@@ -203,6 +203,26 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasBudgetAggregate -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasBudgetAggregate">
+        <rdfs:label xml:lang="en">has budget aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a budget activity with an aggregate entity</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasContractAggregate -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasContractAggregate">
+        <rdfs:label xml:lang="en">has contract aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a contract activity with an aggregate entity</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasCurrency -->
 
     <owl:ObjectProperty rdf:about="&elod;hasCurrency">
@@ -212,6 +232,7 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&elod;Aggregate"/>
                     <rdf:Description rdf:about="&elod;Amount"/>
                     <rdf:Description rdf:about="&gr;UnitPriceSpecification"/>
                 </owl:unionOf>
@@ -221,52 +242,43 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasExpenditureLine -->
+    <!-- http://linkedeconomy.org/ontology#hasOperationalCode -->
 
-    <owl:ObjectProperty rdf:about="&elod;hasExpenditureLine">
-        <rdfs:label xml:lang="en">has expenditure line</rdfs:label>
-        <rdfs:comment xml:lang="en">This property relates a part of a payment with an elod:ExpenditureLine.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;ExpenditureLine"/>
-        <rdfs:domain rdf:resource="&elod;FinancialDecision"/>
+    <owl:ObjectProperty rdf:about="&elod;hasOperationalCode">
+        <rdfs:label xml:lang="en">has operational code</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a Concept representing an operation of an activity (e.g. Human resources development)</rdfs:comment>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasRelatedBudgetItem -->
+    <!-- http://linkedeconomy.org/ontology#hasProjectStatus -->
 
-    <owl:ObjectProperty rdf:about="&elod;hasRelatedBudgetItem">
-        <rdfs:label xml:lang="en">has related budget item</rdfs:label>
-        <rdfs:comment xml:lang="en">Links an undertaken action, such as a public payment to a related budget item.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;BudgetItem"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;PublicProject"/>
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+    <owl:ObjectProperty rdf:about="&elod;hasProjectStatus">
+        <rdfs:label xml:lang="en">has project status</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a Concept representing a status of a Public Project (e.g. Completed)</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasRelatedProject -->
+    <!-- http://linkedeconomy.org/ontology#hasRelatedContract -->
 
-    <owl:ObjectProperty rdf:about="&elod;hasRelatedProject">
-        <rdfs:label xml:lang="en">has related project</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a concept to the related projects.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;Subproject"/>
-        <rdfs:domain rdf:resource="&elod;Subsidy"/>
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedContract">
+        <rdfs:label xml:lang="en">has related contract</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a concept to the related contracts.</rdfs:comment>
+        <rdfs:range rdf:resource="&pc;Contract"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasRelatedSpendingItem -->
+    <!-- http://linkedeconomy.org/ontology#hasSpendingAggregate -->
 
-    <owl:ObjectProperty rdf:about="&elod;hasRelatedSpendingItem">
-        <rdfs:label xml:lang="en">has related spending item</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a concept, such as a public project, to a related spending item.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;SpendingItem"/>
+    <owl:ObjectProperty rdf:about="&elod;hasSpendingAggregate">
+        <rdfs:label xml:lang="en">has spending aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a payment activity with an aggregate entity</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
     </owl:ObjectProperty>
     
 
@@ -345,22 +357,31 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#completion -->
+    <!-- http://linkedeconomy.org/ontology#completionOfContracts -->
 
-    <owl:DatatypeProperty rdf:about="&elod;completion">
-        <rdfs:label xml:lang="en">completion</rdfs:label>
-        <rdfs:comment xml:lang="en">The percentage of completion of an activity.</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="&elod;completionOfContracts">
+        <rdfs:label xml:lang="en">completion of contracts</rdfs:label>
+        <rdfs:comment xml:lang="en">The percentage of completion of payments of an activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://linkedeconomy.org/ontology#countOfRelatedProjects -->
+    <!-- http://linkedeconomy.org/ontology#completionOfPayments -->
 
-    <owl:DatatypeProperty rdf:about="&elod;countOfRelatedProjects">
+    <owl:DatatypeProperty rdf:about="&elod;completionOfPayments">
+        <rdfs:label xml:lang="en">completion of payments</rdfs:label>
+        <rdfs:comment xml:lang="en">The percentage of completion of payments of an activity.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#countOfRelatedContracts -->
+
+    <owl:DatatypeProperty rdf:about="&elod;countOfRelatedContracts">
         <rdfs:label xml:lang="en">count of related projects</rdfs:label>
-        <rdfs:comment xml:lang="en">The total count of subprojects which are parts of a specific Public Project.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+        <rdfs:comment xml:lang="en">The total count of Contracts(subprojects) which are parts of a specific Public Project.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
@@ -467,6 +488,28 @@
     
 
 
+    <!-- http://purl.org/procurement/public-contracts#actualEndDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;actualEndDate">
+        <rdfs:label xml:lang="en">Actual end date of contract realization</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for actual end date of public contract&apos;s realization. Cardinality 0..1</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#startDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;startDate">
+        <rdfs:label xml:lang="en">Start date of contract</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for start date of public contract realization coming from the contract&apos;s text. Cardinality 0..1</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.opengis.net/ont/geosparql#asWKT -->
 
     <owl:DatatypeProperty rdf:about="&geo;asWKT">
@@ -541,6 +584,15 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#Aggregate -->
+
+    <owl:Class rdf:about="&elod;Aggregate">
+        <rdfs:label xml:lang="en">Aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This class is a conceptual entity regarding information about the aggregated amounts of some other entity. It could be Payment, Budget, Contract, Organization etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#AidActivity -->
 
     <owl:Class rdf:about="&elod;AidActivity">
@@ -554,25 +606,6 @@
 
     <owl:Class rdf:about="&elod;Amount">
         <rdfs:label xml:lang="en">Amount</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#BudgetItem -->
-
-    <owl:Class rdf:about="&elod;BudgetItem">
-        <rdfs:label xml:lang="en">Budget Item</rdfs:label>
-        <rdfs:comment xml:lang="en">The parts of a Budget. Allocation of funds (revenue or expense) for specific purposes based on an accounting system and according to a time plan (usually for a year).</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://linkedeconomy.org/ontology#ExpenditureLine -->
-
-    <owl:Class rdf:about="&elod;ExpenditureLine">
-        <rdfs:label xml:lang="el">Τμήμα Δαπάνης</rdfs:label>
-        <rdfs:label xml:lang="en">Expenditure Line</rdfs:label>
-        <rdfs:comment xml:lang="en">It&apos;s a specific expenditure line of a financial decision that involves expenses.</rdfs:comment>
     </owl:Class>
     
 
@@ -603,7 +636,17 @@
     <owl:Class rdf:about="&elod;PublicProject">
         <rdfs:label xml:lang="el">Δημόσιο Έργο</rdfs:label>
         <rdfs:label xml:lang="en">Public Project</rdfs:label>
-        <rdfs:comment xml:lang="en">A group of activities aiming at the realization of a functionally distinct object / result. Allocation of resources to projects is done after evaluation according to specific and predefined criteria. The project is implemented by one or more entities called Beneficiaries (public or private organisation, body or enterprise). When the Beneficiary is a public body, the projects are implemented either by contractors selected through a public call for tender or by the public body’s own means.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A group of activities aiming at the realization of a functionally distinct object/result. Allocation of resources to projects takes place after evaluation according to specific criteria. The Public Project is implemented by one or more entities called Beneficiaries (public or private organisations).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#PublicWork -->
+
+    <owl:Class rdf:about="&elod;PublicWork">
+        <rdfs:label xml:lang="en">Public Work</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&elod;PublicProject"/>
+        <rdfs:comment xml:lang="en">Public Works are Public Projects which are implemented either by contractors (Sellers) selected through a public call for tender or by the public body’s own means.</rdfs:comment>
     </owl:Class>
     
 
@@ -618,21 +661,12 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#Subproject -->
-
-    <owl:Class rdf:about="&elod;Subproject">
-        <rdfs:label xml:lang="en">Subproject</rdfs:label>
-        <rdfs:comment xml:lang="en">Subproject is a part of a Project that corresponds to the implementation of a distinct part of the total physical object and is reflected either in a corresponding legal commitment or in the decision for the implementation by own means.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#Subsidy -->
 
     <owl:Class rdf:about="&elod;Subsidy">
         <rdfs:label xml:lang="en">Subsidy</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;PublicProject"/>
-        <rdfs:comment xml:lang="en">Subsidies are considered to be government payments (transfers in strict economic terminology) to government agencies, firms and households based on a development plan. The difference between ordinary procurement and subsidies/aid is that in the latter final products and services are remaining in the ownership of the beneficiary.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Subsidies are government payments (or transfers, in economic terms) to firms or individuals based on an open call (in most cases) and followed by an agreed business plan. In the case of Subsidies the resulted products or services are remaining in the ownership of the Beneficiary.</rdfs:comment>
     </owl:Class>
     
 
@@ -654,6 +688,15 @@
         <rdfs:label xml:lang="el">Προδιαγραφή τιμής ανά μονάδα</rdfs:label>
         <rdfs:label xml:lang="en">Unit Price Specification</rdfs:label>
         <rdfs:comment xml:lang="en"> A conceptual entity that specifies the price asked for a public service or product. It specifies the price, the currency and whether the price includes VAT or not.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Contract -->
+
+    <owl:Class rdf:about="&pc;Contract">
+        <rdfs:label xml:lang="en">Public contract</rdfs:label>
+        <rdfs:comment xml:lang="en">An instance of this class is an abstract information entity about a public contract. It consists of all currently known information about a contract, e.g., a contracting authority, services or supplies which shall be purchased, and contract conditions (e.g., important dates, expected price, etc.). It also informs about tenders received from particular bidders and about an accepted tender. If the contract has already been realized it also informs about an actual price of realization, etc.</rdfs:comment>
     </owl:Class>
     
 

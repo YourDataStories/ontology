@@ -2,8 +2,8 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY dct "http://purl.org/dc/terms/" >
     <!ENTITY org "http://www.w3.org/ns/org#" >
+    <!ENTITY dct "http://purl.org/dc/terms/" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY rov "http://www.w3.org/ns/regorg#" >
     <!ENTITY sf "http://www.opengis.net/ont/sf#" >
@@ -14,9 +14,9 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY elod "http://linkedeconomy.org/ontology#" >
     <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
     <!ENTITY elodGeo "http://linkedeconomy.org/geoOntology#" >
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY pc "http://purl.org/procurement/public-contracts#" >
 ]>
@@ -24,23 +24,23 @@
 
 <rdf:RDF xmlns="http://linkedeconomy.org/ontology#"
      xml:base="http://linkedeconomy.org/ontology"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:org="http://www.w3.org/ns/org#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:gr="http://purl.org/goodrelations/v1#"
-     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:geo="http://www.opengis.net/ont/geosparql#"
-     xmlns:sf="http://www.opengis.net/ont/sf#"
-     xmlns:elod="http://linkedeconomy.org/ontology#"
-     xmlns:pc="http://purl.org/procurement/public-contracts#"
-     xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:rov="http://www.w3.org/ns/regorg#"
-     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
+     xmlns:sf="http://www.opengis.net/ont/sf#"
+     xmlns:org="http://www.w3.org/ns/org#"
+     xmlns:rov="http://www.w3.org/ns/regorg#"
+     xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:pc="http://purl.org/procurement/public-contracts#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:elodGeo="http://linkedeconomy.org/geoOntology#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:elod="http://linkedeconomy.org/ontology#">
     <owl:Ontology rdf:about="http://linkedeconomy.org/ontology">
         <rdfs:label xml:lang="en">Linked Economy</rdfs:label>
         <dct:creator xml:lang="en">Gerasimos Razis</dct:creator>
@@ -85,7 +85,10 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+    </owl:AnnotationProperty>
     
 
 
@@ -109,6 +112,12 @@
     <!-- http://www.opengis.net/ont/geosparql#wktLiteral -->
 
     <rdfs:Datatype rdf:about="&geo;wktLiteral"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
     
 
 
@@ -212,8 +221,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;collaborationType">
         <rdfs:label xml:lang="en">collaboration type</rdfs:label>
-        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:comment xml:lang="en">Links to a classification used to determine the character of resource flows (bilateral or multilateral), e.g  a DAC/CRS classification for ODA activities.</rdfs:comment>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -266,8 +275,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;financeType">
         <rdfs:label xml:lang="en">finance type</rdfs:label>
-        <rdfs:comment xml:lang="en">Links to a transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
         <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">Links to a transaction classification used to distinguish financial instruments, e.g. grants or loans.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
@@ -277,8 +286,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;flowType">
         <rdfs:label xml:lang="en">flow type</rdfs:label>
-        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:comment xml:lang="en">Links to a DAC/CRS distinction between ODA and other types of resource flow.</rdfs:comment>
+        <rdfs:seeAlso>http://www.oecd.org/dac/stats/dacandcrscodelists.htm</rdfs:seeAlso>
         <rdfs:domain rdf:resource="&elod;AidActivity"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -307,6 +316,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasBudgetAggregate -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasBudgetAggregate">
+        <rdfs:label xml:lang="en">has budget aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a budget activity with an elod:Aggregate class</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasBudgetCategory -->
 
     <owl:ObjectProperty rdf:about="&elod;hasBudgetCategory">
@@ -329,13 +348,23 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasContractAggregate -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasContractAggregate">
+        <rdfs:label xml:lang="en">has contract aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a contract activity with an aggregate entity</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasCorrectedDecision -->
 
     <owl:ObjectProperty rdf:about="&elod;hasCorrectedDecision">
         <rdfs:label xml:lang="en">has corrected decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates any type of Decision to a Decision of the same type.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;AdministrativeDecision"/>
         <rdfs:domain rdf:resource="&elod;AdministrativeDecision"/>
+        <rdfs:range rdf:resource="&elod;AdministrativeDecision"/>
     </owl:ObjectProperty>
     
 
@@ -423,6 +452,16 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasOperationalCode -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasOperationalCode">
+        <rdfs:label xml:lang="en">has operational code</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a Concept representing an operation of an activity (e.g. Human resources development)</rdfs:comment>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasOrigin -->
 
     <owl:ObjectProperty rdf:about="&elod;hasOrigin">
@@ -434,20 +473,23 @@
     
 
 
+    <!-- http://linkedeconomy.org/ontology#hasProjectStatus -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasProjectStatus">
+        <rdfs:label xml:lang="en">has project status</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links to a Concept representing a status of a Public Project (e.g. Completed)</rdfs:comment>
+        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://linkedeconomy.org/ontology#hasRelatedAdministrativeDecision -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedAdministrativeDecision">
         <rdfs:label xml:lang="en">has related administrative decision</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a Public Project to the related Administrative Decisions from Greek Transparency Portal.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;AdministrativeDecision"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&elod;PublicProject"/>
-                    <rdf:Description rdf:about="&elod;Subproject"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -468,6 +510,16 @@
         <rdfs:label xml:lang="en">has related committed item</rdfs:label>
         <rdfs:comment xml:lang="en">This property relates a concept, such as a Contract or a Spending Item, to a Committed Item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;CommittedItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasRelatedContract -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasRelatedContract">
+        <rdfs:label xml:lang="en">has related contract</rdfs:label>
+        <rdfs:comment xml:lang="en">This property links a concept to the related contracts.</rdfs:comment>
+        <rdfs:range rdf:resource="&pc;Contract"/>
     </owl:ObjectProperty>
     
 
@@ -512,22 +564,22 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#hasRelatedProject -->
-
-    <owl:ObjectProperty rdf:about="&elod;hasRelatedProject">
-        <rdfs:label xml:lang="en">has related project</rdfs:label>
-        <rdfs:comment xml:lang="en">This property links a concept to the related projects.</rdfs:comment>
-        <rdfs:range rdf:resource="&elod;Subproject"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#hasRelatedSpendingItem -->
 
     <owl:ObjectProperty rdf:about="&elod;hasRelatedSpendingItem">
         <rdfs:label xml:lang="en">has related spending item</rdfs:label>
         <rdfs:comment xml:lang="en">This property links a concept, such as a public project, to a related spending item.</rdfs:comment>
         <rdfs:range rdf:resource="&elod;SpendingItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#hasSpendingAggregate -->
+
+    <owl:ObjectProperty rdf:about="&elod;hasSpendingAggregate">
+        <rdfs:label xml:lang="en">has spending aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This property relates a payment activity with an elod:Aggregate class</rdfs:comment>
+        <rdfs:range rdf:resource="&elod;Aggregate"/>
     </owl:ObjectProperty>
     
 
@@ -673,8 +725,8 @@
 
     <owl:ObjectProperty rdf:about="&elod;transactionType">
         <rdfs:label xml:lang="en">transaction type</rdfs:label>
-        <rdfs:seeAlso>http://iatistandard.org/201/codelists/TransactionType/</rdfs:seeAlso>
         <rdfs:comment xml:lang="en">Links to a concept in a code list used to distinguish transaction types (e.g. commitment, disbursement etc.)</rdfs:comment>
+        <rdfs:seeAlso>http://iatistandard.org/201/codelists/TransactionType/</rdfs:seeAlso>
         <rdfs:domain rdf:resource="&elod;Transaction"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
@@ -771,8 +823,8 @@
         <rdfs:label xml:lang="en">Broader</rdfs:label>
         <rdfs:label xml:lang="en">Broader concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more general (&quot;broader&quot;) than the other (&quot;narrower&quot;).</rdfs:comment>
-        <rdfs:domain rdf:resource="&skos;Concept"/>
         <rdfs:range rdf:resource="&skos;Concept"/>
+        <rdfs:domain rdf:resource="&skos;Concept"/>
     </owl:ObjectProperty>
     
 
@@ -806,8 +858,8 @@
         <rdfs:label xml:lang="en">Narrower</rdfs:label>
         <rdfs:label xml:lang="en">Narrower concept</rdfs:label>
         <rdfs:comment xml:lang="en">This property provides hierarchical link between two Concepts and indicates that one is in some way more specific (&quot;narrower&quot;) than the other (&quot;broader&quot;).</rdfs:comment>
-        <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain rdf:resource="&skos;Concept"/>
+        <rdfs:range rdf:resource="&skos;Concept"/>
         <owl:inverseOf rdf:resource="&skos;broader"/>
     </owl:ObjectProperty>
     
@@ -875,8 +927,8 @@
 
     <owl:ObjectProperty rdf:about="&rov;orgType">
         <rdfs:label xml:lang="en">organization type</rdfs:label>
-        <rdfs:comment xml:lang="en">This property records the type of organization.</rdfs:comment>
         <rdfs:seeAlso>http://iatistandard.org/201/codelists/OrganisationType/</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">This property records the type of organization.</rdfs:comment>
         <rdfs:range rdf:resource="&skos;Concept"/>
         <rdfs:domain>
             <owl:Class>
@@ -934,11 +986,20 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#completion -->
+    <!-- http://linkedeconomy.org/ontology#completionOfContracts -->
 
-    <owl:DatatypeProperty rdf:about="&elod;completion">
+    <owl:DatatypeProperty rdf:about="&elod;completionOfContracts">
+        <rdfs:label xml:lang="en">completion of contracts</rdfs:label>
+        <rdfs:comment xml:lang="en">The percentage of completion of payments of an activity.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#completionOfPayments -->
+
+    <owl:DatatypeProperty rdf:about="&elod;completionOfPayments">
         <rdfs:label xml:lang="en">completion</rdfs:label>
-        <rdfs:comment xml:lang="en">The percentage of completion of an activity.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The percentage of completion of payments of an activity.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
@@ -955,12 +1016,11 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#countOfRelatedProjects -->
+    <!-- http://linkedeconomy.org/ontology#countOfRelatedContracts -->
 
-    <owl:DatatypeProperty rdf:about="&elod;countOfRelatedProjects">
-        <rdfs:label xml:lang="en">count of related projects</rdfs:label>
-        <rdfs:comment xml:lang="en">The total count of subprojects which are parts of a specific Public Project.</rdfs:comment>
-        <rdfs:domain rdf:resource="&elod;PublicProject"/>
+    <owl:DatatypeProperty rdf:about="&elod;countOfRelatedContracts">
+        <rdfs:label xml:lang="en">count of related contracts</rdfs:label>
+        <rdfs:comment xml:lang="en">The total count of Contracts(subprojects) which are parts of a specific Public Project.</rdfs:comment>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
@@ -1375,6 +1435,28 @@
     
 
 
+    <!-- http://purl.org/procurement/public-contracts#actualEndDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;actualEndDate">
+        <rdfs:label xml:lang="en">Actual end date of contract realization</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for actual end date of public contract&apos;s realization. Cardinality 0..1</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#startDate -->
+
+    <owl:DatatypeProperty rdf:about="&pc;startDate">
+        <rdfs:label xml:lang="en">Start date of contract</rdfs:label>
+        <rdfs:comment xml:lang="en">Property for start date of public contract realization coming from the contract&apos;s text. Cardinality 0..1x</rdfs:comment>
+        <rdfs:domain rdf:resource="&pc;Contract"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.opengis.net/ont/geosparql#asWKT -->
 
     <owl:DatatypeProperty rdf:about="&geo;asWKT">
@@ -1415,7 +1497,10 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
+    </owl:DatatypeProperty>
     
 
 
@@ -1522,6 +1607,15 @@
         <rdfs:label xml:lang="el">Διοικητική απόφαση</rdfs:label>
         <rdfs:label xml:lang="en">Administrative Decision</rdfs:label>
         <rdfs:comment xml:lang="en">Administrative decisions taken by an Organization (Financial &amp; Non Financial).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#Aggregate -->
+
+    <owl:Class rdf:about="&elod;Aggregate">
+        <rdfs:label xml:lang="en">Aggregate</rdfs:label>
+        <rdfs:comment xml:lang="en">This class is a conceptual entity regarding information about the aggregated amounts of some other entity. It could be Payment, Budget, Contract, Organization etc.</rdfs:comment>
     </owl:Class>
     
 
@@ -1803,7 +1897,17 @@
     <owl:Class rdf:about="&elod;PublicProject">
         <rdfs:label xml:lang="el">Δημόσιο Έργο</rdfs:label>
         <rdfs:label xml:lang="en">Public Project</rdfs:label>
-        <rdfs:comment xml:lang="en">A group of activities aiming at the realization of a functionally distinct object / result. Allocation of resources to projects is done after evaluation according to specific and predefined criteria. The project is implemented by one or more entities called Beneficiaries (public or private organisation, body or enterprise). When the Beneficiary is a public body, the projects are implemented either by contractors selected through a public call for tender or by the public body’s own means.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A group of activities aiming at the realization of a functionally distinct object/result. Allocation of resources to projects takes place after evaluation according to specific criteria. The Public Project is implemented by one or more entities called Beneficiaries (public or private organisations).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology#PublicWork -->
+
+    <owl:Class rdf:about="&elod;PublicWork">
+        <rdfs:label xml:lang="en">Public Work</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&elod;PublicProject"/>
+        <rdfs:comment xml:lang="en">Public Works are Public Projects which are implemented either by contractors (Sellers) selected through a public call for tender or by the public body’s own means.</rdfs:comment>
     </owl:Class>
     
 
@@ -1839,22 +1943,12 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology#Subproject -->
-
-    <owl:Class rdf:about="&elod;Subproject">
-        <rdfs:label xml:lang="el">Υποέργο</rdfs:label>
-        <rdfs:label xml:lang="en">Subproject</rdfs:label>
-        <rdfs:comment xml:lang="en">Subproject is a part of a Project that corresponds to the implementation of a distinct part of the total physical object and is reflected either in a corresponding legal commitment or in the decision for the implementation by own means.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://linkedeconomy.org/ontology#Subsidy -->
 
     <owl:Class rdf:about="&elod;Subsidy">
         <rdfs:label xml:lang="en">Subsidy</rdfs:label>
         <rdfs:subClassOf rdf:resource="&elod;PublicProject"/>
-        <rdfs:comment xml:lang="en">Subsidies are considered to be government payments (transfers in strict economic terminology) to government agencies, firms and households based on a development plan. The difference between ordinary procurement and subsidies/aid is that in the latter final products and services are remaining in the ownership of the beneficiary.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Subsidies are government payments (or transfers, in economic terms) to firms or individuals based on an open call (in most cases) and followed by an agreed business plan. In the case of Subsidies the resulted products or services are remaining in the ownership of the Beneficiary.</rdfs:comment>
     </owl:Class>
     
 
@@ -2083,24 +2177,9 @@
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:comment xml:lang="en">Physical Persons. In LinkedEconomy we are interested for persons as economic agents.</rdfs:comment>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="&skos;prefLabel">
-        <rdfs:label xml:lang="en">preferred label</rdfs:label>
-        <rdfs:comment xml:lang="en">The Simple Knowledge Organization System provides some basic vocabulary for associating lexical labels with resources of any type. The preferred labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.</rdfs:comment>
-    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
