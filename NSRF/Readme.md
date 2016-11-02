@@ -1,5 +1,5 @@
 #Data model views
-![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/fbiefo8du2ckz59/espa_class.png?dl=1)
+![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/amtbhpurq9jl573/nsrf_class_uml_02-11-2016.png?dl=1)
 
 
 ##Input data examples
