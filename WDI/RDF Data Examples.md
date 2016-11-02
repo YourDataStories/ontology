@@ -8,7 +8,7 @@ elod: |  http://linkedeconomy.org/ontology#
 
 ### DESCRIPTION OF A STATISTICAL INDICATOR ###
 ```xml
-:ZWE/SH.STA.BRTC.ZS/2009 a elod:StatisticalIndicator;
+:ZWE/SH.STA.BRTC.ZS/2009 a elod:NonFinancialIndicator;
                     elod:financialYear “2009-01-01”^^xsd:gYear;
                     elod:hasValue “60.2”^^xsd:string;
                     elod:concerns
