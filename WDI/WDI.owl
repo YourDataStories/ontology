@@ -119,16 +119,6 @@
     
 
 
-    <!-- http://linkedeconomy.org/ontology/wdi#hasFinancialIndicator -->
-
-    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/wdi#hasFinancialIndicator">
-        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/#FinancialIndicator"/>
-        <rdfs:comment xml:lang="en">This property links an economic agent to a financial indicator.</rdfs:comment>
-        <rdfs:label xml:lang="en">has financial indicator</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme">
