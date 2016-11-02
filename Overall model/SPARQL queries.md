@@ -20,7 +20,7 @@ WHERE {
 
 ### Q2. Addresses and postal codes for Organizations
 ```
-select distinct ?name ?street ?pcode from <http://yourdatastories.eu/NSRF/Diavgeia>
+select distinct ?name ?street ?pcode
 where {
   ?organization gr:legalName ?name ; vcard2006:hasAddress ?address . 
   ?address vcard2006:street-address ?street ;
@@ -33,12 +33,12 @@ PREFIX vcard2006: <http://www.w3.org/2006/vcard/ns#>
 PREFIX elodGeo: <http://linkedeconomy.org/geoOntology#>
 
 SELECT DISTINCT ?pcode ?nameMunicipality
-FROM <http://yourdatastories.eu/NSRF/Diavgeia>
 WHERE {
   ?organization vcard2006:hasAddress ?address .
   ?address vcard2006:postal-code ?pcode.
   ?codeArea elodGeo:postalCode ?pcode .
   ?municipality elodGeo:hasPart ?codeArea ; elodGeo:name ?nameMunicipality . 
+  filter langMatches(lang(?nameMunicipality),'en')
 }
 ```
 ## B. CPV Queries
@@ -46,7 +46,6 @@ WHERE {
 ### Q1. Information for specific CPV
 ```
 SELECT distinct ?p ?o 
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 WHERE {
 	?s elod:hasCpv <http://linkedeconomy.org/resource/CPV/45233140-2>. 
 	<http://linkedeconomy.org/resource/CPV/45233140-2> ?p ?o
@@ -59,7 +58,8 @@ select distinct ?cpv (str(?code) as ?cpvCode) (str(?subject) as ?cpvSubject)
 from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
 ?cpv a elod:CPV. 
-?cpv elod:cpvCode ?code ; elod:cpvEnglishSubject ?subject
+?cpv skos:notation ?code ; skos:prefLabel ?subject
+filter langMatches(lang(?subject),'en')
 }
 ```
 
@@ -67,13 +67,14 @@ where {
 
 ### Q1. Single Project Info NSRF
 ```
-select distinct ?project ?percComplete (xsd:decimal(?prBudget) as ?priceBudget)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
+select distinct ?project ?percComplete 
+(xsd:decimal(?budgetAmount) as ?budgetAmount)
+(xsd:decimal(?spendAmount) as ?spendAmount)
 where {
-  ?project elod:hasRelatedAdministrativeDecision ?decision ; dcterms:title ?title ;
-  elod:hasRelatedBudgetItem ?revBudget ;  elod:completion ?percComplete . 
-  ?revBudget elod:price ?revUps . 
-  ?revUps gr:hasCurrencyValue ?prBudget. 
+  ?project a elod:PublicWork ; dcterms:title ?title ;
+  elod:hasBudgetAggregate ?budget ;  elod:completionOfPayments ?percComplete ; 
+  elod:countOfRelatedContracts ?countOfContracts ; elod:hasSpendingAggregate ?spending .
+  ?budget elod:aggregatedAmount ?budgetAmount . ?spending elod:aggregatedAmount ?spendAmount 
 } 
 group by ?project
 ```
@@ -89,35 +90,34 @@ as ?decisionCount)
 + (sum(xsd:decimal(?amContr2)))
 + (sum(xsd:decimal(?amb13))) 
 as ?amount)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
 {
-<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial .
+<http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial .
 ?decisionFinancial a elod:FinancialDecision ; elod:hasExpenditureLine ?expLine . 
 ?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am
 filter not exists {?decisionFinancial elod:hasCorrectedDecision ?corrected}
 }
 union
 {
-<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancialb13 .
+<http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancialb13 .
 ?decisionFinancialb13 a elod:FinancialDecision ;  elod:price ?upsb13 . ?upsb13 gr:hasCurrencyValue ?amb13
 filter not exists {?decisionFinancialb13 elod:hasCorrectedDecision ?correctedb13}
 }
 union
 {
-<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial2 .
+<http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial2 .
 ?decisionFinancial2 a elod:FinancialDecision ;  pc:agreedPrice ?upsContr . ?upsContr gr:hasCurrencyValue ?amContr
 filter not exists {?decisionFinancial2 elod:hasCorrectedDecision ?corrected2}
 }
 union
 {
-<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial3 .
+<http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decisionFinancial3 .
 ?decisionFinancial3 a elod:FinancialDecision ;  pc:documentsPrice ?upsContr2 . ?upsContr2 gr:hasCurrencyValue ?amContr2
 filter not exists {?decisionFinancial3 elod:hasCorrectedDecision ?corrected3}
 }
 union
 {
-<http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision.
+<http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decision.
 ?decision a elod:NonFinancialDecision
 filter not exists {?decision elod:hasCorrectedDecision ?corrected5}
 }
@@ -129,9 +129,8 @@ filter not exists {?decision elod:hasCorrectedDecision ?corrected5}
 ### Q1. Financial Decisions of a specific Public Project
 ```
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?am)) as ?amount)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision .
+  <http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decision .
   ?decision a elod:FinancialDecision ; elod:decisionType ?type ;
   elod:hasExpenditureLine ?expLine . 
   ?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am
@@ -142,9 +141,8 @@ where {
 ### Q2. Decisions of a specific decision type - Δ category
 ```
 select distinct ?type (count(distinct ?decision) as ?count) (sum(xsd:decimal(?amContr)) as ?amount2)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision .
+  <http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decision .
   ?decision pc:agreedPrice ?ups ; elod:decisionType ?type . 
   ?ups gr:hasCurrencyValue ?amContr .
   filter langMatches(lang(?type),'el')
@@ -154,9 +152,8 @@ where {
 ### Q3. Non-Financial Decisions of a specific Public Project
 ```
 select distinct (str(?type) as ?type1) (count(distinct ?decision) as ?count)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  <http://linkedeconomy.org/resource/Subsidy/372069> elod:hasRelatedAdministrativeDecision ?decision .
+  <http://linkedeconomy.org/resource/PublicWork/372069> elod:hasRelatedAdministrativeDecision ?decision .
   ?decision a elod:NonFinancialDecision ; elod:decisionType ?type .
 }
 order by desc (?count)
@@ -167,17 +164,15 @@ order by desc (?count)
 ### Q1. Detailed information of a Public Project
 ```
 select distinct ?titleProject ?description ?percComplete
-(xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
+(xsd:decimal(?amountBudget) as ?amountBudget) (xsd:decimal(?amountSpending) as ?amountSpending) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
-  <http://linkedeconomy.org/resource/Subsidy/372069> dcterms:title ?titleProject ; 
+  <http://linkedeconomy.org/resource/PublicWork/372069> dcterms:title ?titleProject ; 
   dcterms:description ?description ;
-  elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; 
-  elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
-  ?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. 
-  ?revSpend elod:hasExpenditureLine ?expSpend . 
-  ?expSpend elod:amount ?upsSpend . ?upsSpend gr:hasCurrencyValue ?prSpend
+  elod:hasBudgetAggregate ?budget ; elod:hasSpendingAggregate ?spending ; 
+  elod:completionOfPayments ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
+  ?budget elod:aggregatedAmount ?amountBudget. 
+  ?spending elod:aggregatedAmount ?amountSpending. 
   filter langMatches(lang(?titleProject),'el')
   filter langMatches(lang(?description),'el')
 }
@@ -191,16 +186,15 @@ select distinct ?subproject
 (count(distinct ?decisionFinancial) as ?decisionFinancial)
 (count (distinct ?decision) as ?nonFinancial)
 (sum(xsd:decimal(?am)) as ?totalAmount)
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
   {
-    ?subproject a elod:Subproject ; elod:hasRelatedAdministrativeDecision ?decisionFinancial .
+    ?subproject a pc:Contract ; elod:hasRelatedAdministrativeDecision ?decisionFinancial .
     ?decisionFinancial a elod:FinancialDecision ; elod:hasExpenditureLine ?expLine . 
     ?expLine elod:amount ?ups . ?ups gr:hasCurrencyValue ?am .
   }
   union
   {
-    ?subproject a elod:Subproject ; elod:hasRelatedAdministrativeDecision ?decision .
+    ?subproject a pc:Contract ; elod:hasRelatedAdministrativeDecision ?decision .
     ?decision a elod:NonFinancialDecision 
   }
 }
@@ -235,17 +229,16 @@ WHERE {
 ### Q4. NSRF descriptive stats for Public Projects which are related to Crete
 ```
 select distinct ?project ?percComplete (str(?titleProject) as ?title)
-(xsd:decimal(?prBudget) as ?priceBudget) (xsd:decimal(?prSpend) as ?priceSpend) 
+(xsd:decimal(?amountBudget) as ?amountBudget) 
+(xsd:decimal(?spendingBudget) as ?spendingBudget) 
 (str(?startDate) as ?starts) (str(?endDate) as ?ends) 
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
   ?project dcterms:title ?titleProject ; dcterms:description ?description ;
-  elod:hasRelatedBudgetItem ?revBudget ; elod:hasRelatedSpendingItem ?revSpend ; 
-  elod:completion ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
-  ?revBudget elod:price ?revUps . ?revUps gr:hasCurrencyValue ?prBudget. ?revSpend 
-  elod:hasExpenditureLine ?expSpend . ?expSpend elod:amount ?upsSpend . ?upsSpend 
-  gr:hasCurrencyValue ?prSpend
+  elod:hasBudgetAggregate ?budget ; elod:hasSpendingAggregate ?spending ; 
+  elod:completionOfPayments ?percComplete ; elod:startDate ?startDate ; elod:endDate ?endDate. 
+  ?budget elod:aggregatedAmount ?amountBudget . ?spending elod:aggregatedAmount ?spendingBudget .
   FILTER regex(?titleProject, "Κρήτη", "i")
+  filter langMatches(lang(?description),'el')
 }
 ```
 
@@ -286,7 +279,6 @@ where {?s qb:attribute ?attribute ;
 ### Q1. Return public projects of a specific Sector
 ```
 select distinct ?title
-from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
   ?project elod:sector ?sector ; dcterms:title ?title . 
   ?sector skos:prefLabel "Road transport"^^xsd:string
@@ -296,7 +288,6 @@ where {
 ### Q2. Count of Public Projects per Sector
 ```
 select distinct ?sector ?label (count(distinct ?project) as ?count) 
-from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where { 
   ?project elod:sector ?sector  . 
   ?sector skos:prefLabel ?label
@@ -306,9 +297,8 @@ where {
 ### Q3. OECD CRS Code of NSRF Projects
 ```
 select distinct *
-from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
-?project a elod:Subsidy ; elod:sector ?sector . 
+?project a elod:PublicWork ; elod:sector ?sector . 
 ?sector skos:prefLabel ?o
 }
 ```
@@ -318,7 +308,6 @@ where {
 ### Q1. Return the connection of Sellers from Projects to Organizations URIs and their related information
 ```
 select distinct ?org ?vatId ?greekName ?engName
-from <http://yourdatastories.eu/NSRF/Diavgeia>
 where {
 ?subsidy elod:seller ?seller . ?seller rdfs:seeAlso ?org .
 ?org gr:vatID ?vatId ; gr:legalName ?greekName ; elod:translation ?engName
@@ -329,7 +318,6 @@ where {
 ```
 select distinct ?project ?date (str(?decisionType) as ?type)  (STR(SAMPLE(?buyerName)) as ?nameBuyer) (STR(SAMPLE(?sellerName)) as ?nameSeller)
 (str(?subject) as ?decisionSubject) (xsd:decimal(?am) as ?amount) (str(?ada) as ?decisionAda)
-from <http://yourdatastories.eu/NSRF/Diavgeia> 
 where {
 ?project elod:hasRelatedAdministrativeDecision ?decision .
 ?decision elod:decisionTypeId ?type ; elod:ada ?ada ; elod:decisionType ?decisionType ; 
