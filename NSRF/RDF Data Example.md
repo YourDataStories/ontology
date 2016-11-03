@@ -25,13 +25,11 @@ geo: | http://www.opengis.net/ont/geosparql#
         elod:hasSpendingAggregate <http://linkedeconomy.org/resource/Aggregate/Payment/277637>.
         <http://linkedeconomy.org/resource/Aggregate/Budget/277637> a elod:Aggregate;
                             elod:aggregatedAmount "11194580.00"^^xsd:float;
-                            elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>
-                          ].
+                            elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>.
+                          
         <http://linkedeconomy.org/resource/Aggregate/Payment/277637> a elod:Aggregate;
                                      elod:aggregatedAmount "8041839.00"^^xsd:float;
-                                     elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>
-                                   ]
-  ]
+                                     elod:hasCurrency <http://linkedeconomy.org/resource/Currency/EUR>.
 
 <http://linkedeconomy.org/resource/Taxonomy/OECD/CRS/21020> skos:prefLabel "Road transport"^^xsd:string.
 
