@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [1.2.0] - 2016-11-03
+### Added
+- Add classes: elod:NonFinancialIndicator, elod:FinancialIndicator, elod:StatisticalIndicator
+- Add Object properties: elod:hasStatisticalIndicator, elod:hasValue
+
 ## [1.1.4] - 2016-11-03
 ### Added
 - Add classes: elod:Aggregate, pc:Contract, elod:PublicWork
