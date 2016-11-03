@@ -1,6 +1,24 @@
 # Change Log
 All notable changes to the data model will be documented in this file.
 
+## [1.1.4] - 2016-11-03
+### Added
+- Add classes: elod:Aggregate, pc:Contract, elod:PublicWork
+- Add Object properties: elod:hasSpendingAggregate, elod:hasBudgetAggregate, elod:hasContractAggregate, elod:buyer, elod:hasRelatedContract, elod:hasOperationalCode, elod:hasProjectStatus.
+- Add datatype properties: pc:actualEndDate, pc:startDate, elod:countOfRelatedContracts, elod:completionOfPayments, elod:completionOfContracts
+
+### Updated
+- Update RDF data example.
+- Update SPARQL Queries.
+
+### Changed
+- Change rdfs:comment of elod:Subsidy and elod:PublicProject
+
+### Removed
+- Remove class elod:Subproject.
+- Remove Object properties: elod:hasRelatedProject
+- Remove Datatype properties: elod:completion, elod:countOfRelatedProjects
+
 ## [1.1.3] - 2016-10-03
 ### Added
 - Add rfds:comment of elod:hasRelatedBudgetItem Object property in OWL file
