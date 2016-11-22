@@ -394,7 +394,7 @@ WHERE {
     }
   }
   {
-    SELECT (COUNT(?activity) AS ?numberOfProjects) ?sectorCode  ?sector
+    SELECT (COUNT(?activity) AS ?numberOfProjects) ?sector
     WHERE{
       ?activity elod:countryIsoCode <http://linkedeconomy.org/resource/Country/ZW>;
               elod:benefactor ?benefactor;          
