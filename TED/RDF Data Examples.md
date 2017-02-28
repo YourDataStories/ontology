@@ -19,7 +19,7 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 		elod:financialYear "2015"^^xsd:gYear ;
 		dcterms:issued "2015-01-22T00:00:00"^^xsd:dateTime ;
         pc:mainObject <http://linkedeconomy.org/resource/CPV/44163100-1> ;
-		pc:additionalObject <http://linkedeconomy.org/resource/CPV/{additionalObject}>
+		pc:additionalObject <http://linkedeconomy.org/resource/CPV/{additionalObject}>;
 		pc:duration "36"^^xsd:duration ; 
 		pc:startDate "2015-04-01"^^xsd:date ; 
 		pc:estimatedEndDate "2018-03-31”^^xsd:date ; 
@@ -30,13 +30,13 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 		elod:documentUrl "http://www.ted.europa.eu/udl?uri=TED:NOTICE:31314-2015:TEXT:EN:HTML&tabId=0"^^xsd:string ;
 		elod:buyer [a gr:BusinessEntity; a org:Organization; a foaf:Organization; a rov:RegisteredOrganization ;
 							skos:prefLabel "RWE GasNet- s.r.o." ;	
-							gr:name "RWE GasNet- s.r.o." ;
+							foaf:name "RWE GasNet- s.r.o." ;
 							pc:authorityKind <http://purl.org/procurement/public-contracts-authority-kinds#LocalAuthority>;
 						    vcard:hasAddress [ a vcard:Address ;
 							vcard:locality "Ústí nad Labem"^^xsd:string ;
 							vcard:postal-code "40001"^^xsd:string ;
 							vcard:street-address "Klíšská 940/96"^^xsd:string ;
-							]
+							];
                             elod:countryIsoCode <http://linkedeconomy.org/resource/Country/CZ> ;
 							elod:isMatched "true"^^xsd:boolean
 		] ;
@@ -81,25 +81,25 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
         ];		
 		elod:buyer [a gr:BusinessEntity; a org:Organization; a foaf:Organization; a rov:RegisteredOrganization ;
 							skos:prefLabel "Wielkopolska WojewÃ³dzka Komenda Ochotniczych HufcÃ³w Pracy" ;	 
-							gr:name "Wielkopolska WojewÃ³dzka Komenda Ochotniczych HufcÃ³w Pracy" ;
+							foaf:name "Wielkopolska WojewÃ³dzka Komenda Ochotniczych HufcÃ³w Pracy" ;
 							pc:authorityKind <http://purl.org/procurement/public-contracts-authority-kinds#{authorityKind}> ;
 							vcard:hasAddress [ a vcard:Address ;
 							vcard:locality "Poznań"^^xsd:string ;
 							vcard:postal-code "61485"^^xsd:string ;
 							vcard:street-address "ul. 28 Czerwca 1956r. nr 211"^^xsd:string .
 							] ;
-                            elod:countryIsoCode <http://linkedeconomy.org/resource/Country/PL>	
+                            elod:countryIsoCode <http://linkedeconomy.org/resource/Country/PL> ;
 							elod:isMatched "true"^^xsd:boolean							
 		];		
 		elod:seller [a gr:BusinessEntity; a org:Organization; a foaf:Organization; a rov:RegisteredOrganization ;
-							skos:prefLabel "Zakład Doskonalenia Zawodowego"
-							gr:name "Zakład Doskonalenia Zawodowego"
+							skos:prefLabel "Zakład Doskonalenia Zawodowego" ;
+							foaf:name "Zakład Doskonalenia Zawodowego" ;
 							vcard:hasAddress [ a vcard:Address ;
 							vcard:locality "Poznań"^^xsd:string ;
 							vcard:postal-code "60179"^^xsd:string ;
 							vcard:street-address "ul. Jeleniogórska 4/6"^^xsd:string ;
 							] ;
-                            elod:countryIsoCode <http://linkedeconomy.org/resource/Country/{countryIsoCode}>	
+                            elod:countryIsoCode <http://linkedeconomy.org/resource/Country/{countryIsoCode}> ;
 							elod:isMatched "true"^^xsd:boolean							
 		];			
 		pc:awardCriteriaCombination [ a pc:AwardCriteriaCombination ;
