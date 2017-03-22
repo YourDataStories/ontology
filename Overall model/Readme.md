@@ -1,4 +1,4 @@
-#Data model views
+# Data model views
 ![Basic concepts of the Linked Open Economy modelling](https://dl.dropboxusercontent.com/u/4447272/YDS%20model%20Concepts%20non%20techie%20short.jpg)
 
 ##Input data examples
