@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://linkedeconomy.org/ontology/traffic#"
+     xml:base="http://linkedeconomy.org/ontology/traffic"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://linkedeconomy.org/ontology/traffic">
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+        <owl:imports rdf:resource="http://purl.org/procurement/public-contracts"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#directed -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#directed">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficDirection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#hasFeature">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#ObservationPoint"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#includesObservationPoint -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#includesObservationPoint">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficSite"/>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/traffic#ObservationPoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#onPoint -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#onPoint">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/traffic#ObservationPoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#underWork -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#underWork">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficSite"/>
+        <rdfs:range rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#vehicleType -->
+
+    <owl:ObjectProperty rdf:about="http://linkedeconomy.org/ontology/traffic#vehicleType">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#observationEnd -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/traffic#observationEnd">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#observationStart -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/traffic#observationStart">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#trafficCnt -->
+
+    <owl:DatatypeProperty rdf:about="http://linkedeconomy.org/ontology/traffic#trafficCnt">
+        <rdfs:domain rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#ObservationPoint -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/traffic#ObservationPoint"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#TrafficDirection -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/traffic#TrafficDirection"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#TrafficObservation -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/traffic#TrafficObservation"/>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#TrafficSite -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/traffic#TrafficSite">
+        <rdfs:comment xml:lang="en">A location where people and goods transport takes place</rdfs:comment>
+        <rdfs:label xml:lang="en">Traffic Site</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#Vehicle -->
+
+    <owl:Class rdf:about="http://linkedeconomy.org/ontology/traffic#Vehicle">
+        <rdfs:comment xml:lang="en">Abstract cateogorization of land vehicles transporting people and goods</rdfs:comment>
+        <rdfs:label xml:lang="en">Vehicle Type</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#bicycle -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#bicycle">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#bus -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#bus">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#car -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#car">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#eastbound -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#eastbound">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficDirection"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#hgv -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#hgv">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#lgv -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#lgv">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#motorcycle -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#motorcycle">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#Vehicle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://linkedeconomy.org/ontology/traffic#westbound -->
+
+    <owl:NamedIndividual rdf:about="http://linkedeconomy.org/ontology/traffic#westbound">
+        <rdf:type rdf:resource="http://linkedeconomy.org/ontology/traffic#TrafficDirection"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
