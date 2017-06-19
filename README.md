@@ -8,4 +8,4 @@ First, the modelling is initiated by the public projects funded by the National 
 
 
 
-![Orchestrating open data for the economy](https://www.dropbox.com/s/5rtxsj5x2kf7qq1/YDSontology.png?dl=1)
+![Orchestrating open data for the economy](https://www.dropbox.com/s/zyvcymc0rbbs9xp/YDS%20model%20Concepts%20non%20techie%20short.png?dl=1)
