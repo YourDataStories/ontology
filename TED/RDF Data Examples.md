@@ -9,9 +9,9 @@ vcard: | http://www.w3.org/2006/vcard/ns#
 pc: | http://purl.org/procurement/public-contracts#
 pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 
-###RDF example for input data of TED
+### RDF example for input data of TED
 
-##Notices
+## Notices
 ```xml
 <http://linkedeconomy.org/resource/Contract/Notice/201531314> [ a pc:Contract ;
         elod:documentType "Contract notice"^^xsd:string ;
