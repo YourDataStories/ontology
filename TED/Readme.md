@@ -1,7 +1,7 @@
 ![Basic concepts of the TED modelling](https://www.dropbox.com/s/n4m6ancd3mh8l3x/TED_16-09.png?dl=1)
 
 # Data model views
-##I nput data examples
+## Input data examples
 Input data extracts per data source can be found [here](https://github.com/YourDataStories/ontology/blob/master/TED/Input%20Data%20Examples.md).
 ## Data model
 Moodel specification can be found [here](https://github.com/YourDataStories/ontology/blob/master/TED/pilot3.owl). 
