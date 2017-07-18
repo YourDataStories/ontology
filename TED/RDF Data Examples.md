@@ -57,7 +57,7 @@ pcdt: | http://purl.org/procurement/public-contracts-datatypes#
 
 
 
-##Award Notices
+## Award Notices
 
 ```xml
 <http://linkedeconomy.org/resource/Contract/AwardNotice/201593094/6754729> [ a pc:Contract ;
