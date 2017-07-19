@@ -1,6 +1,7 @@
 ## Input Data From TED
 
-##Notices
+Notices
+
 Column | Real Data
 ------------ | -------------
 ID_NOTICE_CN | 201531314
@@ -27,7 +28,8 @@ CRIT_WEIGHTS |
 DT_APPLICATIONS | 4-Mar-15
 
 
-##Award Notices
+Award Notices
+
 Column | Real Data
 ------------ | -------------
 ID_NOTICE_CAN | 201578
