@@ -5,12 +5,12 @@
 Input data extracts can be found [here](https://github.com/YourDataStories/ontology/blob/master/Traffic/Input%20Data%20Examples.md).
 
 ## Data model
-Moodel specification can be found [here](https://github.com/YourDataStories/ontology/blob/master/Traffic/traffic.owl).
+Model specification can be found [here](https://github.com/YourDataStories/ontology/blob/master/Traffic/traffic.owl).
 **Change log** is [here](https://github.com/YourDataStories/ontology/blob/master/Traffic/CHANGELOG.md).
 
 ## RDF data examples
-Example [RDF specifications](https://github.com/YourDataStories/ontology/blob/master/NSRF/RDF%20Data%20Example.md) provide another view of the data.
-## SPARQL queries examples for NSRF dataset
+Example [RDF specifications](https://github.com/YourDataStories/ontology/blob/master/Traffic/RDF%20Data%20Example.md) provide another view of the data.
+## SPARQL queries examples for Traffic dataset
 [Query](https://github.com/YourDataStories/ontology/blob/master/Overall%20model/SPARQL%20queries.md) the RDF store and get the latest data.
 
 
