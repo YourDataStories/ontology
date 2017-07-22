@@ -11,6 +11,6 @@ Model specification can be found [here](https://github.com/YourDataStories/ontol
 ## RDF data examples
 Example [RDF specifications](https://github.com/YourDataStories/ontology/blob/master/Traffic/RDF%20Data%20Example.md) provide another view of the data.
 ## SPARQL queries examples for Traffic dataset
-[Query](https://github.com/YourDataStories/ontology/blob/master/Overall%20model/SPARQL%20queries.md) the RDF store and get the latest data.
+[Query](https://github.com/YourDataStories/ontology/blob/master/Traffic/SPARQL%20queries.md) the RDF store and get the latest data.
 
 
