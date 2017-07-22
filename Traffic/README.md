@@ -2,7 +2,7 @@
 ![Overview of the main entities involved in the YDS Traffic Ontology](https://dl.dropboxusercontent.com/u/4447272/Traffic.png)
 
 ## Input data examples
-Input data extracts can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/Input%20Data%20Example.md).
+Input data extracts can be found [here](https://github.com/YourDataStories/ontology/blob/master/Traffic/Input%20Data%20Examples.md).
 
 ## Data model
 Moodel specification can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/YDS%20NSRF.owl). 
