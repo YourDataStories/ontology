@@ -24,4 +24,13 @@ language | el
 feed_url | no-feed
 
 ## YDS comment example
-
+Column | Real Data
+------------ | -------------
+id | 27
+type | YDS
+created | 2017-05-17T12:00:34Z
+created_by | antonis
+text | a very well organized project
+likes | 1
+dislikes | 0
+reaction | null
