@@ -1,5 +1,6 @@
 # Data model views
-![Basic concepts of the NSRF modelling](https://user-images.githubusercontent.com/3584062/29658085-5c80f896-88c2-11e7-8fd1-ab33d47b60bb.png)
+
+![basic concepts of the nsrf modelling](https://user-images.githubusercontent.com/3584062/29658291-01ec65ea-88c3-11e7-9dae-71ed044b74cf.png)
 
 
 ## Input data examples
