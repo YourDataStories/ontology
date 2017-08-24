@@ -1,5 +1,5 @@
 # Data model views
-![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/amtbhpurq9jl573/nsrf_class_uml_02-11-2016.png?dl=1)
+![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/ly1c06p9zemm7ju/NSRF-UML.png?dl=1)
 
 
 ## Input data examples
@@ -8,6 +8,7 @@ Input data extracts per data source can be found [here](https://github.com/YourD
 ## Data model
 Moodel specification can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/YDS%20NSRF.owl). 
 Detailed List of classes and properties can be found [here](https://docs.google.com/spreadsheets/d/1xMiTAk7mXhGPnSU4-qspiYaN15ur4v3J0lU8qYODtzk/edit#gid=481927591).
+
 **Change log** is [here](https://github.com/YourDataStories/ontology/blob/master/Overall%20model/CHANGELOG.md).
 
 ## RDF data examples
