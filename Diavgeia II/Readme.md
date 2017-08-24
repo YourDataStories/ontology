@@ -1,5 +1,5 @@
 # Data model views
-![Basic concepts of the Greek Transparency Portal modelling] (https://www.dropbox.com/s/5wwmkyuvoxcih32/Diavgeia_YDS_UML.jpg?dl=1)
+![Basic concepts of the Greek Transparency Portal modelling](https://www.dropbox.com/s/5wwmkyuvoxcih32/Diavgeia_YDS_UML.jpg?dl=1)
 
 
 ## Input data examples
