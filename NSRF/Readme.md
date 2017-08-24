@@ -1,7 +1,5 @@
 # Data model views
-![nsrf-uml](https://user-images.githubusercontent.com/3584062/29658085-5c80f896-88c2-11e7-8fd1-ab33d47b60bb.png)
-![Basic concepts of the NSRF modelling](https://www.dropbox.com/s/ly1c06p9zemm7ju/NSRF-UML.png?dl=1)
-
+![Basic concepts of the NSRF modelling](https://user-images.githubusercontent.com/3584062/29658085-5c80f896-88c2-11e7-8fd1-ab33d47b60bb.png)
 
 ## Input data examples
 Input data extracts per data source can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/Input%20Data%20Example.md).
