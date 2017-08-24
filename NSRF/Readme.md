@@ -1,6 +1,7 @@
 # Data model views
 ![Basic concepts of the NSRF modelling](https://user-images.githubusercontent.com/3584062/29658085-5c80f896-88c2-11e7-8fd1-ab33d47b60bb.png)
 
+
 ## Input data examples
 Input data extracts per data source can be found [here](https://github.com/YourDataStories/ontology/blob/master/NSRF/Input%20Data%20Example.md).
 
