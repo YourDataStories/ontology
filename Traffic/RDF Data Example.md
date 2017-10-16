@@ -7,7 +7,7 @@ rdfs: | http://www.w3.org/2000/01/rdf-schema#
 pc: | http://purl.org/procurement/public-contracts#
 geo: | http://www.opengis.net/ont/geosparql#
 
-###RDF example for input data of Traffic Observation Data
+## RDF example for input data of Traffic Observation Data
 ```xml
  <tr:TrafficObservation rdf:about="http://linkedeconomy.org/ontology/traffic/resource/TrafficObservation/14995">
     <tr:trafficCnt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</tr:trafficCnt>
